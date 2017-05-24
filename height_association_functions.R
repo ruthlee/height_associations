@@ -134,7 +134,7 @@ qq.plot <- function ( start.chr, end.chr, avgeff.sig.cutoff = FALSE , genotypic.
     
   }
   
-  return ( i.frame )
+ 
   
 }
 # makes qq plots of SNPs from a chromosome against avg eff pvalues, domdev pvalues
