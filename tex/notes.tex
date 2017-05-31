@@ -1,0 +1,56 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{amsfonts}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{cleveref}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage{natbib}
+%\usepackage{float}
+%\usepackage{subcaption}
+%\usepackage{multirow} 
+%\usepackage{hyperref}
+%\usepackage{bibunits}
+%\usepackage{csvsimple}
+%\usepackage[superscript,biblabel]{cite}
+
+\newcommand{\jb}[1]{{\color{blue} (#1)} }
+\begin{document}
+
+\title{Notes on Dominance and the $Q_X$ Test}
+
+\author{
+  Kyelee Ruth Fitts and Jeremy Berg
+}
+
+\date{}
+
+\maketitle
+
+So our task is to expess the $Q_X$ statistic in terms of the alleles frequencies, the homozygous effect, and the dominance deviation. In equation 12 of \cite{Berg:2014bs}, we showed that, in the case where all populations are equally distant from one another (with that distance measured in terms of the parameter $F_{ST}$), the statistic could be written in terms of the \textit{average} effect as
+\begin{equation} \label{eqn:Qxraw}
+  Q_X = \frac{1}{V_A F_{ST}} \sum_{m=1}^M \sum_{\ell=1}^L \sum_{\ell\prime=1}^L \alpha_{\ell} \alpha_{\ell^{\prime}}\left(p_{m\ell} - \overline{p}_\ell \right)\left(p_{m \ell\prime} - \overline{p}_{\ell\prime}\right)
+\end{equation}
+where $\alpha_\ell$ and $\alpha_{\ell\prime}$ are the average effects for site $\ell$ and $\ell\prime$ respectively, $p_{m\ell}$ is the allele frequency at site $\ell$ in population $m$, and $\overline{p}_\ell$ is the frequency in the ancestral population before it split into the $M$ present day populations (and similar for $\ell\prime$). I've also rewritten in a slightly different way than I did in the \cite{Berg:2014bs}. I've rewritten the sum over $\ell$ and $\ell\prime$ as two distinct sums for the sake of clarity, rather than the shorthand I used in the paper to collapse them into one. And for now I'm assuming that we know the ancestral allele frequency, rather than taking the mean, which is why the sum over $m$ goes from 1 to $M$ rather than $M-1$.
+
+Now, if we assume that the average effects are estimated in population 1, then given the allele frequency in population 1 ($p_{1\ell}$), the difference between homozygotes ($A_\ell$), and the dominance deviation ($D_\ell$) the average effect is given by
+\begin{equation}  \label{eqn:avgeff}
+  \alpha_\ell = \frac{1}{2} A_\ell + D_\ell\left(1-2p_{1\ell}\right).
+\end{equation}
+
+What we want is to reexpress eqn \eqref{eqn:Qxraw} by substituting eqn \eqref{eqn:avgeff} in for the average effects and then simplifying and partitioning in a way that provides insight. Specifically, we'll want to partition into components corresponding to the population in which the GWAS was done (i.e. population 1) and the others, as we expect the bias should come from the fact that $p_{1\ell}$ appears in the expression for the average effect (it'd probably be easiest to first consider a case with just two populations). Nested within that partition among populations, we'll also want to partition into an $F_{ST}$-like or variance term, which should correspond to a sum over terms where $\ell = \ell\prime$, as well as an LD-like or covariance term, which should correspond to a sum over terms where $\ell \neq \ell\prime$. Where possible, you'll want to turn sums into expectations, and expectations into variances or covariances. I supsect you're familiar with these, but just to be sure, you will probably want to make extensive use of the following identities
+\begin{align}
+  N \mathbb{E}[X] &= \sum_{i=1}^N X_i \\
+  Var(X) &= \mathbb{E}[X^2] - \mathbb{E}[X]^2 \\
+  Cov(X,Y) &= \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
+\end{align}
+and you may find a use for some of the expressions in \cite{Bohrnstedt:1969cz} regarding the covariance of products of random variables (or not, I'm not sure). Write your algebra out below in \LaTeX. You don't need to include every single piece of algebra, but make sure there's enough that I should be able to follow what you're doing.  
+
+\bibliographystyle{genetics}
+\bibliography{Jeremy_library}
+
+\end{document}
