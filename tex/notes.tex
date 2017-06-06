@@ -1,6 +1,6 @@
 \documentclass[a4paper,10pt]{article}
 \usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
+\usepackage[u  tf8]{inputenc}
 \usepackage{mathtools}
 \usepackage{mathrsfs}
 \usepackage{bm}
@@ -48,9 +48,42 @@ What we want is to reexpress eqn \eqref{eqn:Qxraw} by substituting eqn \eqref{eq
   Var(X) &= \mathbb{E}[X^2] - \mathbb{E}[X]^2 \\
   Cov(X,Y) &= \mathbb{E}[XY] - \mathbb{E}[X]\mathbb{E}[Y]
 \end{align}
-and you may find a use for some of the expressions in \cite{Bohrnstedt:1969cz} regarding the covariance of products of random variables (or not, I'm not sure). Write your algebra out below in \LaTeX. You don't need to include every single piece of algebra, but make sure there's enough that I should be able to follow what you're doing.  
+
+and you may find a use for some of the expressions in
+\cite{Bohrnstedt:1969cz} regarding the covariance of products of
+random variables (or not, I'm not sure). Write your algebra out below
+in \LaTeX. You don't need to include every single piece of algebra,
+but make sure there's enough that I should be able to follow what
+you're doing.
+
+For the case of two populations:
+
+\begin{equation}
+  \label{1}
+  \sum_{l=1}^L \alpha_l (p_{1l}-\epsilon_l) \sum_{l'=1}^L \alpha_{l'} (p_{1l'} - \epsilon_{l'}) + \sum_{l=1}^L \alpha_l (p_{2l}-\epsilon_l) \sum_{l'=1}^L \alpha_{l'} (p_{2l'} - \epsilon_{l'}) 
+\end{equation}
+
+Taking only the first term:
+
+\begin{equation}
+  \label{2}
+  \sum_{l=1}^L (\frac{1}{2}A_l + D_l(1-2p_{1l}))^2 (Var p_{l1}) \sum_{l \neq l'}^L (\frac{1}{2}A_l + D_l(1-2p_{1l}))(\frac{1}{2}A_{l'} + D_{l'}(1-2p_{1l'}))Cov(p_{1l}, p_{1l'})
+\end{equation}
+
+Following Jeremy's paper-- I believe the first term corresponds to $F_{st}$ while the second term is the LD-like component. Could possibly expand out first squared alpha term making use of the following identities for variance: 
+
+\begin{equation}
+   \label{3}
+   Var(X) = \mathbb{E}[X^2] - \mathbb{E}[X]^2
+   = \mathbb{E}[X^2] - 2\mathbb{E}[X]\mathbb{E}[X] + \mathbb{E}[X]^2
+\end{equation}
+
+While the second alpha term with different subscripts could be another covariance term. 
+
+
 
 \bibliographystyle{genetics}
 \bibliography{Jeremy_library}
 
 \end{document}
+
