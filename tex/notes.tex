@@ -6,7 +6,7 @@
 \usepackage{bm}
 \usepackage{amsfonts}
 \usepackage[dvipsnames]{xcolor}
-\usepackage{cleveref}
+%\usepackage{cleveref}
 \usepackage{graphicx}
 \usepackage{fullpage}
 \usepackage{natbib}
@@ -80,7 +80,30 @@ Following Jeremy's paper-- I believe the first term corresponds to $F_{st}$ whil
 
 While the second alpha term with different subscripts could be another covariance term. 
 
+Also note that when you square a summation you can use this equality: 
 
+\begin{equation}
+    \label{4}
+    (\sum^L_{l=1} X_l )^2 = \sum^L_{l=1} X_l^2 + \sum^L_{l \neq l'} X_l X_{l'}
+\end{equation}
+
+This is slightly modified from its source \textcolor{blue}{\href{https://math.stackexchange.com/questions/329344/what-is-the-square-of-summation}{here}.} Should probably check to make sure this is valid.
+
+If that equation is true then looking at just the term $A_L$
+
+\begin{align}
+    (\sum^L_{l=1} A_l )^2 = (\mathbb{E}[A_l])^2 = \sum^L_{l=1} A_l^2 + \sum^L_{l \neq l'} A_l A_{l'} \\
+    Var(A_l) = \sum^L_{l=1} A_l^2 - (\sum^L_{l=1} A_l^2 + \sum^L_{l \neq l'} A_l A_{l'}) \\
+    Var(A_l)= \sum^L_{l \neq l'} A_l A_{l'}
+\end{align}
+
+Similarly for the other term of $\alpha$, that is, $Var(D_l(1-2p_{1l})) = \sum^L_{l \neq l'} D_l(1-2p_{1l}) D_{l'}(1-2p_{1l'})$.
+
+If this is true, both of these expressions can be found by multiplying out the $\alpha$ terms in the second summation in 7 to yield: 
+
+\begin{equation}
+    \frac{1}{16} Var(A_l) + Var(D_{l}(1-p_{1l})) + \sum_{l \neq l'}^L ( \frac{1}{2}A_l D_{l'}(1-p_{1l'}) + \frac{1}{2}A_{l'} D_{l}(1-p_{1l}) )
+\end{equation}
 
 \bibliographystyle{genetics}
 \bibliography{Jeremy_library}
