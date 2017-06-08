@@ -1,19 +1,19 @@
 \documentclass[a4paper,10pt]{article}
 \usepackage[T1]{fontenc}
-\usepackage[u  tf8]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage{mathtools}
 \usepackage{mathrsfs}
 \usepackage{bm}
 \usepackage{amsfonts}
 \usepackage[dvipsnames]{xcolor}
-%\usepackage{cleveref}
+\usepackage{cleveref}
 \usepackage{graphicx}
 \usepackage{fullpage}
 \usepackage{natbib}
 %\usepackage{float}
 %\usepackage{subcaption}
 %\usepackage{multirow} 
-\usepackage{hyperref}
+%\usepackage{hyperref}
 %\usepackage{bibunits}
 %\usepackage{csvsimple}
 %\usepackage[superscript,biblabel]{cite}
@@ -56,64 +56,16 @@ in \LaTeX. You don't need to include every single piece of algebra,
 but make sure there's enough that I should be able to follow what
 you're doing.
 
-For the case of two populations:
+For the case of two populationss:
 
 \begin{equation}
-  \label{1}
-  \sum_{l=1}^L \alpha_l (p_{1l}-\epsilon_l) \sum_{l'=1}^L \alpha_{l'} (p_{1l'} - \epsilon_{l'}) + \sum_{l=1}^L \alpha_l (p_{2l}-\epsilon_l) \sum_{l'=1}^L \alpha_{l'} (p_{2l'} - \epsilon_{l'}) 
-\end{equation}
-
-Taking only the first term:
-
-\begin{equation}
-  \label{2}
-  \sum_{l=1}^L (\frac{1}{2}A_l + D_l(1-2p_{1l}))^2 (p_{1l}-\epsilon_l)^2 \sum_{l \neq l'}^L (\frac{1}{2}A_l + D_l(1-2p_{1l}))(\frac{1}{2}A_{l'} + D_{l'}(1-2p_{1l'}))(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'})
-\end{equation}
-
-Could possibly expand out first squared alpha term making use of the following identities for variance: 
-
-\begin{equation}
-   \label{3}
-   Var(X) = \mathbb{E}[X^2] - \mathbb{E}[X]^2
-   = \mathbb{E}[X^2] - 2\mathbb{E}[X]\mathbb{E}[X] + \mathbb{E}[X]^2
-\end{equation}
-
-While the second alpha term with different subscripts could be another covariance term. 
-
-Also note that when you square a summation you can use this equality: 
-
-\begin{equation}
-    \label{4}
-    (\sum^L_{l=1} X_l )^2 = \sum^L_{l=1} X_l^2 + \sum^L_{l \neq l'} X_l X_{l'}
-\end{equation}
-
-This is slightly modified from its source \href{https://math.stackexchange.com/questions/329344/what-is-the-square-of-summation}{here}. Should probably check to make sure this is valid.
-
-If that equation is true then we can substitute, for example, the term $A_L$
-
-\begin{align}
-    (\sum^L_{l=1} A_l )^2 = (\mathbb{E}[A_l])^2 = \sum^L_{l=1} A_l^2 + \sum^L_{l \neq l'} A_l A_{l'} \\
-    Var(A_l) = \sum^L_{l=1} A_l^2 - (\sum^L_{l=1} A_l^2 + \sum^L_{l \neq l'} A_l A_{l'}) \\
-    - Var(A_l)= \sum^L_{l \neq l'} A_l A_{l'}
-\end{align}
-
-Similarly for the other term of $\alpha$, that is, $-Var(D_l(1-2p_{1l})) = \sum^L_{l \neq l'} D_l(1-2p_{1l}) D_{l'}(1-2p_{1l'})$.
-
-If this is true, both of these expressions can be found by multiplying out the $\alpha$ terms in the second summation in 7 to yield: 
-
-\begin{equation}
-   - \frac{1}{16} Var(A_l) - Var(D_{l}(1-p_{1l})) + \sum_{l \neq l'}^L ( \frac{1}{2}A_l D_{l'}(1-p_{1l'}) + \frac{1}{2}A_{l'} D_{l}(1-p_{1l}) )
-\end{equation}  
-
-This is the first term in 7, multiplied out:
-
-\begin{equation}
-  \ ( \mathbb{E}[(\frac{1}{4}A_l (p_{1l} - \epsilon_l))^2 ] +
-  \mathbb{E}[(D_l(1-2p_{1l}))^2] + \sum_{l=1}^L A_lD_l(1-2p_{1l})(p_{1l}-\epsilon_l)^2
+  \[ \sum{l=1}^{\L} \ \alpha_l(p_{l'}-\epsilon_l) } \]  \[
+  \sum{l'=1}^{\L} \ \alpha_{l'}(p_{ll'}-\epsilon_l) } \]
 \end{equation}
   
+
+
 \bibliographystyle{genetics}
 \bibliography{Jeremy_library}
 
 \end{document}
-
