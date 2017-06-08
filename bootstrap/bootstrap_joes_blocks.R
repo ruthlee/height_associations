@@ -85,8 +85,7 @@ bootstrap.joes.blocks <- function ( avgeff.sig.cutoff, replicates, avgeff.thinni
       mean.replicates [ i ] <- mean ( snp.sample )
     }
     
-    return ( mean.replicates )
-    
+    return ( mean.replicates )     
   }
   
 }
