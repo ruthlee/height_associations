@@ -1,0 +1,856 @@
+This is XeTeX, Version 3.14159265-2.6-0.99996 (TeX Live 2016) (preloaded format=xelatex 2016.5.22)  5 JUN 2017 21:11
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**\nonstopmode\nofiles\PassOptionsToPackage{active,tightpage,auctex}{preview}\A
+tBeginDocument{\ifx\ifPreview\undefined\RequirePackage[displaymath,floats,graph
+ics,textmath,sections,footnotes]{preview}[2004/11/05]\fi} \input _region_.tex
+(./_region_.tex  !name(notes.tex)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2015/03/17 v1.2c Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+
+Package inputenc Warning: inputenc package ignored with utf8 based engines.
+
+) (/usr/local/texlive/2016/texmf-dist/tex/latex/mathtools/mathtools.sty
+Package: mathtools 2015/11/12 v1.18 mathematical typesetting tools
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count87
+\calc@Bcount=\count88
+\calc@Adimen=\dimen103
+\calc@Bdimen=\dimen104
+\calc@Askip=\skip43
+\calc@Bskip=\skip44
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count89
+\calc@Cskip=\skip45
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/mathtools/mhsetup.sty
+Package: mhsetup 2010/01/21 v1.2a programming setup (MH)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/03/10 v2.15b AMS math features
+\@mathmargin=\skip46
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks17
+\ex@=\dimen105
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen106
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count90
+LaTeX Info: Redefining \frac on input line 199.
+\uproot@=\count91
+\leftroot@=\count92
+LaTeX Info: Redefining \overline on input line 297.
+\classnum@=\count93
+\DOTSCASE@=\count94
+LaTeX Info: Redefining \ldots on input line 394.
+LaTeX Info: Redefining \dots on input line 397.
+LaTeX Info: Redefining \cdots on input line 518.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen107
+LaTeX Font Info:    Redeclaring font encoding OML on input line 634.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 635.
+\macc@depth=\count95
+\c@MaxMatrixCols=\count96
+\dotsspace@=\muskip10
+\c@parentequation=\count97
+\dspbrk@lvl=\count98
+\tag@help=\toks18
+\row@=\count99
+\column@=\count100
+\maxfields@=\count101
+\andhelp@=\toks19
+\eqnshift@=\dimen108
+\alignsep@=\dimen109
+\tagshift@=\dimen110
+\tagwidth@=\dimen111
+\totwidth@=\dimen112
+\lineht@=\dimen113
+\@envbody=\toks20
+\multlinegap=\skip47
+\multlinetaggap=\skip48
+\mathdisplay@stack=\toks21
+LaTeX Info: Redefining \[ on input line 2739.
+LaTeX Info: Redefining \] on input line 2740.
+)
+LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
+\g_MT_multlinerow_int=\count102
+\l_MT_multwidth_dim=\dimen114
+\origjot=\skip49
+\l_MT_shortvdotswithinadjustabove_dim=\dimen115
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen116
+\l_MT_above_intertext_sep=\dimen117
+\l_MT_below_intertext_sep=\dimen118
+\l_MT_above_shortintertext_sep=\dimen119
+\l_MT_below_shortintertext_sep=\dimen120
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup4
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/tools/bm.sty
+Package: bm 2016/02/27 v1.2a Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup5
+\symboldletters=\mathgroup6
+\symboldsymbols=\mathgroup7
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 142.
+LaTeX Info: Redefining \bm on input line 208.
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup8
+\symAMSb=\mathgroup9
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: xetex.def on input line 225.
+
+(/usr/local/texlive/2016/texmf-dist/tex/xelatex/xetex-def/xetex.def
+File: xetex.def 2016/04/06 v4.08 LaTeX color/graphics driver for XeTeX (TeX Liv
+e/RRM/JK)
+
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+))
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 2015/12/30 v3.0k Driver-dependent file (DPC,SPQR)
+))
+(/usr/local/texlive/2016/texmf-dist/tex/latex/cleveref/cleveref.sty
+Package: cleveref 2013/12/28 v0.19 Intelligent cross-referencing
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2016/05/09 v1.0r Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/01/02 v1.10 sample graphics configuration
+)
+Package graphics Info: Driver file: xetex.def on input line 96.
+)
+\Gin@req@height=\dimen121
+\Gin@req@width=\dimen122
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/preprint/fullpage.sty
+Package: fullpage 1999/02/23 1.1 (PWD)
+\FP@margin=\skip50
+)
+(/usr/local/texlive/2016/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2010/09/13 8.31b (PWD, AO)
+\bibhang=\skip51
+\bibsep=\skip52
+LaTeX Info: Redefining \cite on input line 694.
+
+
+/usr/local/texlive/2016/texmf-dist/tex/latex/natbib/natbib.sty:795: LaTeX Error
+: \makeindex undefined.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.795 \renewcommand\makeindex
+                             {\NAT@makeindex
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+\c@NAT@ctr=\count103
+)
+No file _region_.aux.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+(/Users/jeremyberg/.emacs.d/elpa/auctex-11.90.0/latex/preview.sty
+Package: preview 2010/02/14 11.90 (AUCTeX/preview-latex)
+
+(/Users/jeremyberg/.emacs.d/elpa/auctex-11.90.0/latex/prtightpage.def
+\PreviewBorder=\dimen123
+)
+(/Users/jeremyberg/.emacs.d/elpa/auctex-11.90.0/latex/prauctex.def
+No auxiliary output files.
+
+
+\hbadness=\count104
+\hfuzz=\dimen124
+(/Users/jeremyberg/.emacs.d/elpa/auctex-11.90.0/latex/prauctex.cfg))
+(/Users/jeremyberg/.emacs.d/elpa/auctex-11.90.0/latex/prfootnotes.def)
+\pr@snippet=\count105
+\pr@box=\box28
+\pr@output=\toks22
+
+Preview: Fontsize 10pt
+Preview: PDFoutput 1
+)  !name(notes.tex) !offset(-3) 
+./_region_.tex:27: Preview: Snippet 1 started.
+<-><->
+      
+l.27 \title{Notes on Dominance and the $
+                                        Q_X$ Test}
+Not a real error.
+
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 27.
+(/usr/local/texlive/2016/texmf-dist/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 27.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 27.
+
+(/usr/local/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Preview: Tightpage -32891 -32891 32891 32891
+./_region_.tex:27: Preview: Snippet 1 ended.(447828+127431x1016310).
+<-><->
+      
+l.27 \title{Notes on Dominance and the $Q_X$
+                                             Test}
+Not a real error.
+
+[1]
+./_region_.tex:37: Preview: Snippet 2 started.
+<-><->
+      
+l.37 So our task is to expess the $
+                                   Q_X$ statistic in terms of the alleles fr...
+
+Not a real error.
+
+./_region_.tex:37: Preview: Snippet 2 ended.(447828+127431x1016310).
+<-><->
+      
+l.37 So our task is to expess the $Q_X$
+                                        statistic in terms of the alleles fr...
+
+Not a real error.
+
+[2]
+
+Package natbib Warning: Citation `Berg:2014bs' on page 2 undefined on input lin
+e 37.
+
+./_region_.tex:37: Preview: Snippet 3 started.
+<-><->
+      
+l.37 ...tance measured in terms of the parameter $
+                                                  F_{ST}$), the statistic co...
+
+Not a real error.
+
+./_region_.tex:37: Preview: Snippet 3 ended.(447828+98303x1181174).
+<-><->
+      
+l.37 ...easured in terms of the parameter $F_{ST}$
+                                                  ), the statistic could be ...
+
+Not a real error.
+
+[3]
+./_region_.tex:38: Preview: Snippet 4 started.
+<-><->
+      
+l.38 \begin{equation}
+                      \label{eqn:Qxraw}
+Not a real error.
+
+./_region_.tex:40: Preview: Snippet 4 ended.(2052011+0x29685704).
+<-><->
+      
+l.40 \end{equation}
+                   
+Not a real error.
+
+[4
+
+
+]
+./_region_.tex:41: Preview: Snippet 5 started.
+<-><->
+      
+l.41 where $
+            \alpha_\ell$ and $\alpha_{\ell\prime}$ are the average effects f...
+
+Not a real error.
+
+./_region_.tex:41: Preview: Snippet 5 ended.(282168+98303x671369).
+<-><->
+      
+l.41 where $\alpha_\ell$
+                         and $\alpha_{\ell\prime}$ are the average effects f...
+
+Not a real error.
+
+[5]
+./_region_.tex:41: Preview: Snippet 6 started.
+<-><->
+      
+l.41 where $\alpha_\ell$ and $
+                              \alpha_{\ell\prime}$ are the average effects f...
+
+Not a real error.
+
+./_region_.tex:41: Preview: Snippet 6 ended.(282168+98303x822466).
+<-><->
+      
+l.41 where $\alpha_\ell$ and $\alpha_{\ell\prime}$
+                                                   are the average effects f...
+
+Not a real error.
+
+[6]
+./_region_.tex:41: Preview: Snippet 7 started.
+<-><->
+      
+l.41 ...prime}$ are the average effects for site $
+                                                  \ell$ and $\ell\prime$ res...
+
+Not a real error.
+
+./_region_.tex:41: Preview: Snippet 7 ended.(455111+0x273068).
+<-><->
+      
+l.41 ...}$ are the average effects for site $\ell$
+                                                   and $\ell\prime$ respecti...
+
+Not a real error.
+
+[7]
+./_region_.tex:41: Preview: Snippet 8 started.
+<-><->
+      
+l.41 ... the average effects for site $\ell$ and $
+                                                  \ell\prime$ respectively, ...
+
+Not a real error.
+
+./_region_.tex:41: Preview: Snippet 8 ended.(455111+0x453291).
+<-><->
+      
+l.41 ...e effects for site $\ell$ and $\ell\prime$
+                                                   respectively, $p_{m\ell}$...
+
+Not a real error.
+
+[8]
+./_region_.tex:41: Preview: Snippet 9 started.
+<-><->
+      
+l.41 ...te $\ell$ and $\ell\prime$ respectively, $
+                                                  p_{m\ell}$ is the allele f...
+
+Not a real error.
+
+./_region_.tex:41: Preview: Snippet 9 ended.(282168+127431x1046913).
+<-><->
+      
+l.41 ...and $\ell\prime$ respectively, $p_{m\ell}$
+                                                   is the allele frequency a...
+
+Not a real error.
+
+[9]
+./_region_.tex:41: Preview: Snippet 10 started.
+<-><->
+      
+l.41 ...{m\ell}$ is the allele frequency at site $
+                                                  \ell$ in population $m$, a...
+
+Not a real error.
+
+./_region_.tex:41: Preview: Snippet 10 ended.(455111+0x273068).
+<-><->
+      
+l.41 ...l}$ is the allele frequency at site $\ell$
+                                                   in population $m$, and $\...
+
+Not a real error.
+
+[10]
+./_region_.tex:41: Preview: Snippet 11 started.
+<-><->
+      
+l.41 ...e frequency at site $\ell$ in population $
+                                                  m$, and $\overline{p}_\ell...
+
+Not a real error.
+
+./_region_.tex:41: Preview: Snippet 11 ended.(282168+0x575415).
+<-><->
+      
+l.41 ...frequency at site $\ell$ in population $m$
+                                                  , and $\overline{p}_\ell$ ...
+
+Not a real error.
+
+[11]
+./_region_.tex:41: Preview: Snippet 12 started.
+<-><->
+      
+l.41 ...cy at site $\ell$ in population $m$, and $
+                                                  \overline{p}_\ell$ is the ...
+
+Not a real error.
+
+./_region_.tex:41: Preview: Snippet 12 ended.(413233+160198x581862).
+<-><->
+      
+l.41 ...in population $m$, and $\overline{p}_\ell$
+                                                   is the frequency in the a...
+
+Not a real error.
+
+[12]
+./_region_.tex:41: Preview: Snippet 13 started.
+<-><->
+      
+l.41 ...tral population before it split into the $
+                                                  M$ present day populations...
+
+Not a real error.
+
+./_region_.tex:41: Preview: Snippet 13 ended.(447828+0x707242).
+<-><->
+      
+l.41 ...al population before it split into the $M$
+                                                   present day populations (...
+
+Not a real error.
+
+[13]
+./_region_.tex:41: Preview: Snippet 14 started.
+<-><->
+      
+l.41 ...present day populations (and similar for $
+                                                  \ell\prime$). I've also re...
+
+Not a real error.
+
+./_region_.tex:41: Preview: Snippet 14 ended.(455111+0x453291).
+<-><->
+      
+l.41 ... populations (and similar for $\ell\prime$
+                                                  ). I've also rewritten in ...
+
+Not a real error.
+
+[14]
+
+Package natbib Warning: Citation `Berg:2014bs' on page 2 undefined on input lin
+e 41.
+
+./_region_.tex:41: Preview: Snippet 15 started.
+<-><->
+      
+l.41 ...erg:2014bs}. I've rewritten the sum over $
+                                                  \ell$ and $\ell\prime$ as ...
+
+Not a real error.
+
+./_region_.tex:41: Preview: Snippet 15 ended.(455111+0x273068).
+<-><->
+      
+l.41 ...014bs}. I've rewritten the sum over $\ell$
+                                                   and $\ell\prime$ as two d...
+
+Not a real error.
+
+[15]
+./_region_.tex:41: Preview: Snippet 16 started.
+<-><->
+      
+l.41 .... I've rewritten the sum over $\ell$ and $
+                                                  \ell\prime$ as two distinc...
+
+Not a real error.
+
+./_region_.tex:41: Preview: Snippet 16 ended.(455111+0x453291).
+<-><->
+      
+l.41 ...itten the sum over $\ell$ and $\ell\prime$
+                                                   as two distinct sums for ...
+
+Not a real error.
+
+[16]
+./_region_.tex:41: Preview: Snippet 17 started.
+<-><->
+      
+l.41 ...king the mean, which is why the sum over $
+                                                  m$ goes from 1 to $M$ rath...
+
+Not a real error.
+
+./_region_.tex:41: Preview: Snippet 17 ended.(282168+0x575415).
+<-><->
+      
+l.41 ...ng the mean, which is why the sum over $m$
+                                                   goes from 1 to $M$ rather...
+
+Not a real error.
+
+[17]
+./_region_.tex:41: Preview: Snippet 18 started.
+<-><->
+      
+l.41 ...h is why the sum over $m$ goes from 1 to $
+                                                  M$ rather than $M-1$.
+Not a real error.
+
+./_region_.tex:41: Preview: Snippet 18 ended.(447828+0x707242).
+<-><->
+      
+l.41 ...is why the sum over $m$ goes from 1 to $M$
+                                                   rather than $M-1$.
+Not a real error.
+
+[18]
+./_region_.tex:41: Preview: Snippet 19 started.
+<-><->
+      
+l.41 ... over $m$ goes from 1 to $M$ rather than $
+                                                  M-1$.
+Not a real error.
+
+./_region_.tex:41: Preview: Snippet 19 ended.(447828+54613x1835913).
+<-><->
+      
+l.41 ...r $m$ goes from 1 to $M$ rather than $M-1$
+                                                  .
+Not a real error.
+
+[19]
+./_region_.tex:43: Preview: Snippet 20 started.
+<-><->
+      
+l.43 ...en the allele frequency in population 1 ($
+                                                  p_{1\ell}$), the differenc...
+
+Not a real error.
+
+./_region_.tex:43: Preview: Snippet 20 ended.(282168+127431x843097).
+<-><->
+      
+l.43 ...ele frequency in population 1 ($p_{1\ell}$
+                                                  ), the difference between ...
+
+Not a real error.
+
+[20]
+./_region_.tex:43: Preview: Snippet 21 started.
+<-><->
+      
+l.43 ...}$), the difference between homozygotes ($
+                                                  A_\ell$), and the dominanc...
+
+Not a real error.
+
+./_region_.tex:43: Preview: Snippet 21 ended.(447828+98303x743655).
+<-><->
+      
+l.43 ...e difference between homozygotes ($A_\ell$
+                                                  ), and the dominance devia...
+
+Not a real error.
+
+[21]
+./_region_.tex:43: Preview: Snippet 22 started.
+<-><->
+      
+l.43 ...($A_\ell$), and the dominance deviation ($
+                                                  D_\ell$) the average effec...
+
+Not a real error.
+
+./_region_.tex:43: Preview: Snippet 22 ended.(447828+98303x794717).
+<-><->
+      
+l.43 ...l$), and the dominance deviation ($D_\ell$
+                                                  ) the average effect is gi...
+
+Not a real error.
+
+[22]
+./_region_.tex:44: Preview: Snippet 23 started.
+<-><->
+      
+l.44 \begin{equation}
+                       \label{eqn:avgeff}
+Not a real error.
+
+./_region_.tex:46: Preview: Snippet 23 ended.(1315244+0x29685704).
+<-><->
+      
+l.46 \end{equation}
+                   
+Not a real error.
+
+[23
+
+
+]
+
+LaTeX Warning: Reference `eqn:Qxraw' on page 2 undefined on input line 48.
+
+
+LaTeX Warning: Reference `eqn:avgeff' on page 2 undefined on input line 48.
+
+./_region_.tex:48: Preview: Snippet 24 started.
+<-><->
+      
+l.48 ... the bias should come from the fact that $
+                                                  p_{1\ell}$ appears in the ...
+
+Not a real error.
+
+./_region_.tex:48: Preview: Snippet 24 ended.(282168+127431x843097).
+<-><->
+      
+l.48 ...should come from the fact that $p_{1\ell}$
+                                                   appears in the expression...
+
+Not a real error.
+
+[24]
+./_region_.tex:48: Preview: Snippet 25 started.
+<-><->
+      
+l.48 ...ns, we'll also want to partition into an $
+                                                  F_{ST}$-like or variance t...
+
+Not a real error.
+
+./_region_.tex:48: Preview: Snippet 25 ended.(447828+98303x1181174).
+<-><->
+      
+l.48 ...ll also want to partition into an $F_{ST}$
+                                                  -like or variance term, wh...
+
+Not a real error.
+
+[25]
+./_region_.tex:48: Preview: Snippet 26 started.
+<-><->
+      
+l.48 ...uld correspond to a sum over terms where $
+                                                  \ell = \ell\prime$, as wel...
+
+Not a real error.
+
+./_region_.tex:48: Preview: Snippet 26 ended.(455111+0x1600165).
+<-><->
+      
+l.48 ...a sum over terms where $\ell = \ell\prime$
+                                                  , as well as an LD-like or...
+
+Not a real error.
+
+[26]
+./_region_.tex:48: Preview: Snippet 27 started.
+<-><->
+      
+l.48 ...uld correspond to a sum over terms where $
+                                                  \ell \neq \ell\prime$. Whe...
+
+Not a real error.
+
+./_region_.tex:48: Preview: Snippet 27 ended.(455111+127430x1600165).
+<-><->
+      
+l.48 ...um over terms where $\ell \neq \ell\prime$
+                                                  . Where possible, you'll w...
+
+Not a real error.
+
+[27]
+./_region_.tex:49: Preview: Snippet 28 started.
+<-><->
+      
+l.49 \begin{align}
+                  
+Not a real error.
+
+./_region_.tex:53: Preview: Snippet 28 ended.(4084341+0x29685704).
+<-><->
+      
+l.53 \end{align}
+                
+Not a real error.
+
+[28]
+
+Package natbib Warning: Citation `Bohrnstedt:1969cz' on page 2 undefined on inp
+ut line 56.
+
+./_region_.tex:64: Preview: Snippet 29 started.
+<-><->
+      
+l.64 \begin{equation}
+                     
+Not a real error.
+
+./_region_.tex:67: Preview: Snippet 29 ended.(2052011+0x29685704).
+<-><->
+      
+l.67 \end{equation}
+                   
+Not a real error.
+
+[29
+
+
+]
+./_region_.tex:71: Preview: Snippet 30 started.
+<-><->
+      
+l.71 \begin{equation}
+                     
+Not a real error.
+
+./_region_.tex:74: Preview: Snippet 30 ended.(2141212+0x29685704).
+<-><->
+      
+l.74 \end{equation}
+                   
+Not a real error.
+
+[30
+
+
+]
+./_region_.tex:76: Preview: Snippet 31 started.
+<-><->
+      
+l.76 ... I believe the first term corresponds to $
+                                                  F_{st}$ while the second t...
+
+Not a real error.
+
+./_region_.tex:76: Preview: Snippet 31 ended.(447828+98303x899529).
+<-><->
+      
+l.76 ...eve the first term corresponds to $F_{st}$
+                                                   while the second term is ...
+
+Not a real error.
+
+[31]
+./_region_.tex:78: Preview: Snippet 32 started.
+<-><->
+      
+l.78 \begin{equation}
+                     
+Not a real error.
+
+./_region_.tex:82: Preview: Snippet 32 ended.(730073+0x29685704).
+<-><->
+      
+l.82 \end{equation}
+                   
+Not a real error.
+
+[32
+
+
+]
+No file _region_.bbl.
+
+Package natbib Warning: There were undefined citations.
+
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 4869 strings out of 493591
+ 76940 string characters out of 6143546
+ 162931 words of memory out of 5000000
+ 8207 multiletter control sequences out of 15000+600000
+ 20338 words of font info for 69 fonts, out of 8000000 for 9000
+ 1347 hyphenation exceptions out of 8191
+ 33i,10n,35p,1323b,205s stack positions out of 5000i,500n,10000p,200000b,80000s
+
+Output written on _region_.pdf (32 pages).

@@ -1,0 +1,38 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,mathrsfs,bm}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{cleveref}
+\usepackage{graphicx}
+\usepackage{fullpage}
+%\usepackage{natbib}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{multirow} 
+\usepackage{hyperref}
+\usepackage{bibunits}
+\usepackage{csvsimple}
+\usepackage[superscript,biblabel]{cite}
+
+\newcommand{\jb}[1]{{\color{blue} (#1)} }
+\begin{document}
+
+\title{Notes on Dominance and the $Q_X$ Test}
+
+\author{
+  Kyelee Ruth Fitts and Jeremy Berg
+}
+
+\date{}
+
+\maketitle
+
+
+
+
+
+\bibliographystyle{ }
+\bibliography{ }
+
+\end{document}
