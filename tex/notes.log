@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.6.2)  20 JUN 2017 18:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.6.2)  25 JUN 2017 11:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -794,53 +794,53 @@ L/cmm/m/it/10 ^^O[]\OT1/cmr/m/n/10 )
 ! Missing } inserted.
 <inserted text> 
                 }
-l.155 \end{align}
+l.154 \end{align}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.155 \end{align}
+l.154 \end{align}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.155 \end{align}
+l.154 \end{align}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.155 \end{align}
+l.154 \end{align}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.155 \end{align}
+l.154 \end{align}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.155 \end{align}
+l.154 \end{align}
                  
 ? 
 ! Missing } inserted.
 <inserted text> 
                 }
-l.155 \end{align}
+l.154 \end{align}
                  
 ? 
 ! Missing { inserted.
 <inserted text> 
                 {
-l.155 \end{align}
+l.154 \end{align}
                  
 ? 
 
-Overfull \hbox (50.52646pt too wide) in paragraph at lines 155--155
+Overfull \hbox (50.52646pt too wide) in paragraph at lines 154--154
 [] 
  []
 
@@ -849,20 +849,20 @@ No file notes.bbl.
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 176.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 208.
 [4]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 176.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 208.
  (./notes.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 176.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 176.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 208.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 208.
 Package rerunfilecheck Info: File `notes.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 176.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 208.
  ) 
 Here is how much of TeX's memory you used:
- 7755 strings out of 494447
- 109724 string characters out of 6166767
- 210765 words of memory out of 5000000
+ 7756 strings out of 494447
+ 109737 string characters out of 6166767
+ 215765 words of memory out of 5000000
  10940 multiletter control sequences out of 15000+600000
  22501 words of font info for 73 fonts, out of 8000000 for 9000
  319 hyphenation exceptions out of 8191
@@ -885,10 +885,10 @@ onts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2016basic/texmf-dist
 dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2016basic/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2016basic/
 texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on notes.pdf (4 pages, 119200 bytes).
+Output written on notes.pdf (4 pages, 120655 bytes).
 PDF statistics:
- 213 PDF objects out of 1000 (max. 8388607)
- 97 compressed objects within 1 object stream
- 23 named destinations out of 1000 (max. 500000)
+ 215 PDF objects out of 1000 (max. 8388607)
+ 98 compressed objects within 1 object stream
+ 24 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

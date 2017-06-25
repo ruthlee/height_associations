@@ -143,8 +143,7 @@ and l' start at 1.
 \begin{align}
   \begin{split}
  $Term 1: $ \sum_{l=l'} (\frac{1}{2}A_l(p_{1l}-\epsilon_l))^2 +
-  \sum_{l = l'}(D_l(1-2p_{1l})(p_{1l}-\epsilon_l))^2 + \\ 
-  \sum_{l=l'}A_lD_l(1-2p_{1l})(p_{1l}-\epsilon_l)^2
+  \sum_{l = l'}(D_l(1-2p_{1l})(p_{1l}-\epsilon_l))^2
   \end{split}
   \\
   \begin{split}
@@ -165,11 +164,44 @@ If we multiply Term 1 and Term 2 above, the first term we'll get is:
 \end{split}
 \end{equation}
 
+Putting it all together:
+
+\begin{equation}
+  \begin{split}
+   \sum^L_{l=1}\frac{1}{2}A_l(p_{1l}-\epsilon_{l})
+   \sum^L_{l'=1}\frac{1}{2}A_{l'}(p_{1l'}-\epsilon_{l'}) +
+   \\
+   \sum^L_{l=l'}(\frac{1}{2}A_l(p_{1l}-\epsilon_l))^2 \sum^L_{l \neq
+     l'}D_l(1-2p_{1l})D_{l'}(1-2p_{1l'})(p_{1l}-\epsilon_l)(p_{l1}-\epsilon_{l'})+ 
+   \\
+     \sum^L_{l=l'}(\frac{1}{2}A_l(p_{1l}-\epsilon_l))^2\sum^L_{l \neq
+       l'}\frac{1}{2}A_{l}D_{l'}(1-2p_{1l'})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'})+
+     \\
+     \sum^L_{l=l'}(\frac{1}{2}A_l(p_{1l}-\epsilon_l))^2\sum^L_{l \neq
+       l'}\frac{1}{2}A_{l'}D_l(1-2p_{1l})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'})+
+   \\
+   \sum^L_{l=l'}(D_l(1-2p_{1l})(p_{1l}-\epsilon_l))^2 \sum^L_{l \neq
+     l'}\frac{1}{4}A_lA_{l'}(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'}) +
+   \\
+   \sum^L_{l=l'}(D_l(1-2p_{1l})(p_{1l}-\epsilon_l))^2 \sum^L_{l\neq
+     l'}
+   \frac{1}{2}A_{l'}D_l(1-2p_{1l})(p_{1l}-\epsilon_l)(p_{1l}-\epsilon_{l'})+
+   \\
+   \sum^L_{l=l'}(D_l(1-2p_{1l})(p_{1l}-\epsilon_l))^2 \sum^L_{l\neq
+     l'}
+   \frac{1}{2}A_{l}D_{l'}(1-2p_{1l'})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'})+
+   \\
+    \sum^L_{l=1}D_l(1-2p_{1l})(p_{1l}-\epsilon_l) \sum^L_{l'=1}D_{l'}(1-2p_{1l'})(p_{1l'}-\epsilon_{l'})
+ \end{split}
+\end{equation}
+
+   
 The equations in 18 agree more with the expressions for turning sums
 into expectations, but at the same time take us father from the goal
 of partitioning into $ F_{s}$-like and LD-like terms that correspond
 to sums where $l = l'$ and $ l \neq l'$, respectively. 
-  
+
+
 \bibliographystyle{genetics}
 \bibliography{Jeremy_library}
 
