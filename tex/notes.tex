@@ -14,7 +14,7 @@
 %\usepackage{float}
 %\usepackage{subcaption}
 %\usepackage{multirow} 
-\usepackage{hyperref}
+\usepackage[colorlinks = true,urlcolor=blue]{hyperref}
 %\usepackage{bibunits}
 %\usepackage{csvsimple}
 %\usepackage[superscript,biblabel]{cite}
@@ -142,9 +142,8 @@ and l' start at 1.
 
 \begin{align}
   \begin{split}
- \text{Term 1:} \sum_{l=l'} (\frac{1}{2}A_l(p_{1l}-\epsilon_l))^2 +
-  \sum_{l = l'}(D_l(1-2p_{1l})(p_{1l}-\epsilon_l))^2 + \\ 
-  \sum_{l=l'}A_lD_l(1-2p_{1l})(p_{1l}-\epsilon_l)^2
+ \text{Term 1: } \sum_{l=l'} (\frac{1}{2}A_l(p_{1l}-\epsilon_l))^2 +
+  \sum_{l = l'}(D_l(1-2p_{1l})(p_{1l}-\epsilon_l))^2
   \end{split}
   \\
   \begin{split}
@@ -165,25 +164,77 @@ If we multiply Term 1 and Term 2 above, the first term we'll get is:
 \end{split}
 \end{equation}
 
+Putting it all together:
+
+\begin{equation}
+  \begin{split}
+   \sum^L_{l=1}\frac{1}{2}A_l(p_{1l}-\epsilon_{l})
+   \sum^L_{l'=1}\frac{1}{2}A_{l'}(p_{1l'}-\epsilon_{l'}) +
+   \\
+   \sum^L_{l=l'}(\frac{1}{2}A_l(p_{1l}-\epsilon_l))^2 \sum^L_{l \neq
+     l'}D_l(1-2p_{1l})D_{l'}(1-2p_{1l'})(p_{1l}-\epsilon_l)(p_{l1}-\epsilon_{l'})+ 
+   \\
+     \sum^L_{l=l'}(\frac{1}{2}A_l(p_{1l}-\epsilon_l))^2\sum^L_{l \neq
+       l'}\frac{1}{2}A_{l}D_{l'}(1-2p_{1l'})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'})+
+     \\
+     \sum^L_{l=l'}(\frac{1}{2}A_l(p_{1l}-\epsilon_l))^2\sum^L_{l \neq
+       l'}\frac{1}{2}A_{l'}D_l(1-2p_{1l})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'})+
+   \\
+   \sum^L_{l=l'}(D_l(1-2p_{1l})(p_{1l}-\epsilon_l))^2 \sum^L_{l \neq
+     l'}\frac{1}{4}A_lA_{l'}(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'}) +
+   \\
+   \sum^L_{l=l'}(D_l(1-2p_{1l})(p_{1l}-\epsilon_l))^2 \sum^L_{l\neq
+     l'}
+   \frac{1}{2}A_{l'}D_l(1-2p_{1l})(p_{1l}-\epsilon_l)(p_{1l}-\epsilon_{l'})+
+   \\
+   \sum^L_{l=l'}(D_l(1-2p_{1l})(p_{1l}-\epsilon_l))^2 \sum^L_{l\neq
+     l'}
+   \frac{1}{2}A_{l}D_{l'}(1-2p_{1l'})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'})+
+   \\
+    \sum^L_{l=1}D_l(1-2p_{1l})(p_{1l}-\epsilon_l) \sum^L_{l'=1}D_{l'}(1-2p_{1l'})(p_{1l'}-\epsilon_{l'})
+ \end{split} \label{big-expansion}
+\end{equation}
+
+   
 The equations in 18 agree more with the expressions for turning sums
 into expectations, but at the same time take us father from the goal
 of partitioning into $ F_{s}$-like and LD-like terms that correspond
+to sums where $l = l'$ and $ l \neq l'$, respectively. 
+
 to sums where $l = l'$ and $ l \neq l'$, respectively.
 
 \jb{comment from Jeremy}
 So I think you can rearrange equation 18 as
 \begin{align}
   \sum^L_{l=1}\frac{1}{2}A_l(p_{1l}-\epsilon_{1}) \sum^L_{l'=1}\frac{1}{2}A_{l'}(p_{1l'}-\epsilon_{l'}) &=   \frac{1}{4}\sum^L_{l=1}\sum^L_{l'=1}A_l(p_{1l}-\epsilon_{1})A_{l'}(p_{1l'}-\epsilon_{l'}) \\
-                                             &= \frac{1}{4}\left(\sum^L_{l=1}(A_l(p_{1l}-\epsilon_{1}))^2 + \sum^L_{l=1}\sum^L_{l\neq l'}(A_l(p_{1l}-\epsilon_{1}))(A_{l'}(p_{1l'}-\epsilon_{1}))\right) \\
-                                             &= \frac{1}{4}\left(\sum_{l=1}^L Var\left(A_l(p_l - \epsilon_l)\right) + \sum_{l \neq l'}   Cov\left(A_l(p_l - \epsilon_l) , A_{l'}(p_{l} - \epsilon_{l'})\right)\right) \label{eq21} \\
-                                             &= \frac{1}{4}\left(\sum_{l=1}^L A_l^2 Var\left(p_l - \epsilon_l\right) + \sum_{l \neq l'} A_l A_{l'} Cov\left(p_l - \epsilon_l , p_{l} - \epsilon_{l'}\right)\right) \label{eq22}
+                                             &= \frac{1}{4}\left(\sum^L_{l=1}(A_l(p_{1l}-\epsilon_{1}))^2 + \sum^L_{l=1}\sum^L_{l\neq l'}(A_l(p_{1l}-\epsilon_{1}))(A_{l'}(p_{1l'}-\epsilon_{1}))\right) \label{fst-ld-partition}\\
+                                             &= \frac{1}{4}\left(\sum_{l=1}^L Var\left(A_l(p_l - \epsilon_l)\right) + \sum_{l \neq l'}   Cov\left(A_l(p_l - \epsilon_l) , A_{l'}(p_{l'} - \epsilon_{l'})\right)\right) \label{penult} \\
+                                             &= \frac{1}{4}\left(\sum_{l=1}^L A_l^2 Var\left(p_l - \epsilon_l\right) + \sum_{l \neq l'} A_l A_{l'} Cov\left(p_l - \epsilon_l , p_{l'} - \epsilon_{l'}\right)\right) \label{ult}
   \end{align}
 
-  This expression lines is essentially the one from my paper (in the case where $D=0$ for all loci, the additive effects ($\alpha$) just reduce to $A$ (or maybe $\frac{A}{2}$, not sure offhand). The trick to get from line \eqref{eq21} to line \eqref{eq22} is that the $A_l$ are constants with respect to the evolutionary process (i.e. genetic drift), and therefore can be pulled outside of the variance and covariance terms.
+  This expression lines is essentially the one from my paper (in the case where $D=0$ for all loci, the additive effects ($\alpha$) just reduce to $\frac{A}{2}$. The trick to get from line \eqref{penult} to line \eqref{ult} is that the $A_l$ are constants with respect to the evolutionary process (i.e. genetic drift), and therefore can be pulled outside of the variance and covariance terms.
 
-  The key thing to note here is that 
-  
-  
+  Ultimately, in order to work out what the bias in the statistic is with dominance we need to work out its expected value in the presence of dominance. Comparing this to the expected value in the case of no dominance will give us a sense of how strong the bias is. For example, in the case of no dominance, the statistic is just given by line \eqref{ult}. When we take the expectation, the second term in line \eqref{ult} is zero, because alleles that are not tightly linked to one another drift independently (i.e. $\mathbb{E}[Cov(p_l -\epsilon_l,p_{l'}-\epsilon_{l'})] = 0$ for all $l$ and $l'$). This leaves the expectation of the numerator of our statistic as
+  \begin{align}
+    \frac{1}{4}\mathbb{E}\left[\sum_{l=1}^L A_l^2 Var(p_l - \epsilon_l)\right]
+    \end{align}
+    and we can use the \href{https://en.wikipedia.org/wiki/Expected_value#Linearity}{linearity of expectation} to push the expectation inside the sum
+    \begin{align}
+      \frac{1}{4}\sum_{l=1}^L \mathbb{E}\left[A_l^2 Var(p_l - \epsilon_l)\right]
+    \end{align}
+    which is a familiar quanitity in population/quantitative genetics, such that we can reexpress it in terms of parameters like $F_{ST}$ and $V_A$, but we'll leave that for later.
+
+    My intution says that the decomposition of the test statistic that we're looking for includes terms that look like 
+    \begin{align}
+      \sum^L_{l=1}\left(\frac{A_l}{2}D_l(1-2p_l)(p_{1l}-\epsilon_{1})^2\right) + \sum^L_{l=1}\sum^L_{l\neq l'}\left(\Bigg(\frac{A_l}{2}(p_{1l}-\epsilon_{1})\Bigg)\Bigg(D_{l'}\left(1-2p_{l'}\right)\left(p_{1l'}-\epsilon_{1}\right)\Bigg)\right) \label{add-times-dom}
+    \end{align}
+    and
+    \begin{align}
+      \sum^L_{l=1}\left(\Big(D_l(1-2p_l)(p_{1l}-\epsilon_{1})\Big)^2\right) + \sum^L_{l=1}\sum^L_{l\neq l'}\left(\Bigg(D_{l}\left(1-2p_{l}\right)\left(p_{1l}-\epsilon_{1}\right)\Bigg)\Bigg(D_{l'}\left(1-2p_{l'}\right)\left(p_{1l'}-\epsilon_{1}\right)\Bigg)\right) \label{dom-squared}
+    \end{align}
+    and in fact I suspect that the ultimate expression we're looking for is basically a sum of line \eqref{fst-ld-partition}, 2 times line \eqref{add-times-dom}, and line \eqref{dom-squared}.
+
+    Let's step back from worrying about variances and covariances for a minute (I think I was trying to have you solve too many steps at once by suggesting to focus on that interpretation). See if you can see your way to verifying my intuition about the above expressions. The stuff you have written in lines \eqref{big-expansion} seems very close to what we're looking for, but 1) I think you may be missing some addition signs in between the two different sums on each line (but I'm not certain, as I had a little trouble following exactly how you arrived at these expressions), and 2) I don't totally follow your indexing, as for each case you say that $l$ goes from $l'$ to $L$ but at no point is it specified what $l'$ is, so that seems like it can't be quite right.
 \bibliographystyle{genetics}
 \bibliography{Jeremy_library}
 
