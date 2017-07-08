@@ -10,6 +10,7 @@
 \usepackage{graphicx}
 \usepackage{fullpage}
 \usepackage{natbib}
+\usepackage{amsmath}
 %\usepackage{float}
 %\usepackage{subcaption}
 %\usepackage{multirow} 
@@ -56,6 +57,8 @@ in \LaTeX. You don't need to include every single piece of algebra,
 but make sure there's enough that I should be able to follow what
 you're doing.
 
+\vspace{10mm}
+
 For the case of two populations:
 
 \begin{equation}
@@ -67,10 +70,10 @@ Taking only the first term:
 
 \begin{equation}
   \label{2}
-  \sum_{l=1}^L (\frac{1}{2}A_l + D_l(1-2p_{1l}))^2 (Var p_{l1}) \sum_{l \neq l'}^L (\frac{1}{2}A_l + D_l(1-2p_{1l}))(\frac{1}{2}A_{l'} + D_{l'}(1-2p_{1l'}))Cov(p_{1l}, p_{1l'})
+  \sum_{l=l'}^L (\frac{1}{2}A_l + D_l(1-2p_{1l}))^2 (p_{1l}-\epsilon_l)^2 \sum_{l \neq l'}^L (\frac{1}{2}A_l + D_l(1-2p_{1l}))(\frac{1}{2}A_{l'} + D_{l'}(1-2p_{1l'}))(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'})
 \end{equation}
 
-Following Jeremy's paper-- I believe the first term corresponds to $F_{st}$ while the second term is the LD-like component. Could possibly expand out first squared alpha term making use of the following identities for variance: 
+Could possibly expand out first squared alpha term making use of the following identities for variance: 
 
 \begin{equation}
    \label{3}
@@ -87,24 +90,100 @@ Also note that when you square a summation you can use this equality:
     (\sum^L_{l=1} X_l )^2 = \sum^L_{l=1} X_l^2 + \sum^L_{l \neq l'} X_l X_{l'}
 \end{equation}
 
-This is slightly modified from its source \url{https://math.stackexchange.com/questions/329344/what-is-the-square-of-summation}. Should probably check to make sure this is valid.
+This is slightly modified from its source \href{https://math.stackexchange.com/questions/329344/what-is-the-square-of-summation}{here}. Should probably check to make sure this is valid.
 
-If that equation is true then looking at just the term $A_L$
+If that equation is true then we can substitute, for example, the term $A_l$
 
 \begin{align}
     (\sum^L_{l=1} A_l )^2 = (\mathbb{E}[A_l])^2 = \sum^L_{l=1} A_l^2 + \sum^L_{l \neq l'} A_l A_{l'} \\
     Var(A_l) = \sum^L_{l=1} A_l^2 - (\sum^L_{l=1} A_l^2 + \sum^L_{l \neq l'} A_l A_{l'}) \\
-    Var(A_l)= \sum^L_{l \neq l'} A_l A_{l'}
+    - Var(A_l)= \sum^L_{l \neq l'} A_l A_{l'}
 \end{align}
 
-Similarly for the other term of $\alpha$, that is, $Var(D_l(1-2p_{1l})) = \sum^L_{l \neq l'} D_l(1-2p_{1l}) D_{l'}(1-2p_{1l'})$.
+Similarly for the other term of $\alpha$, that is, $-Var(D_l(1-2p_{1l})) = \sum^L_{l \neq l'} D_l(1-2p_{1l}) D_{l'}(1-2p_{1l'})$.
 
 If this is true, both of these expressions can be found by multiplying out the $\alpha$ terms in the second summation in 7 to yield: 
 
 \begin{equation}
-    \frac{1}{16} Var(A_l) + Var(D_{l}(1-p_{1l})) + \sum_{l \neq l'}^L ( \frac{1}{2}A_l D_{l'}(1-p_{1l'}) + \frac{1}{2}A_{l'} D_{l}(1-p_{1l}) )
+   - \frac{1}{16} Var(A_l) - Var(D_{l}(1-p_{1l})) + \sum_{l \neq l'}^L ( \frac{1}{2}A_l D_{l'}(1-p_{1l'}) + \frac{1}{2}A_{l'} D_{l}(1-p_{1l}) )
+ \end{equation}
+
+ Considering the entire second summation in 7, if we include the
+ $(p_{1l}-\epsilon_{l})(p_{1l'}-\epsilon_{l'})$ in the expansion we get:
+
+ \begin{equation}
+ \begin{split}
+   - \frac{1}{16} Var(A_l(p_{1l}-\epsilon_l)) -
+   Var(D_{l}(1-p_{1l})(p_{l1}-\epsilon_l)) + \\
+   \sum_{l \neq l'}^L ( \frac{1}{2}A_l D_{l'}(1-p_{1l'})(p_{1l}-\epsilon_{l})(p_{1l'}-\epsilon_{l'}) + \frac{1}{2}A_{l'} D_{l}(1-p_{1l})(p_{1l}-\epsilon_{l})(p_{1l'}-\epsilon_{l'}))
+ \end {split}
+ \end {equation}
+ 
+
+This is the first term in 7, multiplied out:
+
+\begin{equation}
+  \ ( \mathbb{E}[(\frac{1}{2}A_l (p_{1l} - \epsilon_l))^2 ] +
+  \mathbb{E}[(D_l(1-2p_{1l})(p_{1l}-\epsilon _l))^2] + \sum_{l=l'}^L A_lD_l(1-2p_{1l})(p_{1l}-\epsilon_l)^2
 \end{equation}
 
+
+So far I see only one major problem with this approach: since in 7 the
+summation reads $l = l'$ and not $l = 1$ I'm not sure that the
+expressions for the expected values of the expanded terms (8) are
+valid, making 15 invalid. 
+
+\vspace{5mm}
+
+Another track: forgetting about turning summations into variances and
+expectations for a moment, we merely expand the first and second terms
+of equation 7 in order to recombine them into summations where both l
+and l' start at 1. 
+
+\begin{align}
+  \begin{split}
+ \text{Term 1:} \sum_{l=l'} (\frac{1}{2}A_l(p_{1l}-\epsilon_l))^2 +
+  \sum_{l = l'}(D_l(1-2p_{1l})(p_{1l}-\epsilon_l))^2 + \\ 
+  \sum_{l=l'}A_lD_l(1-2p_{1l})(p_{1l}-\epsilon_l)^2
+  \end{split}
+  \\
+  \begin{split}
+\text{Term 2:} \sum_{l \neq l'}
+\frac{1}{4}A_lA_{l'}(p_{1l}-\epsilon_{l})(p_{1l'}-\epsilon_{l'})+D_l(1-2p_{1l})D_{l'}(1-2p_{1l'})(p_{1l}-\epsilon_{l})(p_{1l'}-\epsilon_{l'})+\\
+\frac{1}{2}A_{l'}D_{l}(1-2p_{1l})(p_{1l}-\epsilon_{l})(p_{1l'}-\epsilon_{l'})\frac{1}{2}A_{l}D_{l'}(1-2p_{1l'})(p_{1l}-\epsilon_{l})(p_{1l'}-\epsilon_{l'})
+\end{split}
+\end{align}
+
+If we multiply Term 1 and Term 2 above, the first term we'll get is:
+
+\begin{equation}
+  \begin{split}
+  \sum_{l=l'}( \frac{1}{2}A_l(p_{1l}-\epsilon_{l}))^2
+  \sum_{l \neq l'}\frac{1}{4}A_lA_{l'}(p_{1l}-\epsilon_{l})(p_{1l'}-\epsilon_{l'})
+  = \\
+  \sum^L_{l=1}\frac{1}{2}A_l(p_{1l}-\epsilon_{1}) \sum^L_{l'=1}\frac{1}{2}A_{l'}(p_{1l'}-\epsilon_{l'})
+\end{split}
+\end{equation}
+
+The equations in 18 agree more with the expressions for turning sums
+into expectations, but at the same time take us father from the goal
+of partitioning into $ F_{s}$-like and LD-like terms that correspond
+to sums where $l = l'$ and $ l \neq l'$, respectively.
+
+\jb{comment from Jeremy}
+So I think you can rearrange equation 18 as
+\begin{align}
+  \sum^L_{l=1}\frac{1}{2}A_l(p_{1l}-\epsilon_{1}) \sum^L_{l'=1}\frac{1}{2}A_{l'}(p_{1l'}-\epsilon_{l'}) &=   \frac{1}{4}\sum^L_{l=1}\sum^L_{l'=1}A_l(p_{1l}-\epsilon_{1})A_{l'}(p_{1l'}-\epsilon_{l'}) \\
+                                             &= \frac{1}{4}\left(\sum^L_{l=1}(A_l(p_{1l}-\epsilon_{1}))^2 + \sum^L_{l=1}\sum^L_{l\neq l'}(A_l(p_{1l}-\epsilon_{1}))(A_{l'}(p_{1l'}-\epsilon_{1}))\right) \\
+                                             &= \frac{1}{4}\left(\sum_{l=1}^L Var\left(A_l(p_l - \epsilon_l)\right) + \sum_{l \neq l'}   Cov\left(A_l(p_l - \epsilon_l) , A_{l'}(p_{l} - \epsilon_{l'})\right)\right) \label{eq21} \\
+                                             &= \frac{1}{4}\left(\sum_{l=1}^L A_l^2 Var\left(p_l - \epsilon_l\right) + \sum_{l \neq l'} A_l A_{l'} Cov\left(p_l - \epsilon_l , p_{l} - \epsilon_{l'}\right)\right) \label{eq22}
+  \end{align}
+
+  This expression lines is essentially the one from my paper (in the case where $D=0$ for all loci, the additive effects ($\alpha$) just reduce to $A$ (or maybe $\frac{A}{2}$, not sure offhand). The trick to get from line \eqref{eq21} to line \eqref{eq22} is that the $A_l$ are constants with respect to the evolutionary process (i.e. genetic drift), and therefore can be pulled outside of the variance and covariance terms.
+
+  The key thing to note here is that 
+  
+  
 \bibliographystyle{genetics}
 \bibliography{Jeremy_library}
 

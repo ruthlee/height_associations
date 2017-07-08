@@ -1,10 +1,6 @@
-\message{ !name(notes.tex)}\documentclass[a4paper,10pt]{article}
+\documentclass[a4paper,10pt]{article}
 \usepackage[T1]{fontenc}
-<<<<<<< HEAD
-\usepackage[u  tf8]{inputenc}
-=======
 \usepackage[utf8]{inputenc}
->>>>>>> 9283ecd2d3555e6db2f383867286b0c1d81643e0
 \usepackage{mathtools}
 \usepackage{mathrsfs}
 \usepackage{bm}
@@ -24,13 +20,6 @@
 
 \newcommand{\jb}[1]{{\color{blue} (#1)} }
 \begin{document}
-
-<<<<<<< HEAD
-\message{ !name(notes.tex) !offset(-3) }
-=======
-\message{ !name(notes) !offset(-3) }
->>>>>>> 9283ecd2d3555e6db2f383867286b0c1d81643e0
-
 
 \title{Notes on Dominance and the $Q_X$ Test}
 
@@ -67,52 +56,16 @@ in \LaTeX. You don't need to include every single piece of algebra,
 but make sure there's enough that I should be able to follow what
 you're doing.
 
-<<<<<<< HEAD
-For the case of two populations:
+For the case of two populationss:
 
 \begin{equation}
-  \label{1}
-  \sum_{l=1}^L \alpha_l (p_{1l}-\epsilon_l) \sum_{l'=1}^L \alpha_{l'} (p_{1l'} - \epsilon_{l'}) + \sum_{l=1}^L \alpha_l (p_{2l}-\epsilon_l) \sum_{l'=1}^L \alpha_{l'} (p_{2l'} - \epsilon_{l'}) 
-\end{equation}
-
-Taking only the first term:
-
-\begin{equation}
-  \label{2}
-  \sum_{l=1}^L (\frac{1}{2}A_l + D_l(1-2p_{1l}))^2 (Var p_{l1}) \sum_{l \neq l'}^L (\frac{1}{2}A_l + D_l(1-2p_{1l}))(\frac{1}{2}A_{l'} + D_{l'}(1-2p_{1l'}))Cov(p_{1l}, p_{1l'})
-\end{equation}
-
-Following Jeremy's paper-- I believe the first term corresponds to $F_{st}$ while the second term is the LD-like component. Could possibly expand out first squared alpha term making use of the following identities for variance: 
-
-\begin{equation}
-   \label{3}
-   Var(X) = \mathbb{E}[X^2] - \mathbb{E}[X]^2
-   = \mathbb{E}[X^2] - 2\mathbb{E}[X]\mathbb{E}[X] + \mathbb{E}[X]^2
-\end{equation}
-
-While the second alpha term with different subscripts could be another covariance term. 
-
-=======
-For the case of two populations: HELOL
-
-\begin{equation}
-  \[ \sum{l=1}^{\L} \ \alpha_l(p_{1l}-\epsilon_l) } \]  \[
-  \sum{l'=1}^{\L} \ \alpha_{l'}(p_{ll'}-\epsilon_{l'}) } \] + 
-  \[ \sum{l=1}^{\L} \ \alpha_l(p_{2l}-\epsilon_l) } \]  \[
-  \sum{l'=1}^{\L} \ \alpha_{l'}(p_{2l'}-\epsilon_{l'}) } \] 
+  \[ \sum{l=1}^{\L} \ \alpha_l(p_{l'}-\epsilon_l) } \]  \[
+  \sum{l'=1}^{\L} \ \alpha_{l'}(p_{ll'}-\epsilon_l) } \]
 \end{equation}
   
->>>>>>> 9283ecd2d3555e6db2f383867286b0c1d81643e0
 
 
 \bibliographystyle{genetics}
 \bibliography{Jeremy_library}
 
 \end{document}
-<<<<<<< HEAD
-
-
-\message{ !name(notes.tex) !offset(-94) }
-=======
-\message{ !name(notes.tex) !offset(-77) }
->>>>>>> 9283ecd2d3555e6db2f383867286b0c1d81643e0
