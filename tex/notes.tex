@@ -172,7 +172,58 @@ So I think you can rearrange equation 10 as
     \end{align}
     and in fact I suspect that the ultimate expression we're looking for is basically a sum of line \eqref{fst-ld-partition}, 2 times line \eqref{add-times-dom}, and line \eqref{dom-squared}.
 
-    Let's step back from worrying about variances and covariances for a minute (I think I was trying to have you solve too many steps at once by suggesting to focus on that interpretation). See if you can see your way to verifying my intuition about the above expressions. The stuff you have written in lines \eqref{big-expansion} seems very close to what we're looking for, but 1) I think you may be missing some addition signs in between the two different sums on each line (but I'm not certain, as I had a little trouble following exactly how you arrived at these expressions), and 2) I don't totally follow your indexing, as for each case you say that $l$ goes from $l'$ to $L$ but at no point is it specified what $l'$ is, so that seems like it can't be quite right.
+    Let's step back from worrying about variances and covariances for
+    a minute (I think I was trying to have you solve too many steps at
+    once by suggesting to focus on that interpretation). See if you
+    can see your way to verifying my intuition about the above
+    expressions. The stuff you have written in lines
+    \eqref{big-expansion} seems very close to what we're looking for,
+    but 1) I think you may be missing some addition signs in between
+    the two different sums on each line (but I'm not certain, as I had
+    a little trouble following exactly how you arrived at these
+    expressions), and 2) I don't totally follow your indexing, as for
+    each case you say that $l$ goes from $l'$ to $L$ but at no point
+    is it specified what $l'$ is, so that seems like it can't be quite
+    right.
+
+
+
+ \vspace{10mm}
+
+ \jb{Continuation of work}
+
+ \vspace{5mm}
+
+ Looking at equation \eqref{big-expansion} it looks like the last
+ term with the dominance deviations can be simplified into the
+ expression in \eqref{dom-squared} following the same steps that led
+ to \eqref{penult}. The problem is the middle terms in
+ \eqref{big-expansion}. My first thought is to factor out the
+ summations with $l=l'$ because those are the same for the first three
+ and the second three terms. 
+
+ \begin{equation}
+   \begin{split}   
+   \sum_{l=l'}(\frac{1}{2}A_l(p_{1l}-\epsilon_l))^2 (\sum_{l
+     \neq
+     l'}D_l(1-2p_{1l})D_{l'}(1-2p_{1l'})(p_{1l}-\epsilon_l)(p_{l1}-\epsilon_{l'})+
+   \\
+   \sum_{l \neq l'}\frac{1}{2}A_{l}D_{l'}(1-2p_{1l'})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'})+
+   \\
+   \sum_{l \neq l'}\frac{1}{2}A_{l'}D_l(1-2p_{1l})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'}))
+   \\
+   + \sum_{l=l'}(D_l(1-2p_{1l})(p_{1l}-\epsilon_l))^2 (\sum_{l
+     \neq l'}\frac{1}{4}A_lA_{l'}(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'})+
+   \\
+   \sum_{l \neq l'}\frac{1}{2}A_{l'}D_l(1-2p_{1l})(p_{1l}-\epsilon_l)(p_{1l}-\epsilon_{l'})+
+   \\
+   \sum_{l \neq l'} \frac{1}{2}A_{l}D_{l'}(1-2p_{1l'})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'}))
+   \end{split}
+\end{equation}\label{factored} 
+
+
+
+    
 \bibliographystyle{genetics}
 \bibliography{Jeremy_library}
 
