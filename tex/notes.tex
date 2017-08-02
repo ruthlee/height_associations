@@ -62,15 +62,17 @@ you're doing.
 For the case of two populations:
 
 \begin{equation}
-  \label{1}
   \sum_{l=1}^L \alpha_l (p_{1l}-\epsilon_l) \sum_{l'=1}^L \alpha_{l'} (p_{1l'} - \epsilon_{l'}) + \sum_{l=1}^L \alpha_l (p_{2l}-\epsilon_l) \sum_{l'=1}^L \alpha_{l'} (p_{2l'} - \epsilon_{l'}) 
+  \label{two_pop}
 \end{equation}
 
 Taking only the first term:
 
 \begin{equation}
-  \label{2}
-  \sum_{l=l'}^L (\frac{1}{2}A_l + D_l(1-2p_{1l}))^2 (p_{1l}-\epsilon_l)^2 \sum_{l \neq l'}^L (\frac{1}{2}A_l + D_l(1-2p_{1l}))(\frac{1}{2}A_{l'} + D_{l'}(1-2p_{1l'}))(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'})
+  \sum_{l=l'}^L (\frac{1}{2}A_l + D_l(1-2p_{1l}))^2
+  (p_{1l}-\epsilon_l)^2 \sum_{l \neq l'}^L (\frac{1}{2}A_l +
+  D_l(1-2p_{1l}))(\frac{1}{2}A_{l'} +
+  D_{l'}(1-2p_{1l'}))(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'}) \label{2}
 \end{equation}
 
 Another track: forgetting about turning summations into variances and
@@ -222,6 +224,55 @@ So I think you can rearrange equation 10 as
 \end{equation}\label{factored} 
 
 
+Okay this approach is going nowhere. I'm going to go back to equation
+\eqref{two_pop} and try to expand it out using the same technique as
+Jeremy used to get to \eqref{penult}, and see where I can go from
+there.
+
+
+\begin{equation}
+  \begin{split}
+    \sum^L_{l=1} \sum^L_{l'=1}(\frac{1}{2}A_l +
+    D_l(1-2p_{1l}))(p_{1l}-\epsilon_l)*(\frac{1}{2}A_{l'} +
+    D_{l'}(1-2p_{1l'}))(p_{1l'}-\epsilon_{l'}) \\
+    =\sum^L_{l=1}(\frac{1}{2}A_l+D_l(1-2p_{1l}))^2(p_{1l}-\epsilon_l)^2+ \\
+    \sum^L_{l=1}\sum^L_{l \neq
+    l'}(\frac{1}{2}A_l(p_{1l}-\epsilon_l)+D_l(1-2p_{1l})(p_{1l}-\epsilon_l))(\frac{1}{2}A_{l'}(p_{1l'}-\epsilon_{l'})+D_{l'}(1-2p_{1l'})(p_{1l'}-\epsilon_{l'})) \label{second_expansion_penult}
+  \end{split}
+\end{equation} 
+
+With some distributing and rearranging, this equals: 
+
+\begin{equation}
+  \begin{split}
+  \sum^L_{l=1}\frac{1}{4}A_l^2(p_{1l}-\epsilon_l)^2+\sum^L_{l=1}\sum^L_{
+    \neq
+    l'}(\frac{1}{4}A_l(p_{1l}-\epsilon_{l})A_{l'}(p_{1l'}-\epsilon_{l'}))
+  \\
+  +\sum^L_{l=1}A_lD_l(1-2p_{1l})(p_{1l}-\epsilon_l)^2 +
+  \sum^L_{l=1}\sum^L_{l \neq
+    l'}\frac{1}{2}A_lD_{l'}(1-2_{p1l'})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'}) \\
+  +D_lA_{l'}(1-2_{p1l})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'}) \\
+   \sum^L_{l=1}(D_l(1-2p_l)(p_{1l}-\epsilon_{1}))^2)
+   + \sum^L_{l=1}\sum^L_{l\neq
+     l'}D_{l}(1-2p_{l})(p_{1l}-\epsilon_{1})D_{l'}(1-2p_{l'})(p_{1l'}-\epsilon_{1}) \label{second_exp_ult}
+  \end{split}
+\end{equation}
+
+Equation \eqref{second_exp_ult} is almost exactly what Jeremy's
+intuition specifies, with the exception of the second term, which
+has instead a sum of the combination of $l$ and $l'$ subscripts for
+the average effect and dominant terms. We now have expressions that
+look very much like \eqref{add-times-dom} and \eqref{dom-squared}. I
+can turn these terms into variances and covariances in an analogous
+manner.
+
+\begin{equation}
+  \begin{split}
+\frac{1}{4}\sum^L_{l=1}Var(A_l(p_{1l}-\epsilon_l)) + \sum_{l \neq
+  l'}Cov(A_l(p_{1l}-\epsilon_{l'})), A_{l'}(p_{l'}-\epsilon_{l'}))
+  \end{split}
+\end{equation}
 
     
 \bibliographystyle{genetics}
