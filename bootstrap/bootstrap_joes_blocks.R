@@ -3,25 +3,32 @@ bootstrap.joes.blocks <- function ( avgeff.sig.cutoff, replicates, avgeff.thinni
   setwd( "~/R.Projects/height_associations" )
   source( "height_association_functions.R" )
   
+  # creating empty domdev frame
   domdev.frame <- data.frame( stringsAsFactors = FALSE )
   
+  # Filling domdev frame with all SNPs from chromosomes 1-22 
   for ( i in 1:22 ) {
     avgeff.sig.frame <- make.cutoff.frame( i, avgeff.sig.cutoff = avgeff.sig.cutoff )
     domdev.frame.i <- cbind ( i, avgeff.sig.frame$position, avgeff.sig.frame$dominance.deviation, avgeff.sig.frame$domdev.pvalue, avgeff.sig.frame$pvalue )
     domdev.frame <- rbind.data.frame( domdev.frame, domdev.frame.i )
   }
   
+  # getting rid of NA's in column 3 (dominance deviation values) and adding row ID to each row 
   domdev.frame <- domdev.frame [ !is.na( domdev.frame$V3 ), ]
   domdev.frame <- cbind ( domdev.frame, "ID" = numeric( length = nrow( domdev.frame ) ) )
   
   setwd ( "~/R.Projects/height_associations/joes.blocks/EUR" )
   
+  # reading in joe's blocks file
   joes.blocks <- read.table ( "fourier_ls-all.bed", stringsAsFactors = FALSE , header = TRUE )
   
+  # chromosome ID to match domdev frame chromosome ID's 
   joes.blocks$chr <- gsub ( 'chr' , '' , joes.blocks$chr )
   
+  # row ID creation
   joes.blocks <- cbind (joes.blocks, "ID" = 1:nrow (joes.blocks) )
   
+  # progress bar for assigning joe's blocks numbers to each row in domdev frame (longest part of program) 
   pb <- txtProgressBar( min = 0, max = nrow ( domdev.frame ) , style= 3 )
   
   for ( i in 1:nrow ( domdev.frame ) ) {
@@ -35,8 +42,10 @@ bootstrap.joes.blocks <- function ( avgeff.sig.cutoff, replicates, avgeff.thinni
     setTxtProgressBar( pb, i )
   }
   
+  # getting list of joe's blocks in the domdev frame 
   domdev.blocks <- unique( domdev.frame$ID )
   
+  # without thinning, bootstrap and get list of mean replicates that you can histogram. 
   if ( avgeff.thinning == FALSE & domdev.thinning == FALSE ) { 
   
     mean.replicates <- numeric()
@@ -51,6 +60,8 @@ bootstrap.joes.blocks <- function ( avgeff.sig.cutoff, replicates, avgeff.thinni
     
   }
   
+  # with domdev thinning, do same as above but first choose snps with lowest domdev pvalue (V4) in each block.
+  # Most sig domdevs in most.sig.snps
   if ( domdev.thinning ) {
     
     most.sig.snps <- numeric() 
@@ -70,6 +81,8 @@ bootstrap.joes.blocks <- function ( avgeff.sig.cutoff, replicates, avgeff.thinni
     
   }
   
+  # with avgeff thinning, do same as above but first choose snps with lowest avgeff pvalue (V5) in each block.
+  # Most sig domdevs in most.sig.snps
   if ( avgeff.thinning ) {
     
     most.sig.snps <- numeric() 
