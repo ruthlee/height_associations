@@ -1,0 +1,103 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[u  tf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{amsfonts}
+\usepackage[dvipsnames]{xcolor}
+%\usepackage{cleveref}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage{natbib}
+\usepackage{amsmath}
+%\usepackage{float}
+%\usepackage{subcaption}
+%\usepackage{multirow} 
+\usepackage[colorlinks = true,urlcolor=blue]{hyperref}
+%\usepackage{bibunits}
+%\usepackage{csvsimple}
+%\usepackage[superscript,biblabel]{cite}
+
+\newcommand{\jb}[1]{{\color{blue} (#1)} }
+\begin{document}
+
+\title{Project Proposal, Sella Lab}
+
+\author{
+  Kyelee Ruth Fitts
+}
+
+\date{Fall 2017}
+  
+\maketitle
+
+
+GWAS (Genome-Wide Association Studies) have become increasingly
+important in the field of population genetics as a method of detecting
+polygenic adaptation, or adaption via traits that are affected by many
+different loci instead of just one as per traditional Mendelian
+genetics. GWAS have been used to detect polygenic adaptation in
+disease traits, for example detecting signals of selection in Type 2
+diabetes, as well as a whole host of other quantitative traits
+that give valuable insight into how adapted genetic differences
+can be found, studied, and usefully applied \cite{gwasintro}
+\cite{gwasproblems} . As this method of
+analysis becomes more and more crucial to analyzing such
+anthropometric traits, it is necessary to ensure that the underlying
+assumptions of GWAS and its methods remain as free from bias as
+possible to prevent false signals.
+
+One important model for studying polygenic traits is the additive model, where
+
+\begin{equation}
+  y = \mu + A\alpha
+\end{equation}
+
+This model refers to the trait value, y, of each SNP in an
+individual. $\mu$ is the average phenotype of the population. $A$ refers to the
+parametrization of the genotypes and $\alpha$ is the average effect size
+of each allele on the phenotype. GWAS uses robust statistical methods
+to obtain p-values that indicate whether a certain allele has a
+significant affect on the phenotype of a certain quantitative
+trait. However, there are other factors at play. GWAS assumes that the
+average affect an allele has on a trait ($\alpha$) is uncorrelated with
+the allele frequency over time of the trait-- that is, uncorrelated
+with any dominance effects of the trait which could cause the allele
+frequency to shift over time or over different populations.
+
+However, we know that under directional dominance that assumption is
+not necessarily true. That is, if alleles that increase the effect
+size of a trait are dominant, then that allele will have a greater
+frequency and GWAS will overestimate the effect size-- a bias that has
+the potential to result in false positive results.
+
+To investigate this bias, I plan to work with Dr. Jeremy Berg in the
+Sella Lab, approaching this problem in two steps: first, to derive
+mathematically an expression that can quantify the bias due to
+directional dominance in GWAS given known expressions and concepts in
+population genetics. The second step would be to use the expression
+derived in step one to measure this bias using real data.
+
+Height is an anthropometric trait that many studies have found using
+GWAS evidence for selection \cite{heightselection} . However, other studies have shown that
+height is also subject to directional dominance \cite{heightdirectdom}
+-- a combination that
+makes the trait well-suited for the purposes of my research. Data will
+come from the recent UK Biobank study, which has gathered genetic data
+on about 500,000 participants from the UK \cite{biobank} .
+
+Some progress has already been made on the project. In the spring of
+2017 we found using the UK Biobank data further evidence of
+directional dominance in height. Over the summer, I worked
+with Dr. Berg to begin developing a mathematical expression for the
+bias. I hope this semester to make significant progress on what I
+believe is a fascinating project in mathematics and biology. 
+
+\bibliography{works_cited}
+\bibliographystyle{plain}
+
+\end{document}
+
+
+
