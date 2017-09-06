@@ -1,3 +1,9 @@
+# Creates a qq plot for the GWAS p-values (average effect, homozygous effect, dominance deviation) 
+# specified by user for number of chromosomes also specified
+# Use in order to detect directional dominance: plot domdev pvalues over all 
+# chromosomes-- the line is skewed (hopefully) because dominance deviations are 
+# affected by dominance effects
+
 qq.plot <- function ( chromosome, avgeff.sig.cutoff = FALSE , genotypic.cutoff = FALSE , avgeff.plot = FALSE, homoeff.plot = FALSE, domdev.plot = FALSE ) {
   
   #recover()
