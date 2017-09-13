@@ -10,6 +10,7 @@
 \usepackage[normalem]{ulem}
 \usepackage{graphicx}
 \usepackage{fullpage}
+\usepackage[margin=0.75in]{geometry}
 \usepackage{natbib}
 \usepackage{amsmath}
 %\usepackage{float}
@@ -35,7 +36,10 @@
 
 \date{Fall 2017}
   
-\maketitle
+%\maketitle
+
+\subsection*{Project Proposal: W3500 Independent Biological Research}
+\subsubsection*{Kyelee Ruth Fitts}
 
 % I think you want to start a bit broader than this. Adaptation
 % is a major factor in generating the diversity of life across the planet,
@@ -59,15 +63,14 @@
 %
 % From here, you can transition into your current material about GWAS etc.
 
-Diversity on Earth is in large part due to the adaptation of living
-organisms to the circumstances of their environments. Much of this
-adaptation has a large genetic basis. Until recently, the study of the genetics underlying
-adaptation has been focused on individual mutations (SNPs) of large
-effect size as per traditional Mendelian genetics, when in fact we
+Diversity of life on Earth is in large part due to the adaptation of living
+organisms to the circumstances of their environments. \jb{I would argue that *all* adaptation is genetic} As adaptation is a fundamentally genetic process, understanding the genetic mechanisms by which populations adapt to their environments is a fundamental goal of evolutionary biology. Until recently, the study of the genetics underlying
+adaptation has been focused on individual mutations \jb{I removed your reference to SNPs here, as while SNPs are among the most studied kind of mutation because of the ease with which they can be genotyped, there are other kinds of mutations--e.g. insertions, deletions, inversions, translocations--which can have large effects as well} of large
+effect size, when in fact we
 know that many important traits of interest are polygenic traits that are affected by many
 different loci.
 
-In order to study such polygenic traits, Genome-wide association studies (GWAS) have become increasingly
+In order to study such polygenic traits, genome-wide association studies (GWAS) have become increasingly
 important in the field of population genetics. Utilizing advanced
 genotyping technology and very large sample sizes, GWAS provides
 estimates for the extent of correlation between traits and loci as well as the
@@ -75,12 +78,16 @@ effect sizes of significant alleles over the entire genome. GWAS in combination 
 polygenic adaptation have been used to detect significant and
 systematic correlations between the changes of allele frequencies at
 each site and the effect that each allele has on the trait in
-question-- in effect, finding significant patterns of selection
-through the noise of genetic drift. These tests for polygenic
+question-- in effect, finding a footprint of natural selection
+against the noise of genetic drift. These tests for polygenic
 adaptation using GWAS data have been used to detect signals of
 selection in many anthropometric traits like height
 and waist-hip ratio, as well as disease phenotypes like type 2
 diabetes\cite{gwasintro,gwasproblems}.
+
+\begin{comment}
+  huh, I did not know about the begin/end comment environment thing. nifty trick
+\end{comment}
 
 \begin{comment}
  \jb{Hmm, I think this next bit is a bit muddled. First, you talking about ``this method of analysis'',
@@ -115,9 +122,15 @@ individual. $\mu$ is the average phenotype of the population. $g$ refers to the
 allelic dosage (i.e. 0, 1, or 2 copies of the allele), $\alpha$ is the average effect size
 of each allele on the phenotype, and $ \epsilon $ is a residual term which captures both the
 effects of the environment and all other loci. GWAS use robust statistical methods
-to obtain p-values that indicate whether a certain allele has a
-significant effect on the expression of a certain quantitative
-trait.
+to assess the evidence that an allele has a
+significant effect on the value of a certain quantitative
+trait, as well as to estimate the size of this effect.
+
+\begin{comment}
+  Ok, this is getting close, but I think there are still a couple things to unwind here.
+  The second equation below is not really a feature of tests of polygenic adaptation, but rather is just a fact about the way that the average effect size depends on the difference between homozygotes, dominance, and the current allele frequency in the population. Above, you've already motivated the fact that tests of polygenic adaptation assume independence of the average effect and patterns of change in allele frequency. Now I think before you get to equation 2 you want to introduce the idea of dominance (you haven't done that up to this point), i.e. when the effect of an allele on a phentoype depends on the identity of the other allele at that site, and then you can say that the presence of dominance violates this assumption of independence between allele frequency and average effect. Then show the equation and explain what the individual pieces are.
+  \end{comment}
+
 
 In general, tests for polygenic adaptation use the following null model to
 estimate the effect size of an allele on the population in question:
@@ -126,21 +139,20 @@ estimate the effect size of an allele on the population in question:
   \alpha = a - a(2h - 1)(2q - 1)
 \end{equation}
 
-Where $a$ is the phenotypic difference between homozygotes, $h$ is the
-dominance coefficient, indicating how fit the heterozygote is compared
-to the homozygote, and $q$ is the frequency of the allele for which
+Where $a$ is \jb{half} the phenotypic difference between homozygotes, $h$ is the
+dominance coefficient, indicating how the phenotype of the heterozygote deviates from halfway between the homozygotes, and $q$ is the frequency of the allele for which
 the effect size is being measured. Tests for polygenic adaptation
 assume that the average effect an allele has on a trait ($\alpha$) is
 uncorrelated with the change in allele frequencies over time
-($q$). However, this assumption is violated in two ways, because 1)
+($q$). However, in the presence of dominance, this assumption is violated in two ways, because 1)
 the allele frequency used in the model comes from the population on
 which the GWAS was performed and 2) because through directional
 dominance, $a$ and $h$ can be correlated. Specifically, if alleles that
 increase the effect size of a trait also tend to be recessive
-($h<\frac{1}{2}$), then we are more likely to select alleles that have
+($h<\frac{1}{2}$), then a GWAS is more likely to identify alleles that have
 recently increased in frequency (larger $q$) as significant due to
 their seemingly larger average $\alpha$, leading to false
-positive signals. 
+positive signals of polygenic adaptation.
 
 \begin{comment}
   
