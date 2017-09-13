@@ -64,10 +64,12 @@
 % From here, you can transition into your current material about GWAS etc.
 
 Diversity of life on Earth is in large part due to the adaptation of living
-organisms to the circumstances of their environments. \jb{I would argue that *all* adaptation is genetic} As adaptation is a fundamentally genetic process, understanding the genetic mechanisms by which populations adapt to their environments is a fundamental goal of evolutionary biology. Until recently, the study of the genetics underlying
-adaptation has been focused on individual mutations \jb{I removed your reference to SNPs here, as while SNPs are among the most studied kind of mutation because of the ease with which they can be genotyped, there are other kinds of mutations--e.g. insertions, deletions, inversions, translocations--which can have large effects as well} of large
-effect size, when in fact we
-know that many important traits of interest are polygenic traits that are affected by many
+organisms to the circumstances of their environments. As adaptation is
+a fundamentally genetic process, understanding the genetic mechanisms
+by which populations adapt to their environments is a fundamental goal
+of evolutionary biology. Until recently, the study of the genetics
+underlying adaptation has been focused on individual mutations of large
+effect size, when in fact we know that many important traits of interest are polygenic traits that are affected by many
 different loci.
 
 In order to study such polygenic traits, genome-wide association studies (GWAS) have become increasingly
@@ -84,28 +86,6 @@ adaptation using GWAS data have been used to detect signals of
 selection in many anthropometric traits like height
 and waist-hip ratio, as well as disease phenotypes like type 2
 diabetes\cite{gwasintro,gwasproblems}.
-
-\begin{comment}
-  huh, I did not know about the begin/end comment environment thing. nifty trick
-\end{comment}
-
-\begin{comment}
- \jb{Hmm, I think this next bit is a bit muddled. First, you talking about ``this method of analysis'',
-  but you don't really explain what the method of analysis is. The basic idea behind most tests of polygenic adaptation
-  (ours included) is that selection on a quantitative trait should cause subtle but coordinated shifts in allele frequency
-  across all of the many sites which contribute to variation in the trait. These shifts are too small to detect individually
-  against the background of genetic drift, but if we have an annotation of which alleles contribute to a given trait,
-  and which know which allele is the trait increasing allele and which is the trait decreasing allele, then we can ask whether
-  it is the case that the allele frequency changes across all of these many loci are systematically correlated with the effect
-  that a given allele has on the trait. This sort of pattern is extremely unlikely under genetic drift, and is also what leads
-  to divergence among populations in their average phenotypes, so observing it is thought to be pretty good evidence that the
-  phenotype we're looking at (or something genetically correlated with it) has been impacted by directional selection.
-
-  Another point worth mentioning is that the potential bias is not so much with GWAS as with how GWAS data are typically
-  applied in tests of polygenic adaptation. For example, GWAS does not assume anything about the relationship between
-  an allele's additive effect on the trait and the frequency of the allele over time. That is an assumption of polygenic adaptation
-  tests. GWAS is just a means for 1) identifying trait associated loci, and 2) estimating the size of their effects.}
-\end{comment}
 
 As these tests for polygenic adaptation become more and more ubiquitous, it is necessary to ensure that the underlying
 assumptions of the statistical tests used remain as free from bias as
@@ -132,14 +112,23 @@ trait, as well as to estimate the size of this effect.
   \end{comment}
 
 
-In general, tests for polygenic adaptation use the following null model to
-estimate the effect size of an allele on the population in question:
+Dominance is well understood in population genetics to mean that the
+effect an allele has on an organism's phenotype depends on the other
+allele at the locus. For instance, if a dominant (in the traditional
+sense) allele is represented by $A$ and a recessive allele by $a$,
+then, the effect size of the allele $a$ depends on whether or not
+there is an $A$ at the site. Polygenic traits that exhibit dominance
+pose a problem for the assumption underlying tests of polygenic
+adaptation: that allele frequency and average effect size
+are uncorrelated. 
+
+A well-defined equation for average effect size is: 
 
 \begin{equation}
   \alpha = a - a(2h - 1)(2q - 1)
 \end{equation}
 
-Where $a$ is \jb{half} the phenotypic difference between homozygotes, $h$ is the
+Where $a$ is half the phenotypic difference between homozygotes, $h$ is the
 dominance coefficient, indicating how the phenotype of the heterozygote deviates from halfway between the homozygotes, and $q$ is the frequency of the allele for which
 the effect size is being measured. Tests for polygenic adaptation
 assume that the average effect an allele has on a trait ($\alpha$) is
