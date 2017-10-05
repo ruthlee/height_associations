@@ -18,6 +18,7 @@
 %\usepackage{bibunits}
 %\usepackage{csvsimple}
 %\usepackage[superscript,biblabel]{cite}
+\usepackage{verbatim}
 
 \newcommand{\jb}[1]{{\color{blue} (#1)} }
 \begin{document}
@@ -66,18 +67,20 @@ For the case of two populations:
   \label{two_pop}
 \end{equation}
 
+Where $\alpha = \frac{1}{2}A_l+D_l(1-2p_{1l})$.
+
+\begin{comment}
+
 Taking only the first term:
 
 \begin{equation}
   \sum_{l=l'}^L (\frac{1}{2}A_l + D_l(1-2p_{1l}))^2
-  (p_{1l}-\epsilon_l)^2 \sum_{l \neq l'}^L (\frac{1}{2}A_l +
+  (p_{1l}-\epsilon_l)^2 +  \sum_{l \neq l'}^L (\frac{1}{2}A_l +
   D_l(1-2p_{1l}))(\frac{1}{2}A_{l'} +
   D_{l'}(1-2p_{1l'}))(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'}) \label{2}
 \end{equation}
 
-Another track: forgetting about turning summations into variances and
-expectations for a moment, we merely expand the first and second terms
-of equation 7 in order to recombine them into summations where both l
+Expand the first and second terms of equation 7 in order to recombine them into summations where both l
 and l' start at 1. 
 
 \begin{align}
@@ -134,7 +137,6 @@ Putting it all together:
     \sum^L_{l=1}D_l(1-2p_{1l})(p_{1l}-\epsilon_l) \sum^L_{l'=1}D_{l'}(1-2p_{1l'})(p_{1l'}-\epsilon_{l'})
  \end{split} \label{big-expansion}
 \end{equation}
-
    
 The equations in 18 agree more with the expressions for turning sums
 into expectations, but at the same time take us father from the goal
@@ -188,52 +190,23 @@ So I think you can rearrange equation 10 as
     is it specified what $l'$ is, so that seems like it can't be quite
     right.
 
+  \end{comment}
 
+  Jeremy pointed out this technique in summation algebra: 
+  
+  \begin{align}
+  \sum^L_{l=1}\frac{1}{2}A_l(p_{1l}-\epsilon_{1}) \sum^L_{l'=1}\frac{1}{2}A_{l'}(p_{1l'}-\epsilon_{l'}) =   \frac{1}{4}\sum^L_{l=1}\sum^L_{l'=1}A_l(p_{1l}-\epsilon_{1})A_{l'}(p_{1l'}-\epsilon_{l'}) \\
+                                             = \frac{1}{4}\left(\sum^L_{l=1}(A_l(p_{1l}-\epsilon_{1}))^2 + \sum^L_{l=1}\sum^L_{l\neq l'}(A_l(p_{1l}-\epsilon_{1}))(A_{l'}(p_{1l'}-\epsilon_{1}))\right) \label{fst-ld-partition}
+  \end{align}
 
- \vspace{10mm}
-
- \jb{Continuation of work}
-
- \vspace{5mm}
-
- Looking at equation \eqref{big-expansion} it looks like the last
- term with the dominance deviations can be simplified into the
- expression in \eqref{dom-squared} following the same steps that led
- to \eqref{penult}. The problem is the middle terms in
- \eqref{big-expansion}. My first thought is to factor out the
- summations with $l=l'$ because those are the same for the first three
- and the second three terms. 
-
- \begin{equation}
-   \begin{split}   
-   \sum_{l=l'}(\frac{1}{2}A_l(p_{1l}-\epsilon_l))^2 (\sum_{l
-     \neq
-     l'}D_l(1-2p_{1l})D_{l'}(1-2p_{1l'})(p_{1l}-\epsilon_l)(p_{l1}-\epsilon_{l'})+
-   \\
-   \sum_{l \neq l'}\frac{1}{2}A_{l}D_{l'}(1-2p_{1l'})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'})+
-   \\
-   \sum_{l \neq l'}\frac{1}{2}A_{l'}D_l(1-2p_{1l})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'}))
-   \\
-   + \sum_{l=l'}(D_l(1-2p_{1l})(p_{1l}-\epsilon_l))^2 (\sum_{l
-     \neq l'}\frac{1}{4}A_lA_{l'}(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'})+
-   \\
-   \sum_{l \neq l'}\frac{1}{2}A_{l'}D_l(1-2p_{1l})(p_{1l}-\epsilon_l)(p_{1l}-\epsilon_{l'})+
-   \\
-   \sum_{l \neq l'} \frac{1}{2}A_{l}D_{l'}(1-2p_{1l'})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'}))
-   \end{split}
-\end{equation}\label{factored} 
-
-
-Okay this approach is going nowhere. I'm going to go back to equation
-\eqref{two_pop} and try to expand it out using the same technique as
-Jeremy used to get to \eqref{penult}, and see where I can go from
-there.
+Using \eqref{two_pop}, expand the first term out using the same technique as
+Jeremy used.
 
 
 \begin{equation}
   \begin{split}
     \sum^L_{l=1} \sum^L_{l'=1}(\frac{1}{2}A_l +
-    D_l(1-2p_{1l}))(p_{1l}-\epsilon_l)*(\frac{1}{2}A_{l'} +
+    D_l(1-2p_{1l}))(p_{1l}-\epsilon_l) * (\frac{1}{2}A_{l'} +
     D_{l'}(1-2p_{1l'}))(p_{1l'}-\epsilon_{l'}) \\
     =\sum^L_{l=1}(\frac{1}{2}A_l+D_l(1-2p_{1l}))^2(p_{1l}-\epsilon_l)^2+ \\
     \sum^L_{l=1}\sum^L_{l \neq
@@ -245,17 +218,16 @@ With some distributing and rearranging, this equals:
 
 \begin{equation}
   \begin{split}
-  \sum^L_{l=1}\frac{1}{4}A_l^2(p_{1l}-\epsilon_l)^2+\sum^L_{l=1}\sum^L_{
-    \neq
-    l'}(\frac{1}{4}A_l(p_{1l}-\epsilon_{l})A_{l'}(p_{1l'}-\epsilon_{l'}))
+  \sum^L_{l=1}( \frac{1}{2}A_l(p_{1l}-\epsilon_l))^2+\sum^L_{l=1}\sum^L_{
+    l \neq l'}(\frac{1}{4}A_l(p_{1l}-\epsilon_{l})A_{l'}(p_{1l'}-\epsilon_{l'}))
   \\
   +\sum^L_{l=1}A_lD_l(1-2p_{1l})(p_{1l}-\epsilon_l)^2 +
   \sum^L_{l=1}\sum^L_{l \neq
-    l'}\frac{1}{2}A_lD_{l'}(1-2_{p1l'})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'}) \\
-  +D_lA_{l'}(1-2_{p1l})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'}) \\
-   \sum^L_{l=1}(D_l(1-2p_l)(p_{1l}-\epsilon_{1}))^2)
-   + \sum^L_{l=1}\sum^L_{l\neq
-     l'}D_{l}(1-2p_{l})(p_{1l}-\epsilon_{1})D_{l'}(1-2p_{l'})(p_{1l'}-\epsilon_{1}) \label{second_exp_ult}
+    l'}(\frac{1}{2}A_lD_{l'}(1-2_{p1l'})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'}) \\
+  + \frac{1}{2}D_lA_{l'}(1-2_{p1l})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'})) \\
+   + \sum^L_{l=1} (D_l(1-2p_l)(p_{1l}-\epsilon_{1}))^2
+   + \sum^L_{l=1}\sum^L_{l \neq
+     l'}D_{l}(1-2p_{l})(p_{1l}-\epsilon_{1})D_{l'}(1-2p_{l'})(p_{1l'}-\epsilon_{l'}) \label{second_exp_ult}
   \end{split}
 \end{equation}
 
@@ -265,10 +237,9 @@ Helpful resource:
 Equation \eqref{second_exp_ult} is almost exactly what Jeremy's
 intuition specifies, with the exception of the second term, which
 has instead a sum of the combination of $l$ and $l'$ subscripts for
-the average effect and dominant terms. We now have expressions that
-look very much like \eqref{add-times-dom} and \eqref{dom-squared}. I
-can turn these terms into variances and covariances in an analogous
-manner.
+the average effect and dominant terms. I
+can turn these terms into variances and covariances by looking at the
+double summations of each turm, as below for the first term. 
 
 \begin{equation}
   \begin{split}
