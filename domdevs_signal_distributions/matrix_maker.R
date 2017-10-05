@@ -1,3 +1,5 @@
+# Function to split domdev signal expansion into terms, with a toggle to switch terms on and off to see how each term contributes to the overall effect. The plan is to integrate this function into domdev_distributions.
+
 matrix_maker <- function ( term1 = TRUE, term2 = TRUE, term3 = TRUE, term4 = TRUE, term5 = TRUE, term6 = TRUE, size, A, D, p, epsilon ) {
 
     sum_matrix <- matrix (  ncol = size, nrow = size )
