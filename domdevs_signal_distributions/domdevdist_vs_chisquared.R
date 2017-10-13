@@ -6,7 +6,7 @@ sum ( x > cutoff ) / length(x)
 
 prop_over_exp.p <- function ( Qx = numeric(), pvalue, exp.df ) {
     cutoff <- qchisq( 1-pvalue, exp.df )
-    sum ( Qx > cutoff ) / length ( x )
+    sum ( Qx > cutoff ) / length ( Qx )
 }
 
 # Now we can make the plot of domdev values vs proportion over expected pvalue cutoff.
@@ -53,17 +53,17 @@ for ( i in 1:length(domdev) ) {
     setTxtProgressBar(pb, i )
     x <- domdev_distributions ( size = 100,
                        population = 1,
-                       reps = 1000,
+                       reps = 100,
                        generations = 10,
                        epsilonrange1 = 0.4,
                        epsilonrange2 = 0.6,
                        avgeff = 0.5,
                        domdev = domdev[i],
                        loud = FALSE)
-    pdf ( paste ( "plot", i, ".pdf", sep = "") )
+    # pdf ( paste ( "plot", i, ".pdf", sep = "") )
     plot(ecdf(x))
     plot(ecdf(rchisq(1000, df=1)), add= TRUE, col= "red")
-    dev.off()
+    # dev.off()
 }
 
 
