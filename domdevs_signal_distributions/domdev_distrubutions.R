@@ -13,7 +13,6 @@ domdev_distributions <- function ( size, population, reps, generations, epsilonr
 
     var <- Fst * epsilon * ( 1 - epsilon )
     alpha <- (1 / 2) * avgeff + domdev * ( 1 - epsilon )
-    vA <- sum ( alpha^2  * epsilon * ( 1 - epsilon ) )
     afterdrift <- list ()
     Qx <- numeric()
 
@@ -34,7 +33,7 @@ domdev_distributions <- function ( size, population, reps, generations, epsilonr
         for ( i in 1:population ) {
             norm_drift <- numeric ()
             for ( j in 1:size ) {
-                norm_drift [ j ] <- rnorm ( 1 , epsilon [ j ], sqrt ( var[ j ] * Fst ) )
+                norm_drift [ j ] <- rnorm ( 1 , epsilon [ j ], sqrt ( var[ j ] ) )
             }
             afterdrift [[ i ]] <- norm_drift
         }
@@ -51,7 +50,7 @@ domdev_distributions <- function ( size, population, reps, generations, epsilonr
 
             for ( j in 1:size) {
 
-                sum_matrix [ j , j ] <- ( (1/2) * A[ j ] * ( p [ j ] - epsilon [ j ] ) ) ^ 2 + ( A[ j ] * D [ j ] * ( 1 - 2 * p [ j ] ) * ( p [ j ] - epsilon [ j ] )^2 ) + ( D [ j ] * ( 1 - 2 * p [ j ] ) * ( p [ j ] - epsilon [ j ] ) ^ 2 )
+                sum_matrix [ j , j ] <- ( (1/2) * A[ j ] * ( p [ j ] - epsilon [ j ] ) ) ^ 2 + ( A[ j ] * D [ j ] * ( 1 - 2 * p [ j ] ) * ( p [ j ] - epsilon [ j ] )^2 ) + ( D [ j ] * ( 1 - 2 * p [ j ] ) * ( p [ j ] - epsilon [ j ] ) )^2
 
             }
 
@@ -72,9 +71,11 @@ domdev_distributions <- function ( size, population, reps, generations, epsilonr
 
         }
 
-        Qx [ h ]  <-  ( 1 / ( Fst^2 * vA ) ) * sum ( sum_pops )
+                                        # "correct" additive variance uses epsilon values, but in practice we can only take allele frequencies from present day populations, so choose arbitrary afterdrift population to calculate vA with (which should increase the variance?
 
-        # I don't know why this works, but the correct scaling only occurs when I square Fst in this term. If Fst is unsquared, the mean of the distribution with 1dg is off by a factor of Fst.
+        vA <- sum ( alpha^2  * afterdrift [[ 1 ]] * ( 1 - afterdrift[[ 1 ]] ) )
+
+        Qx [ h ]  <-  ( 1 / ( Fst * vA ) ) * sum ( sum_pops )
 
     }
 

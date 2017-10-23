@@ -60,14 +60,14 @@ for ( i in 1:length(domdev) ) {
                        avgeff = 0.5,
                        domdev = domdev[i],
                        loud = FALSE)
-    # pdf ( paste ( "plot", i, ".pdf", sep = "") )
+    pdf ( paste ( "plot", i, ".pdf", sep = "") )
     plot(ecdf(x))
     plot(ecdf(rchisq(1000, df=1)), add= TRUE, col= "red")
-    # dev.off()
+    dev.off()
 }
 
 
-
+plot(ecdf(x))
 
 
 
