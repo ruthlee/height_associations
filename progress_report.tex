@@ -33,22 +33,42 @@
 \subsection*{Project Progress Report: W3500 Independent Biological Research}
 \subsubsection*{Kyelee Ruth Fitts}
 
-The goal of the project is, succinctly, to find and quantify the
-statistical bias of tests for polygenic adaptation that has to do
-with allele frequency being correlated with allele
-dominance. Specifically, we want to investigate the effect that
-directional dominance has on the statistic, $Q_x$, used to determine
-whether alleles have a significant effect on a polygenic trait. $Q_x$
-can be expressed in terms of the effect size $\alpha$ in this
-relationship \cite{gwasintro}:
+The (chi-squared distributed) test statistic $Q_x$ is used in population genetics to determine
+whether alleles with significant effect sizes (usually determined by
+GWAS) contribute to selection on a polygenic trait. Specifically,
+given a certain number of populations, it measures whether the effect
+sizes of each locus within each population show a trend of selection
+for or against the polygenic trait by measuring whether the covariance
+of genetic value (allele frequency minus mean ancestral frequency) is
+nonzero over all loci with significant effect sizes.
+
+$Q_x$ depends on the value of the average effect size at each
+locus, which in turn depends on the allele frequency, the homozygous
+effect size (effect size of the most frequent homozygote) and the
+dominance deviation (difference in effect size for the heterozygote
+deviating from $\frac{1}{2}$ of the homozygous effect size).
+
+Directional dominance is when heterozygotes display greater
+effect sizes than expected-- that is, the signs of
+the dominance deviation and homozygous effect sizes are the same. In
+the presence of directional dominance, we hypothesize that there is a
+bias in the $Q_x$ statistic: for alleles displaying directional
+dominance, alleles which have recently increased in frequency
+(dominant alleles)  will tend to display smaller effect sizes, and alleles which have recently decreased in
+effect sizes (recessive alleles) will tend to display larger effect
+sizes. In this latter case, false positives for polygenic selection
+will occur. Below is a theoretical justification for this hypothesis.
+
+$Q_x$ can be
+expressed in terms of the effect size $\alpha$ in this relationship \cite{gwasintro}:
 
 \begin{equation} \label{eqn:Qxraw}
   Q_X = \frac{1}{V_A F_{ST}} \sum_{m=1}^M \sum_{\ell=1}^L \sum_{\ell\prime=1}^L \alpha_{\ell} \alpha_{\ell^{\prime}}\left(p_{m\ell} - \overline{p}_\ell \right)\left(p_{m \ell\prime} - \overline{p}_{\ell\prime}\right)
 \end{equation}
 
 Where $\alpha$ can be represented in terms of the dominance deviation
-$D_l$ (the effect size shift due to dominance)  at each locus $l$ and
-the homozygous effect (effect size shift due to homozygosity or heterozygosity) $A_l$ at each
+$D_l$ at each locus $l$ and
+the homozygous effect $A_l$ at each
 locus:
 
 \begin{equation}  \label{eqn:avgeff}
@@ -101,21 +121,21 @@ over time. These figures are especially interesting because they show
 how specifically directional dominance can affect genetic value. When the
 dominance deviation is equal to 0 in figure 6, as expected the genetic
 values of the replicates drift randomly over time and the mean line
-(red) is approximately zero. However, for very positive dominance
+(red) is approximately zero. However, for positive dominance
 deviations (fig. 7), the genetic value over time becomes negative, while for
-very negative dominance deviations, the genetic value over time
-becomes positive. This indicates that the bias due to dominance will
+negative dominance deviations, the genetic value over time
+becomes positive (compare with the blue line at y=0). This indicates, crucially, that the bias due to dominance will
 increase the perceived effect size and result in false positives if alleles tend to be recessive 
 (as with height) and decrease the perceived effect size for alleles
-displaying dominance.
+displaying dominance, as hypothesized.
 
 So far the work I've been doing this semester has been mainly in
 assembling these simulations to directly quantify the statistical bias
 in these tests due to dominance. I am currently working on a simulation that will break
 down the terms of the expansion to see what effect each term has
 separately on the distribution of the statistic. In addition, I have just gained access to the
-UK BioBank data and will be searching for the bias using that data as
-soon as I receive the proper training to use the data. 
+UK BioBank data in order to search for the bias within human genetic
+data. 
 
 \bibliography{works_cited}
 \bibliographystyle{plain}
@@ -156,16 +176,16 @@ soon as I receive the proper training to use the data.
 \end{figure}
 
 \begin{figure}
-  \caption{Genetic value of locus vs time, dominance deviation = 1}
+  \caption{Genetic value of locus vs time, dominance deviation = 0.2}
   \centering
-  \includegraphics[width=0.5\textwidth]{genvalvstime1}
+  \includegraphics[width=0.5\textwidth]{genvalvstime02}
 \end{figure}
 
 \begin{figure}
-  \caption{Genetic value of locus vs time, dominance deviation = -1}
+  \caption{Genetic value of locus vs time, dominance deviation = -0.2}
   \centering
-  \includegraphics[width=0.5\textwidth]{genvalvstime-1}
+  \includegraphics[width=0.5\textwidth]{genvalvstime-02}
 \end{figure}
-\end{comment}
+
 
 \end{document}
