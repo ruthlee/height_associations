@@ -35,6 +35,7 @@ genval_vs_time <- function ( size, replicates, generations, epsilonrange1, epsil
         mean_freqs <- all_freqs_df$avg
 
         lines ( seq_len ( generations + 1 ), mean_freqs, col = "red", lwd = 2 )
+        abline ( 0, 0, col = "blue" )
 
         return( all_freqs_df )
     }
@@ -57,8 +58,6 @@ genval_vs_time <- function ( size, replicates, generations, epsilonrange1, epsil
                 var <- Fst * afterdrift [ j ] * ( 1 - afterdrift [ j ] )
                 alpha <- ( 1 / 2 ) * avgeff + domdev * ( 1 - 2 * afterdrift [ j ] )
 
-                afterdrift  <- replace ( afterdrift, is.nan(afterdrift) | afterdrift <= 0, 0 )
-
                 genval [ j ] <- ( afterdrift [ j ] - epsilon ) * alpha
 
                 afterdrift [ j + 1 ] <-  rnorm( 1, afterdrift [ j ], sqrt ( var ) )
@@ -80,6 +79,7 @@ genval_vs_time <- function ( size, replicates, generations, epsilonrange1, epsil
         mean_genvals <- all_genvals_df$avg
 
         lines ( seq_len ( generations ), mean_genvals, col = "red", lwd = 2 )
+        abline ( 0, 0, col = "blue" )
 
         return( all_genvals_df )
 
@@ -91,11 +91,11 @@ genval_vs_time <- function ( size, replicates, generations, epsilonrange1, epsil
 
 genval_vs_time (size = 100,
                 replicates = 100,
-                generations = 5000,
+                generations = 1000,
                 epsilonrange1 = 0.5,
                 epsilonrange2 = 0.5,
-                avgeff = 0,
-                domdev = 1,
+                avgeff = 0.5,
+                domdev = -0.2,
                 genval = TRUE )
 
 
