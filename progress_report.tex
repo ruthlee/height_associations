@@ -1,4 +1,4 @@
-\documentclass[a4paper,10pt]{article}
+\documentclass[a4paper,11pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage[u  tf8]{inputenc}
 \usepackage{mathtools}
@@ -10,7 +10,7 @@
 \usepackage[normalem]{ulem}
 \usepackage{graphicx}
 \usepackage{fullpage}
-\usepackage[margin=0.75in]{geometry}
+\usepackage[margin=0.5in]{geometry}
 \usepackage{natbib}
 \usepackage{amsmath}
 %\usepackage{float}
@@ -33,24 +33,21 @@
 \subsection*{Project Progress Report: W3500 Independent Biological Research}
 \subsubsection*{Kyelee Ruth Fitts}
 
-The (chi-squared distributed) test statistic $Q_x$ is used in
+\textbf{\emph{Background:}} The (chi-squared distributed) test statistic $Q_x$ is used in
 population genetics to determine whether a polygenic trait shows
 signals of selection across different populations, given the effect
 sizes (determined by genome-wide association studies, or GWAS) and frequencies of each locus that
 contributes to the trait. We expect populations that have drifted
 apart to have no selection under the null model, but if $Q_x$ is
-significant, then we know that the genetic value (weighted average of
+significant, then we know that the differences in genetic value (weighted average of
 change in allele frequencies from the ancestral frequency multiplied by the
-effect size) is different among the different populations is not due to random processes like drift. 
+effect size) among the different populations is not due to random processes like drift. 
 
-Below is the expression for the statistic in terms of the average
-effect size $\alpha$ over each locus, the ancestral allele frequency
+On the second page is the expression for the statistic in terms of the average
+effect size $\alpha$, the ancestral allele frequency
 $\overline{p}$, and the current allele frequency $p$ of our target
-population, with each parameter taken over loci $l$ and $l'$. \cite{gwasintro}
-
-\begin{equation} \label{eqn:Qxraw}
-  Q_X = \frac{1}{V_A F_{ST}} \sum_{m=1}^M \sum_{\ell=1}^L \sum_{\ell\prime=1}^L \alpha_{\ell} \alpha_{\ell^{\prime}}\left(p_{m\ell} - \overline{p}_\ell \right)\left(p_{m \ell\prime} - \overline{p}_{\ell\prime}\right)
-\end{equation}
+population, with each parameter taken over loci $l$ and $l'$, as
+determined by Berg and Coop et al. \cite{gwasintro}
 
 The average effect size at each locus is of particular
 importance-- not only does GWAS use it to determine which alleles are deemed
@@ -58,15 +55,12 @@ significant to a trait, but it is also the weighting factor for loci in the
 expression for $Q_x$. The average effect size depends on the allele
 frequency, the homozygous effect size (effect size of the most frequent homozygote) and the
 dominance deviation (difference in effect size for the heterozygote
-deviating from $\frac{1}{2}$ of the homozygous effect size). Below is the expression for $\alpha$,
+deviating from $\frac{1}{2}$ of the homozygous effect size). On the
+next page is the expression for $\alpha$,
 represented in terms of the dominance deviation $D_l$ at each locus and
-the homozygous effect $A_l$ at each locus:
+the homozygous effect $A_l$ at each locus \eqref{avgeff}.
 
-\begin{equation}  \label{eqn:avgeff}
-  \alpha_\ell = \frac{1}{2} A_\ell + D_\ell\left(1-2p_{1\ell}\right).
-\end{equation}
-
-The use of $\alpha$ in this statistic becomes problematic in the
+\textbf{\emph{Hypothesis:}} The use of $\alpha$ in this statistic becomes problematic in the
 presence of directional dominance, which is when alleles for a
 particular trait with a positive effect size are systematically
 dominant or when alleles with a negative effect size are
@@ -84,10 +78,72 @@ selection will occur, because GWAS will systematically choose
 recessive alleles that have recently decreased in frequency because of
 their larger effect sizes. This is problematic because our test
 statistic will then use loci that are
-skewed away from the ancestral genetic value. Below is a more mathematical justification for this hypothesis.
+skewed away from the ancestral genetic value, biasing the test.
 
-Substituting \eqref{eqn:avgeff} into \eqref{eqn:Qxraw}, we can
-algebraically derive the following expansion:
+\textbf{\emph{Progress:}} Substituting \eqref{avgeff} into \eqref{Qxraw}, we can
+algebraically derive the an expansion of the statistic, as noted on
+the second page \eqref{second_exp_ult}. Using this
+expansion, I have been creating simulations to verify graphically the
+effect that dominance has on the test statistic-- I have attached some
+of the most important results from these simulations on the next page.
+
+Figures a and b compare the expected cumulative distribution
+function of the $Q_x$ statistic (in red) with the cdf of the simulated
+distribution. When the dominance deviation is zero, as expected the
+two are nearly identical. However, as dominance deviation increases,
+the distribution of the $Q_x$ statistic shifts to
+the right. This is further shown in figure c, which plots the fraction
+of the simulated statistics above the value of the statistic expected
+for 5\% of the expected distribution, which is chi-squared with 1
+df. This plot also shows that the proportion of simulated $Q_x$ values
+over the expected threshold increases as dominance deviation increases.
+
+Figures d, e and f show how dominance affects the genetic
+value of loci over time. These figures are especially
+interesting because they show how specifically directional dominance
+affects genetic value. When the dominance deviation is equal to 0
+in figure d, as expected the genetic values of the replicates drift
+randomly over time and the mean genetic value (red) is approximately
+zero. However, for positive dominance deviations (e), the average
+genetic value over time becomes negative, while for negative dominance
+deviations, it becomes positive. This indicates that for positive
+dominance the effect of $\alpha$ makes the genetic value for alleles
+which are increasing in frequency smaller, and decreasing in frequency
+larger, while for negative dominance deviations the effect is the
+opposite. This indicates, crucially, that for directionally recessive
+traits (like height) which have recently increased in frequency we
+expect the effect of multiplying $\alpha$ to increase the perceived
+genetic value of the allele, making it more likely to be chosen by GWAS as signifiant and skewing our test statistic $Q_x$.   
+
+\textbf{\emph{Next steps:}} So far the work I've been doing this semester has been mainly in
+ascertaining the theoretical basis for this project and
+assembling these simulations to directly quantify the statistical bias
+in these tests due to dominance. I am currently working on a
+simulation that will break down the terms of the expansion to see what
+effect each term has separately on the distribution of the
+statistic. In addition, I have just gained access to the UK BioBank
+data in order to search for the bias within real human genetic data. 
+
+\pagebreak 
+
+\bibliography{works_cited}
+\bibliographystyle{plain}
+
+
+\subsection*{Equations:}
+
+\begin{equation}  
+  \alpha_\ell = \frac{1}{2} A_\ell + D_\ell\left(1-2p_{1\ell}\right).
+  \label{avgeff}
+\end{equation}
+
+\begin{equation}
+  Q_X = \frac{1}{V_A F_{ST}} \sum_{m=1}^M \sum_{\ell=1}^L
+  \sum_{\ell\prime=1}^L \alpha_{\ell}
+  \alpha_{\ell^{\prime}}\left(p_{m\ell} - \overline{p}_\ell
+  \right)\left(p_{m \ell\prime} - \overline{p}_{\ell\prime}\right)
+   \label{Qxraw}
+\end{equation}
 
 \begin{equation}
   \begin{split}
@@ -104,105 +160,20 @@ algebraically derive the following expansion:
   \end{split}
 \end{equation}
 
-Where we can expect much of the bias in the $Qx$ statistic coming from
-dominance to come from the last two terms involving $D_l$. Using this
-expansion, I have been creating simulations to verify graphically the
-effect that dominance has on the test statistic-- I have attached some
-of the most important results from these simulations in the pages
-below. Figure 1 shows the distribution of the $Q_x$ statistic without dominance as simulated by
-the expansion above, which matches a chi-squared distribution with
-degree of freedom equal to 1, as expected.
+\vspace{2cm}
 
-Figures 2, 3, and 4 compare the expected cumulative distribution
-function of the $Q_x$ statistic (in red) with the cdf of the simulated
-distribution. When the dominance deviation is zero, as expected the
-two are nearly identical. However, as dominance deviation increases,
-the distribution of the $Q_x$ statistic shifts further and further to
-the right. This is further shown in figure 5, which plots the fraction
-of the simulated statistics above the value of the statistic expected
-for 5\% of the expected distribution, which is chi-squared with 1
-df. That is, the plot shows the proportion of $Q_x$ values above the p = 0.05 cutoff value
-of the expected chi-squared distribution for different dominance
-deviation values. As expected, this plot also
-shows that the proportion of simulated $Q_x$ values over the expected
-threshold increases as the effect of dominance increases.
-
-Finally, figures 6, 7, and 8 show how dominance affects the genetic
-value (that is, the change in allele frequency multiplied by the
-effect size $\alpha$) over time. These figures are especially
-interesting because they show how specifically directional dominance
-can affect genetic value. When the dominance deviation is equal to 0
-in figure 6, as expected the genetic values of the replicates drift
-randomly over time and the mean line (red) is approximately
-zero. However, for positive dominance deviations (fig. 7), the average
-genetic value over time becomes negative, while for negative dominance
-deviations, the average genetic value over time becomes positive
-(compare with the blue line at y=0). This indicates that for positive
-dominance the effect of $\alpha$ makes the genetic value for alleles
-which are increasing in frequency smaller, and decreasing in frequency
-larger, while for negative dominance deviations the effect is the
-opposite. This indicates, crucially, that for directionally recessive
-traits (like height) which have recently increased in frequency we
-expect the effect of multiplying $\alpha$ to increase the perceived
-genetic value of the allele, making it more likely to be chosen by GWAS as signifiant and skewing our test statistic $Q_x$.   
-
-So far the work I've been doing this semester has been mainly in
-assembling these simulations to directly quantify the statistical bias
-in these tests due to dominance. I am currently working on a
-simulation that will break down the terms of the expansion to see what
-effect each term has separately on the distribution of the
-statistic. In addition, I have just gained access to the UK BioBank
-data in order to search for the bias within human genetic data. 
-
-\bibliography{works_cited}
-\bibliographystyle{plain}
-
-\pagebreak
-
-\begin{figure}
-  \caption{Distribution of Qx Expansion (Chi-squared, df=1)}
-  \centering
-  \includegraphics[width=0.5\textwidth]{domdevdist}
-\end{figure}
-
-\begin{figure}
-  \caption{CDF of Qx Statistic vs expected cdf where dominance
-    deviation = 0}
-  \centering
-  \includegraphics[width=0.5\textwidth]{cdfdomdev=0}
-\end{figure}
-
-\begin{figure}
-  \caption{CDF of Qx Statistic vs expected cdf where dominance
-    deviation = 0.5}
-  \centering
-  \includegraphics[width=0.5\textwidth]{cdfdomdev=05}
-\end{figure}
-
-\begin{figure}
-  \caption{CDF of Qx Statistic vs expected cdf where dominance
-    deviation = 1}
-  \centering
-  \includegraphics[width=0.5\textwidth]{cdfdomdev=1}
-\end{figure}
-
-\begin{figure}
-  \caption{Genetic value of locus vs time, dominance deviation = 0}
-  \centering
-  \includegraphics[width=0.5\textwidth]{genvalvstime}
-\end{figure}
-
-\begin{figure}
-  \caption{Genetic value of locus vs time, dominance deviation = 0.2}
-  \centering
-  \includegraphics[width=0.5\textwidth]{genvalvstime02}
-\end{figure}
-
-\begin{figure}
-  \caption{Genetic value of locus vs time, dominance deviation = -0.2}
-  \centering
-  \includegraphics[width=0.5\textwidth]{genvalvstime-02}
-\end{figure}
-
+\begin{table}[ht]
+\caption{From top to bottom, left to right: figures a, b, c, d, e, f.}
+\centering
+\begin{tabular}{ p{5cm}p{5cm}p{5cm} }
+\includegraphics[width=45mm]{cdfdomdev=0}
+  &\includegraphics[width=45mm]{cdfdomdev=1}
+  &\includegraphics[width=45mm]{propoverexp}\\
+\newline
+\includegraphics[width=45mm]{genvalvstime}
+  &\includegraphics[width=45mm]{genvalvstime02}
+  &\includegraphics[width=45mm]{genvalvstime-02}\\
+\end{tabular}
+\end{table}
 
 \end{document}
