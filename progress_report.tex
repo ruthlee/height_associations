@@ -33,47 +33,58 @@
 \subsection*{Project Progress Report: W3500 Independent Biological Research}
 \subsubsection*{Kyelee Ruth Fitts}
 
-The (chi-squared distributed) test statistic $Q_x$ is used in population genetics to determine
-whether alleles with significant effect sizes (usually determined by
-GWAS) contribute to selection on a polygenic trait. Specifically,
-given a certain number of populations, it measures whether the effect
-sizes of each locus within each population show a trend of selection
-for or against the polygenic trait by measuring whether the covariance
-of genetic value (allele frequency minus mean ancestral frequency) is
-nonzero over all loci with significant effect sizes.
+The (chi-squared distributed) test statistic $Q_x$ is used in
+population genetics to determine whether a polygenic trait shows
+signals of selection across different populations, given the effect
+sizes (determined by genome-wide association studies, or GWAS) and frequencies of each locus that
+contributes to the trait. We expect populations that have drifted
+apart to have no selection under the null model, but if $Q_x$ is
+significant, then we know that the genetic value (weighted average of
+change in allele frequencies from the ancestral frequency multiplied by the
+effect size) is different among the different populations is not due to random processes like drift. 
 
-$Q_x$ depends on the value of the average effect size at each
-locus, which in turn depends on the allele frequency, the homozygous
-effect size (effect size of the most frequent homozygote) and the
-dominance deviation (difference in effect size for the heterozygote
-deviating from $\frac{1}{2}$ of the homozygous effect size).
-
-Directional dominance is when heterozygotes display greater
-effect sizes than expected-- that is, the signs of
-the dominance deviation and homozygous effect sizes are the same. In
-the presence of directional dominance, we hypothesize that there is a
-bias in the $Q_x$ statistic: for alleles displaying directional
-dominance, alleles which have recently increased in frequency
-(dominant alleles)  will tend to display smaller effect sizes, and alleles which have recently decreased in
-effect sizes (recessive alleles) will tend to display larger effect
-sizes. In this latter case, false positives for polygenic selection
-will occur. Below is a theoretical justification for this hypothesis.
-
-$Q_x$ can be
-expressed in terms of the effect size $\alpha$ in this relationship \cite{gwasintro}:
+Below is the expression for the statistic in terms of the average
+effect size $\alpha$ over each locus, the ancestral allele frequency
+$\overline{p}$, and the current allele frequency $p$ of our target
+population, with each parameter taken over loci $l$ and $l'$. \cite{gwasintro}
 
 \begin{equation} \label{eqn:Qxraw}
   Q_X = \frac{1}{V_A F_{ST}} \sum_{m=1}^M \sum_{\ell=1}^L \sum_{\ell\prime=1}^L \alpha_{\ell} \alpha_{\ell^{\prime}}\left(p_{m\ell} - \overline{p}_\ell \right)\left(p_{m \ell\prime} - \overline{p}_{\ell\prime}\right)
 \end{equation}
 
-Where $\alpha$ can be represented in terms of the dominance deviation
-$D_l$ at each locus $l$ and
-the homozygous effect $A_l$ at each
-locus:
+The average effect size at each locus is of particular
+importance-- not only does GWAS use it to determine which alleles are deemed
+significant to a trait, but it is also the weighting factor for loci in the
+expression for $Q_x$. The average effect size depends on the allele
+frequency, the homozygous effect size (effect size of the most frequent homozygote) and the
+dominance deviation (difference in effect size for the heterozygote
+deviating from $\frac{1}{2}$ of the homozygous effect size). Below is the expression for $\alpha$,
+represented in terms of the dominance deviation $D_l$ at each locus and
+the homozygous effect $A_l$ at each locus:
 
 \begin{equation}  \label{eqn:avgeff}
   \alpha_\ell = \frac{1}{2} A_\ell + D_\ell\left(1-2p_{1\ell}\right).
 \end{equation}
+
+The use of $\alpha$ in this statistic becomes problematic in the
+presence of directional dominance, which is when alleles for a
+particular trait with a positive effect size are systematically
+dominant or when alleles with a negative effect size are
+systematically recessive. Quantitatively, this means the signs of the
+dominance deviation and homozygous effect sizes are the same for a
+large number of loci. In the presence of directional dominance, we
+hypothesize that there is a bias in the $Q_x$ statistic: for alleles
+displaying directional dominance, systematically dominant alleles in
+our target population which have increased in frequency relative to
+other populations  will tend to display smaller effect sizes, while
+systematically recessive alleles which have recently decreased in
+frequency relative to other populations will tend to display larger
+effect sizes. In this latter case, false positives for polygenic
+selection will occur, because GWAS will systematically choose
+recessive alleles that have recently decreased in frequency because of
+their larger effect sizes. This is problematic because our test
+statistic will then use loci that are
+skewed away from the ancestral genetic value. Below is a more mathematical justification for this hypothesis.
 
 Substituting \eqref{eqn:avgeff} into \eqref{eqn:Qxraw}, we can
 algebraically derive the following expansion:
@@ -94,10 +105,11 @@ algebraically derive the following expansion:
 \end{equation}
 
 Where we can expect much of the bias in the $Qx$ statistic coming from
-dominance to come from the last two terms involving $D_l$. Since the
-semester has begun, I've been creating simulations to verify the
-effect that dominance has on the test statistic. On the second page,
-Figure 1 shows the distribution of the $Q_x$ statistic without dominance as simulated by
+dominance to come from the last two terms involving $D_l$. Using this
+expansion, I have been creating simulations to verify graphically the
+effect that dominance has on the test statistic-- I have attached some
+of the most important results from these simulations in the pages
+below. Figure 1 shows the distribution of the $Q_x$ statistic without dominance as simulated by
 the expansion above, which matches a chi-squared distribution with
 degree of freedom equal to 1, as expected.
 
@@ -116,26 +128,31 @@ shows that the proportion of simulated $Q_x$ values over the expected
 threshold increases as the effect of dominance increases.
 
 Finally, figures 6, 7, and 8 show how dominance affects the genetic
-value (that is, the change in allele frequency multiplied by the effect size $\alpha$)
-over time. These figures are especially interesting because they show
-how specifically directional dominance can affect genetic value. When the
-dominance deviation is equal to 0 in figure 6, as expected the genetic
-values of the replicates drift randomly over time and the mean line
-(red) is approximately zero. However, for positive dominance
-deviations (fig. 7), the genetic value over time becomes negative, while for
-negative dominance deviations, the genetic value over time
-becomes positive (compare with the blue line at y=0). This indicates, crucially, that the bias due to dominance will
-increase the perceived effect size and result in false positives if alleles tend to be recessive 
-(as with height) and decrease the perceived effect size for alleles
-displaying dominance, as hypothesized.
+value (that is, the change in allele frequency multiplied by the
+effect size $\alpha$) over time. These figures are especially
+interesting because they show how specifically directional dominance
+can affect genetic value. When the dominance deviation is equal to 0
+in figure 6, as expected the genetic values of the replicates drift
+randomly over time and the mean line (red) is approximately
+zero. However, for positive dominance deviations (fig. 7), the average
+genetic value over time becomes negative, while for negative dominance
+deviations, the average genetic value over time becomes positive
+(compare with the blue line at y=0). This indicates that for positive
+dominance the effect of $\alpha$ makes the genetic value for alleles
+which are increasing in frequency smaller, and decreasing in frequency
+larger, while for negative dominance deviations the effect is the
+opposite. This indicates, crucially, that for directionally recessive
+traits (like height) which have recently increased in frequency we
+expect the effect of multiplying $\alpha$ to increase the perceived
+genetic value of the allele, making it more likely to be chosen by GWAS as signifiant and skewing our test statistic $Q_x$.   
 
 So far the work I've been doing this semester has been mainly in
 assembling these simulations to directly quantify the statistical bias
-in these tests due to dominance. I am currently working on a simulation that will break
-down the terms of the expansion to see what effect each term has
-separately on the distribution of the statistic. In addition, I have just gained access to the
-UK BioBank data in order to search for the bias within human genetic
-data. 
+in these tests due to dominance. I am currently working on a
+simulation that will break down the terms of the expansion to see what
+effect each term has separately on the distribution of the
+statistic. In addition, I have just gained access to the UK BioBank
+data in order to search for the bias within human genetic data. 
 
 \bibliography{works_cited}
 \bibliographystyle{plain}
