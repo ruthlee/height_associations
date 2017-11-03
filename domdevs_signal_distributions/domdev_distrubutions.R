@@ -54,8 +54,6 @@ domdev_distributions <- function ( size, population, reps, generations, epsilonr
 
             }
 
-            sum1 <- sum ( diag ( sum_matrix ) )
-
             for ( j in 1:size ) {
                 for ( k in 1:size ) {
 
@@ -65,6 +63,7 @@ domdev_distributions <- function ( size, population, reps, generations, epsilonr
                 }
             }
 
+            sum1 <- sum ( diag ( sum_matrix ) )
             sum2 <- sum ( sum_matrix [ row ( sum_matrix ) != col ( sum_matrix ) ] )
 
             sum_pops [ i ] <- sum1 + sum2
@@ -91,10 +90,10 @@ domdev_distributions <- function ( size, population, reps, generations, epsilonr
 
 x <- domdev_distributions ( size = 100,
                        population = 1,
-                       reps = 1000,
+                       reps = 100,
                        generations = 10,
-                       epsilonrange1 = 0.4,
-                       epsilonrange2 = 0.6,
+                       epsilonrange1 = 0.5,
+                       epsilonrange2 = 0.5,
                        avgeff = 0.5,
                        domdev = 0 )
 

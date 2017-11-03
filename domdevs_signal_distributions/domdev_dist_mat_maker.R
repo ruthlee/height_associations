@@ -70,18 +70,15 @@ domdev_dist_chooseterms <- function ( size, population, reps, generations, epsil
 }
 
 
-x <- domdev_dist_chooseterms ( size = 500,
+y <- domdev_dist_chooseterms ( size = 100,
                        population = 1,
-                       reps = 1000,
+                       reps = 100,
                        generations = 10,
-                       epsilonrange1 = 0.4,
-                       epsilonrange2 = 0.6,
+                       epsilonrange1 = 0.5,
+                       epsilonrange2 = 0.5,
                        avgeff = 0.5,
-                       domdev = -0.2,
-                       term1 = FALSE,
-                       term2 = FALSE,
-                       term3 = FALSE,
-                       term4 = FALSE )
+                       domdev = 0 )
+
 
 
 mean(x)
