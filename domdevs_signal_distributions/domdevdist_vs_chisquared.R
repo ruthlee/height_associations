@@ -21,7 +21,7 @@ domdev_vs_exp.p <- function ( domdev = numeric(), pvalue, exp.df, size = 100, po
 
         setTxtProgressBar ( pb, i )
 
-        Qx <- domdev_distributions ( size,
+        Qx <- domdev_dist_chooseterms ( size,
                               population,
                               reps,
                               generations,
@@ -47,20 +47,23 @@ domdev <- seq ( 0, 1, 0.1 )
 prop <- domdev_vs_exp.p ( domdev, 0.05, 1 )
 
 
+
+# Plotting ecdf for simulated distribution vs expected distribution (chi squared)
+
 pb <- txtProgressBar( min = 0 , max = length(domdev))
 
 for ( i in 1:length(domdev) ) {
     setTxtProgressBar(pb, i )
-    x <- domdev_distributions ( size = 100,
+    x <- domdev_dist_chooseterms ( size = 100,
                        population = 1,
-                       reps = 100,
+                       reps = 1000,
                        generations = 10,
                        epsilonrange1 = 0.4,
                        epsilonrange2 = 0.6,
                        avgeff = 0.5,
                        domdev = domdev[i],
                        loud = FALSE)
-    pdf ( paste ( "plot", i, ".pdf", sep = "") )
+    pdf ( paste ( "domdev=", domdev[i], ", avgeff= 0.5", ".pdf", sep = "") )
     plot(ecdf(x))
     plot(ecdf(rchisq(1000, df=1)), add= TRUE, col= "red")
     dev.off()
