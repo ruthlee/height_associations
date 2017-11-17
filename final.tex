@@ -1,0 +1,142 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[u  tf8]{inputenc}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{amsfonts}
+\usepackage[dvipsnames]{xcolor}
+% \usepackage{cleveref}
+\usepackage[normalem]{ulem}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage[margin=1in]{geometry}
+\usepackage{natbib}
+\usepackage{amsmath}
+%\usepackage{float}
+%\usepackage{subcaption}
+%\usepackage{multirow} 
+\usepackage[colorlinks = true,urlcolor=blue]{hyperref}
+%\usepackage{bibunits}
+%\usepackage{csvsimple}
+%\usepackage[superscript,biblabel]{cite}
+\usepackage{verbatim}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{subfig}
+\usepackage{subcaption}
+
+\newcommand{\jb}[1]{{\color{blue} (#1)} }
+\begin{document}
+
+\title{Title here}
+\author{Kyelee Ruth Fitts, Jeremy Berg, Guy Amster, Guy Sella}
+\maketitle
+
+
+\subsection*{Abstract}
+
+\subsection*{Introduction}
+It has long been known that diversity on Earth is in large part due to the
+adaptation of organisms to varying environments. We now know that
+adaptation has a large genetic basis, and that genetic variation is
+the key to biological diversity. Thus, understanding how and why such
+genetic variation occurs is the ultimate goal of evolutionary
+biology. Quantifying genetic adaptation is the goal of population
+geneticists, and to this end finding methods to detect signals of
+selection within the genome is of particular interest. Change in
+variation over time can be attributed to many causes including genetic
+drift or population migration, so detecting signals of selection in
+particular is no trivial task. 
+
+Wright first introduced the parameter $F_{st}$ as a measure comparing
+the variation of an allele in a subpopulation relative to the entire population
+\cite{Fst}. Lewontin and Krakauer, using this parameter developed a
+novel statistical test based on the fact
+that under no selection, the variation of specific alleles over all
+subpopulations will not be different from that of the population
+$F_{st}$ \cite{firstseltest}. These conclusions were extended by Spitze, who coined the
+parameter $Q_{st}$ as a measure of how the phenotypic value of an
+allele in a subpopulation compares to that of the entire
+population \cite{Qst}. These early tests for selection utilized the ratio
+$\frac{Q_{st}}{F_{st}}}$ as a test statistic for detecting signals of
+selection, where $F_{st} = Q_{st}$ is the null model, where no
+selection occurs. 
+
+Until recently, the study of detecting selection has been limited to
+large-effect alleles, when in fact many phenotypic traits of interest
+are affected by many different loci across the genome. Understanding
+how to find signals of selection for such polygenic traits has been
+the subject of much study in recent years. Increased compuational
+capabilities have given us to tools to be able to evaluate the effects
+of many thousands of loci on a trait, allowing us to evaluate
+selection in highly polygenic traits, such as height. One of the most
+important tools developed are Genome-Wide Association Studies (GWAS)
+which determine which loci across the genome have significant effects
+on a certain polygenic trait. 
+
+Berg introduces a comprehensive test statistic, called $Q_x$, to test
+for selection \cite{gwasintro}. This statistic depends on $F_{st}$ and
+a generalized analogy to $Q_{st}$, expressed in terms of $\alpha$, or
+the effect size of each significant locus as determined by GWAS, and
+the allele frequencies $p$ over loci $l$ and $l'$, summed over
+populations $m$. $V_a$ is the additive genetic variance of the entire population.
+
+\begin{equation} \label{eqn:Qxraw}
+  Q_X = \frac{1}{V_A F_{ST}} \sum_{m=1}^M \sum_{\ell=1}^L \sum_{\ell\prime=1}^L \alpha_{\ell} \alpha_{\ell^{\prime}}\left(p_{m\ell} - \overline{p}_\ell \right)\left(p_{m \ell\prime} - \overline{p}_{\ell\prime}\right)
+\end{equation}
+
+The distribution of this statistic is expected to be chi-squared. We are particularly interested in the average effect of this
+statistic-- not only does GWAS use it to determine which alleles are deemed
+significant to a trait, but it is also the weighting factor for loci in the
+expression for $Q_x$. The average effect size depends on the allele
+frequency, the homozygous effect size (A), or effect size of the most frequent homozygote, and the
+dominance deviation (D), which is the difference in effect size for the heterozygote
+deviating from $\frac{1}{2}$ of the homozygous effect size.
+
+\begin{equation}  
+  \alpha_\ell = \frac{1}{2} A_\ell + D_\ell\left(1-2p_{1\ell}\right).
+  \label{avgeff}
+\end{equation}
+
+The use of $\alpha$ in this test statistic becomes problematic in the
+presence of directional dominance, when alleles with a postive effect
+size on the trait are systematically dominant and alleles with a
+negative effect size on the trait are systematically negative. In
+terms of \eqref{avgeff}, this means that the signs of A and D are the
+same for a large number of loci.
+
+In the presence of directional dominance, we hypothesized a bias in
+tests for polygenic adaptation that depend on $\alpha$. Alleles which
+are systematically dominant and which have recently increased in
+frequency (large p, positive D) will tend to have smaller effect sizes, while
+alleles which are recessive which have recently decreased in frequency
+(small p, negative D) will tend to have larger effect sizes. In the
+latter case, the test for polygenic selection advanced by Berg
+\eqref{eqn:Qxraw} will be apt to make false positive judgements for
+selection, because the statistic will be calculated over alleles which
+do not actually increase the effect size.
+
+Height is one polygenic trait with many well-defined signficant
+alleles via GWAS \cite{heightselection}. It has also been shown to exhibit
+directional dominance \cite{heightdirectdom}. We aimed to quantify the
+hypothesized bias, first with simulated populations, then with height genotype data from the UK Biobank.
+
+
+
+\subsection*{Theory/Methods}
+
+\subsection*{Results}
+
+\subsection*{Discussion}
+
+
+\bibliography{works_cited}
+\bibliographystyle{plain}
+
+
+
+
+
+
+\end{document}
