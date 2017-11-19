@@ -29,7 +29,9 @@
 \newcommand{\jb}[1]{{\color{blue} (#1)} }
 \begin{document}
 
-\title{Title here}
+\title{\vspace{-2cm}
+  Title here
+}
 \author{Kyelee Ruth Fitts, Jeremy Berg, Guy Amster, Guy Sella}
 \maketitle
 
@@ -50,7 +52,7 @@ drift or population migration, so detecting signals of selection in
 particular is no trivial task. 
 
 Wright first introduced the parameter $F_{st}$ as a measure comparing
-the variation of an allele in a subpopulation relative to the entire population
+the variation of an allele in a subpopulation to that of the entire population
 \cite{Fst}. Lewontin and Krakauer, using this parameter developed a
 novel statistical test based on the fact
 that under no selection, the variation of specific alleles over all
@@ -64,7 +66,7 @@ selection, where $F_{st} = Q_{st}$ is the null model, where no
 selection occurs. 
 
 Until recently, the study of detecting selection has been limited to
-large-effect alleles, when in fact many phenotypic traits of interest
+large-effect alleles, when in fact numerous phenotypic traits of interest
 are affected by many different loci across the genome. Understanding
 how to find signals of selection for such polygenic traits has been
 the subject of much study in recent years. Increased compuational
@@ -73,16 +75,16 @@ of many thousands of loci on a trait, allowing us to evaluate
 selection in highly polygenic traits, such as height. One of the most
 important tools developed are Genome-Wide Association Studies (GWAS)
 which determine which loci across the genome have significant effects
-on a certain polygenic trait. 
+on a certain polygenic trait \cite{gwasoverview}. 
 
 Berg introduces a comprehensive test statistic, called $Q_x$, to test
-for selection \cite{gwasintro}. This statistic depends on $F_{st}$ and
+for selection \cite{berg}. This statistic depends on $F_{st}$ and
 a generalized analogy to $Q_{st}$, expressed in terms of $\alpha$, or
 the effect size of each significant locus as determined by GWAS, and
 the allele frequencies $p$ over loci $l$ and $l'$, summed over
 populations $m$. $V_a$ is the additive genetic variance of the entire population.
 
-\begin{equation} \label{eqn:Qxraw}
+\begin{equation} \label{Qxraw}
   Q_X = \frac{1}{V_A F_{ST}} \sum_{m=1}^M \sum_{\ell=1}^L \sum_{\ell\prime=1}^L \alpha_{\ell} \alpha_{\ell^{\prime}}\left(p_{m\ell} - \overline{p}_\ell \right)\left(p_{m \ell\prime} - \overline{p}_{\ell\prime}\right)
 \end{equation}
 
@@ -96,35 +98,80 @@ deviating from $\frac{1}{2}$ of the homozygous effect size.
 
 \begin{equation}  
   \alpha_\ell = \frac{1}{2} A_\ell + D_\ell\left(1-2p_{1\ell}\right).
-  \label{avgeff}
+  \label{alpha}
 \end{equation}
 
 The use of $\alpha$ in this test statistic becomes problematic in the
 presence of directional dominance, when alleles with a postive effect
 size on the trait are systematically dominant and alleles with a
 negative effect size on the trait are systematically negative. In
-terms of \eqref{avgeff}, this means that the signs of A and D are the
+terms of \eqref{alpha}, this means that the signs of A and D are the
 same for a large number of loci.
 
 In the presence of directional dominance, we hypothesized a bias in
-tests for polygenic adaptation that depend on $\alpha$. Alleles which
+tests for polygenic adaptation that depends on $\alpha$. Alleles which
 are systematically dominant and which have recently increased in
 frequency (large p, positive D) will tend to have smaller effect sizes, while
 alleles which are recessive which have recently decreased in frequency
 (small p, negative D) will tend to have larger effect sizes. In the
 latter case, the test for polygenic selection advanced by Berg
-\eqref{eqn:Qxraw} will be apt to make false positive judgements for
+\eqref{Qxraw} will tend to make false positive judgements for
 selection, because the statistic will be calculated over alleles which
 do not actually increase the effect size.
 
 Height is one polygenic trait with many well-defined signficant
 alleles via GWAS \cite{heightselection}. It has also been shown to exhibit
-directional dominance \cite{heightdirectdom}. We aimed to quantify the
+directional dominance \cite{heightdirectdom}. We aim to quantify the
 hypothesized bias, first with simulated populations, then with height genotype data from the UK Biobank.
 
 
 
 \subsection*{Theory/Methods}
+
+Using the expression for the test statistic $Q_x$ \eqref{Qxraw}, we
+can substitute the expression for alph \eqref{alpha} and manipulate
+the expression algebraically to derive the following expansion for the
+test statistic, in terms of the homozygous effect (A)  and the dominance
+deviation (D):
+
+\begin{equation}
+  \begin{split}
+  \sum^L_{l=1}( \frac{1}{2}A_l(p_{1l}-\epsilon_l))^2+\sum^L_{l=1}\sum^L_{
+    l \neq l'}(\frac{1}{4}A_l(p_{1l}-\epsilon_{l})A_{l'}(p_{1l'}-\epsilon_{l'}))
+  \\
+  +\sum^L_{l=1}A_lD_l(1-2p_{1l})(p_{1l}-\epsilon_l)^2 +
+  \sum^L_{l=1}\sum^L_{l \neq
+    l'}(\frac{1}{2}A_lD_{l'}(1-2_{p1l'})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'}) \\
+  + \frac{1}{2}D_lA_{l'}(1-2_{p1l})(p_{1l}-\epsilon_l)(p_{1l'}-\epsilon_{l'})) \\
+   + \sum^L_{l=1} (D_l(1-2p_l)(p_{1l}-\epsilon_{1}))^2
+   + \sum^L_{l=1}\sum^L_{l \neq
+     l'}D_{l}(1-2p_{l})(p_{1l}-\epsilon_{1})D_{l'}(1-2p_{l'})(p_{1l'}-\epsilon_{l'}) \label{expansion}
+  \end{split}
+\end{equation}
+
+We can loosly consider the single summation terms to be variances
+corresponding to the expansion of additive effects multiplied by
+additive effects, additive times dominance, and dominance times
+dominance, and the double summation terms as covariances of these
+quantities. We expect the inflation of the test statistic due to
+dominance effects to come from the last two terms. Note that when
+dominance is not present ($D=0$) the expansion reduces to the
+expression Berg presents when $\alpha$ is treated as a constant
+\cite{berg}.
+
+Using this expansion, we have created simulations to characterize our
+hypothesized dominance bias. We used simulated populations
+under a couple of assumptions: first, that the values of the dominance
+deviations and homozygous effects are constant throughout the
+population. Second, that $F_{st}$ for these simulated approximations
+can be roughly estimated by the number of generations elapsed over the
+population size. Third, that the distribution of allele frequencies after
+one generation can be approximated by a normal distribution centered
+at the ancestral frequency with variance
+$F_{st}*\epsilon*(1-\epsilon)$ where $\epsilon$ is the ancestral
+frequency. (CITE THESE ASSUMPTIONS???)
+
+All simulations were performed in R. 
 
 \subsection*{Results}
 
