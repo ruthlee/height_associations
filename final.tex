@@ -39,6 +39,12 @@
 \subsection*{Abstract}
 
 \subsection*{Introduction}
+\jb{Quantifying genetic adaptation is one goal of population geneticists,
+  but there are certainly others. It's a little unclear what ``change in variation''
+  means. Perhaps it could be better to say something like
+  ``changes in the mean phenotype of a population...''.
+}
+
 It has long been known that diversity on Earth is in large part due to the
 adaptation of organisms to varying environments. We now know that
 adaptation has a large genetic basis, and that genetic variation is
@@ -50,6 +56,8 @@ selection within the genome is of particular interest. Change in
 variation over time can be attributed to many causes including genetic
 drift or population migration, so detecting signals of selection in
 particular is no trivial task. 
+
+\jb{I think this is too early for this paragraph. To start, I would switch this paragraph with the next one. You want to give big picture motivation sort of stuff before you get into any details. }
 
 Wright first introduced the parameter $F_{st}$ as a measure comparing
 the variation of an allele in a subpopulation to that of the entire population
@@ -65,6 +73,8 @@ $\frac{Q_{st}}{F_{st}}}$ as a test statistic for detecting signals of
 selection, where $F_{st} = Q_{st}$ is the null model, where no
 selection occurs. 
 
+
+
 Until recently, the study of detecting selection has been limited to
 large-effect alleles, when in fact numerous phenotypic traits of interest
 are affected by many different loci across the genome. Understanding
@@ -77,7 +87,9 @@ important tools developed are Genome-Wide Association Studies (GWAS)
 which determine which loci across the genome have significant effects
 on a certain polygenic trait \cite{gwasoverview}. 
 
-Berg introduces a comprehensive test statistic, called $Q_x$, to test
+\jb{this plunges into details really fast. I think here I would combine some of the content from the paragraph above about $F_{ST}$ and whatnot with what you have below for a more extended introduction of the basic ideas here. I have some more suggestions for how to do this that we can talk about on Tuesday.}
+
+Berg \jb{and Coop} introduces a comprehensive test statistic, called $Q_x$, to test
 for selection \cite{berg}. This statistic depends on $F_{st}$ and
 a generalized analogy to $Q_{st}$, expressed in terms of $\alpha$, or
 the effect size of each significant locus as determined by GWAS, and
@@ -87,6 +99,8 @@ populations $m$. $V_a$ is the additive genetic variance of the entire population
 \begin{equation} \label{Qxraw}
   Q_X = \frac{1}{V_A F_{ST}} \sum_{m=1}^M \sum_{\ell=1}^L \sum_{\ell\prime=1}^L \alpha_{\ell} \alpha_{\ell^{\prime}}\left(p_{m\ell} - \overline{p}_\ell \right)\left(p_{m \ell\prime} - \overline{p}_{\ell\prime}\right)
 \end{equation}
+
+\jb{This next bit feels a bit muddled. I think what you mean to say is that alpha is the effect size measured in GWAS, but it sounds like you're saying Qx is used to determine significance in GWAS. Also, I would also probably introduce the idea of dominance and it's relationship to alpha before I introduced Qx}
 
 The distribution of this statistic is expected to be chi-squared. We are particularly interested in the average effect of this
 statistic-- not only does GWAS use it to determine which alleles are deemed
@@ -104,9 +118,9 @@ deviating from $\frac{1}{2}$ of the homozygous effect size.
 The use of $\alpha$ in this test statistic becomes problematic in the
 presence of directional dominance, when alleles with a postive effect
 size on the trait are systematically dominant and alleles with a
-negative effect size on the trait are systematically negative. In
+negative effect size on the trait are systematically negative \jb{or vice versa}. In
 terms of \eqref{alpha}, this means that the signs of A and D are the
-same for a large number of loci.
+same for a large number of loci \jb{not necessarily the same, just correlated}.
 
 In the presence of directional dominance, we hypothesized a bias in
 tests for polygenic adaptation that depends on $\alpha$. Alleles which
@@ -114,11 +128,13 @@ are systematically dominant and which have recently increased in
 frequency (large p, positive D) will tend to have smaller effect sizes, while
 alleles which are recessive which have recently decreased in frequency
 (small p, negative D) will tend to have larger effect sizes. In the
-latter case, the test for polygenic selection advanced by Berg
+latter case, the test for polygenic selection advanced by Berg \jb{and Coop}
 \eqref{Qxraw} will tend to make false positive judgements for
 selection, because the statistic will be calculated over alleles which
 do not actually increase the effect size.
 
+
+\jb{Again, would move some of this info further up. Can give more suggestions on Tuesday.}
 Height is one polygenic trait with many well-defined signficant
 alleles via GWAS \cite{heightselection}. It has also been shown to exhibit
 directional dominance \cite{heightdirectdom}. We aim to quantify the
