@@ -22,7 +22,7 @@
 %\usepackage[superscript,biblabel]{cite}
 \usepackage{verbatim}
 \usepackage{graphicx}
-\graphicspath{ {images/} }
+\graphicspath{ {final_images/} }
 \usepackage{subfig}
 \usepackage{subcaption}
 
@@ -39,102 +39,130 @@
 \subsection*{Abstract}
 
 \subsection*{Introduction}
-\jb{Quantifying genetic adaptation is one goal of population geneticists,
-  but there are certainly others. It's a little unclear what ``change in variation''
-  means. Perhaps it could be better to say something like
-  ``changes in the mean phenotype of a population...''.
-}
 
 It has long been known that diversity on Earth is in large part due to the
 adaptation of organisms to varying environments. We now know that
 adaptation has a large genetic basis, and that genetic variation is
 the key to biological diversity. Thus, understanding how and why such
-genetic variation occurs is the ultimate goal of evolutionary
-biology. Quantifying genetic adaptation is the goal of population
+genetic variation occurs is a seminal goal of evolutionary
+biology. Quantifying genetic adaptation is an important aim of population
 geneticists, and to this end finding methods to detect signals of
-selection within the genome is of particular interest. Change in
-variation over time can be attributed to many causes including genetic
+selection within the genome is of particular interest. Change in the
+mean phenotype of a population over time can be attributed to many causes including genetic
 drift or population migration, so detecting signals of selection in
-particular is no trivial task. 
-
-\jb{I think this is too early for this paragraph. To start, I would switch this paragraph with the next one. You want to give big picture motivation sort of stuff before you get into any details. }
-
-Wright first introduced the parameter $F_{st}$ as a measure comparing
-the variation of an allele in a subpopulation to that of the entire population
-\cite{Fst}. Lewontin and Krakauer, using this parameter developed a
-novel statistical test based on the fact
-that under no selection, the variation of specific alleles over all
-subpopulations will not be different from that of the population
-$F_{st}$ \cite{firstseltest}. These conclusions were extended by Spitze, who coined the
-parameter $Q_{st}$ as a measure of how the phenotypic value of an
-allele in a subpopulation compares to that of the entire
-population \cite{Qst}. These early tests for selection utilized the ratio
-$\frac{Q_{st}}{F_{st}}}$ as a test statistic for detecting signals of
-selection, where $F_{st} = Q_{st}$ is the null model, where no
-selection occurs. 
-
-
+particular is no trivial task \jb{cite}. 
 
 Until recently, the study of detecting selection has been limited to
 large-effect alleles, when in fact numerous phenotypic traits of interest
 are affected by many different loci across the genome. Understanding
 how to find signals of selection for such polygenic traits has been
-the subject of much study in recent years. Increased compuational
-capabilities have given us to tools to be able to evaluate the effects
+the subject of much study in recent years. Increased computational
+capabilities have given us the tools to be able to evaluate the effects
 of many thousands of loci on a trait, allowing us to evaluate
 selection in highly polygenic traits, such as height. One of the most
 important tools developed are Genome-Wide Association Studies (GWAS)
 which determine which loci across the genome have significant effects
-on a certain polygenic trait \cite{gwasoverview}. 
+on a certain polygenic trait \cite{gwasoverview}. The effect sizes
+measured by GWAS for loci on a certain polygenic trait are often
+denoted $\alpha$.
 
-\jb{this plunges into details really fast. I think here I would combine some of the content from the paragraph above about $F_{ST}$ and whatnot with what you have below for a more extended introduction of the basic ideas here. I have some more suggestions for how to do this that we can talk about on Tuesday.}
+We can express the polygenic phenotype of individuals in a population
+as the weighted sum of genotypes with additive effect sizes
+$\alpha$. This generalizes to population means, where the mean
+population phenotype is the weighted sum of effect sizes and frequency
+of the allele ($p$) at each significant locus ($l$). \jb{cite--
+  Gillepsie? for additive model} 
 
-Berg \jb{and Coop} introduces a comprehensive test statistic, called $Q_x$, to test
-for selection \cite{berg}. This statistic depends on $F_{st}$ and
-a generalized analogy to $Q_{st}$, expressed in terms of $\alpha$, or
-the effect size of each significant locus as determined by GWAS, and
-the allele frequencies $p$ over loci $l$ and $l'$, summed over
-populations $m$. $V_a$ is the additive genetic variance of the entire population.
-
-\begin{equation} \label{Qxraw}
-  Q_X = \frac{1}{V_A F_{ST}} \sum_{m=1}^M \sum_{\ell=1}^L \sum_{\ell\prime=1}^L \alpha_{\ell} \alpha_{\ell^{\prime}}\left(p_{m\ell} - \overline{p}_\ell \right)\left(p_{m \ell\prime} - \overline{p}_{\ell\prime}\right)
+\begin{equation}
+  \sum_l{\alpha_lp_l}
 \end{equation}
 
-\jb{This next bit feels a bit muddled. I think what you mean to say is that alpha is the effect size measured in GWAS, but it sounds like you're saying Qx is used to determine significance in GWAS. Also, I would also probably introduce the idea of dominance and it's relationship to alpha before I introduced Qx}
+The additive effect size, then, is key to relating the genotypes of
+the many loci contributing to the phenotype of interest with the
+phenotype itself-- as shown below, it also plays a key role in statistical tests for
+polygenic adaptaion. Understanding how $\alpha$ can be
+affected by other factors is essential for ensuring that these
+statistical tests remain as unbiased as possible. 
 
-The distribution of this statistic is expected to be chi-squared. We are particularly interested in the average effect of this
-statistic-- not only does GWAS use it to determine which alleles are deemed
-significant to a trait, but it is also the weighting factor for loci in the
-expression for $Q_x$. The average effect size depends on the allele
-frequency, the homozygous effect size (A), or effect size of the most frequent homozygote, and the
+Dominance is one such phenomenon that we hypothesize has a non-trivial
+effect on $\alpha$. Dominance in population genetics refers to when the effect of one
+allele depends on the presence of another allele at the locus. We can account for
+the effect of dominance in the effect size by parametrizing $\alpha$
+in terms of the homozygous effect size (A), or effect size of the most frequent homozygote, and the
 dominance deviation (D), which is the difference in effect size for the heterozygote
-deviating from $\frac{1}{2}$ of the homozygous effect size.
+deviating from $\frac{1}{2}$ of the homozygous effect size \jb{cite Gillepsie?}:
 
 \begin{equation}  
   \alpha_\ell = \frac{1}{2} A_\ell + D_\ell\left(1-2p_{1\ell}\right).
   \label{alpha}
 \end{equation}
 
-The use of $\alpha$ in this test statistic becomes problematic in the
-presence of directional dominance, when alleles with a postive effect
+In particular, directional dominance is when alleles with a postive effect
 size on the trait are systematically dominant and alleles with a
-negative effect size on the trait are systematically negative \jb{or vice versa}. In
+negative effect size on the trait are systematically negative. In
 terms of \eqref{alpha}, this means that the signs of A and D are the
-same for a large number of loci \jb{not necessarily the same, just correlated}.
+correlated for a large number of loci. We hypothesized that
+directional dominance is problematic in tests of polygenic adaptation
+because the effect size we estimate in the presence of directional
+dominance depends on how the allele frequency $p$ has changed in the
+recent past. In particular, recessive alleles which have decreased in frequency
+in the recent past will tend to have larger effect sizes, as shown in
+Figure 1 in the supplement. Notice that when there is no dominance,
+$\alpha$ is constant, but in the presence of directional dominance
+(positive A and D) for alleles with lower frequency will have a higher
+effect size. 
+
+Given the hypothesized effect that directional dominance has on
+$\alpha$, we suspect that directional dominance will bias statistical
+tests of polygenic adaptation. We give a short overview of such tests
+below.  
+
+Wright first introduced the parameter $F_{st}$ as a measure comparing
+the genetic variation of an allele at a specific site in a subpopulation to that of the entire population
+\cite{Fst}. Lewontin and Krakauer, using this parameter developed a
+novel statistical test based on the fact
+that under no selection, the expected $F_{st}$ at a given site will be the same
+as the population $F_{st}$. Further, they concluded that the
+distribution of $F_{st}$ across all sites will be chi-squared
+$F_{st}$ \cite{firstseltest}. The natural conclusion is that sites
+with statistically different $F_{st}$ values are candidates for loci
+that have been acted upon by selection. These conclusions were extended by Spitze, who coined the
+parameter $Q_{st}$ as a measure of how the variation of all loci
+contributing to a phenotype of a subpopulation compares to that of the entire
+population \cite{Qst}. Essentially, $Q_{st}$ is analogous to $F_{st}$,
+except that instead of looking at the variation of one allele at a
+locus, it measures the ratio of the variation of all loci contributing to a
+phenotype within a subpopulation to that of the entire population. These early tests for selection utilized the ratio
+$\frac{Q_{st}}{F_{st}}}$ as a test statistic for detecting signals of
+selection, where $F_{st} = Q_{st}$ is the null model, where no
+selection occurs.
+
+Much later, Berg and Coop introduced a comprehensive test statistic,
+called $Q_x$, based on these central ideas to test
+for selection \cite{berg}. This statistic depends on $F_{st}$ and
+a generalized analogy to $Q_{st}$, expressed in terms of $\alpha$ and
+the allele frequencies $p$ over loci $l$ and $l'$, summed over
+populations $m$. $V_a$ is the additive genetic variance of the entire
+population, and $\overline{p}_l$ is the mean frequency.
+
+\begin{equation} \label{Qxraw}
+  Q_X = \frac{1}{V_A F_{ST}} \sum_{m=1}^M \sum_{\ell=1}^L \sum_{\ell\prime=1}^L \alpha_{\ell} \alpha_{\ell^{\prime}}\left(p_{m\ell} - \overline{p}_\ell \right)\left(p_{m \ell\prime} - \overline{p}_{\ell\prime}\right)
+\end{equation}
+
+
+The distribution of this statistic is expected to be chi-squared. Notice that the additive effect size $\alpha$ is the weighting factor for loci in the
+expression for $Q_x$. 
 
 In the presence of directional dominance, we hypothesized a bias in
-tests for polygenic adaptation that depends on $\alpha$. Alleles which
-are systematically dominant and which have recently increased in
+tests for polygenic adaptation that depends on $\alpha$. Alleles which are systematically dominant and which have recently increased in
 frequency (large p, positive D) will tend to have smaller effect sizes, while
 alleles which are recessive which have recently decreased in frequency
 (small p, negative D) will tend to have larger effect sizes. In the
-latter case, the test for polygenic selection advanced by Berg \jb{and Coop}
+latter case, the test for polygenic selection advanced by Berg and Coop
 \eqref{Qxraw} will tend to make false positive judgements for
 selection, because the statistic will be calculated over alleles which
 do not actually increase the effect size.
 
-
-\jb{Again, would move some of this info further up. Can give more suggestions on Tuesday.}
 Height is one polygenic trait with many well-defined signficant
 alleles via GWAS \cite{heightselection}. It has also been shown to exhibit
 directional dominance \cite{heightdirectdom}. We aim to quantify the
@@ -145,7 +173,7 @@ hypothesized bias, first with simulated populations, then with height genotype d
 \subsection*{Theory/Methods}
 
 Using the expression for the test statistic $Q_x$ \eqref{Qxraw}, we
-can substitute the expression for alph \eqref{alpha} and manipulate
+can substitute the expression for $\alpha$ \eqref{alpha} and manipulate
 the expression algebraically to derive the following expansion for the
 test statistic, in terms of the homozygous effect (A)  and the dominance
 deviation (D):
@@ -172,27 +200,47 @@ dominance, and the double summation terms as covariances of these
 quantities. We expect the inflation of the test statistic due to
 dominance effects to come from the last two terms. Note that when
 dominance is not present ($D=0$) the expansion reduces to the
-expression Berg presents when $\alpha$ is treated as a constant
+expression Berg and Coop present when $\alpha$ is treated as a constant
 \cite{berg}.
 
 Using this expansion, we have created simulations to characterize our
 hypothesized dominance bias. We used simulated populations
 under a couple of assumptions: first, that the values of the dominance
 deviations and homozygous effects are constant throughout the
-population. Second, that $F_{st}$ for these simulated approximations
+population. While this is not true in general, \jb{why is this
+  justified? cite??} Second, that $F_{st}$ for these simulated approximations
 can be roughly estimated by the number of generations elapsed over the
 population size. Third, that the distribution of allele frequencies after
 one generation can be approximated by a normal distribution centered
 at the ancestral frequency with variance
 $F_{st}*\epsilon*(1-\epsilon)$ where $\epsilon$ is the ancestral
-frequency. (CITE THESE ASSUMPTIONS???)
+frequency. \jb{CITE THESE ASSUMPTIONS???}
 
 All simulations were performed in R. 
 
-\subsection*{Results}
+\subsection*{Results/Discussion}
+Simulations of the expansion \eqref{expansion} were performed with
+population size $10000$ over 100 generations, starting at an ancestral
+frequency of 0.5, an homozygous effect size of 0.5, and a dominance
+deviation value of 0. The distribution of $Q_x$ was simulated under
+these conditions for 1000 replicates. The distribution was roughly
+chi-squared, as expected, with mean of 0.99 and variance of 2.2.  
 
-\subsection*{Discussion}
+\subsection*{Supplement}
+\begin{table}[ht]
+\centering
+\begin{tabular}{ p{8cm}p{8cm} }
+\includegraphics[width=90mm]{alpha} \caption*{Fig. 1: Effect sizes for various
+  dominance deviation values under directional dominance}
+  &\includegraphics[width=90mm]{Qxexpdist} \caption*{Fig. 2: $Q_x$
+    Expansion Distribution} \\
+\newline
+\includegraphics[width=90mm]{alpha}
+  &\includegraphics[width=90mm]{alpha}\\
+\end{tabular}
+\end{table}
 
+\pagebreak
 
 \bibliography{works_cited}
 \bibliographystyle{plain}
