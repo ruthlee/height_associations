@@ -24,7 +24,7 @@
 \usepackage{graphicx}
 \graphicspath{ {final_images/} }
 \usepackage{subfig}
-\usepackage{subcaption}
+%\usepackage{subcaption}
 
 \newcommand{\jb}[1]{{\color{blue} (#1)} }
 \begin{document}
@@ -32,7 +32,7 @@
 \title{\vspace{-2cm}
   Title here
 }
-\author{Kyelee Ruth Fitts, Jeremy Berg, Guy Amster, Guy Sella}
+\author{Kyelee Ruth Fitts}
 \maketitle
 
 
@@ -40,22 +40,21 @@
 
 \subsection*{Introduction}
 
-It has long been known that diversity on Earth is in large part due to the
-adaptation of organisms to varying environments. We now know that
-adaptation has a large genetic basis, and that genetic variation is
-the key to biological diversity. Thus, understanding how and why such
-genetic variation occurs is a seminal goal of evolutionary
+The diversity of life on Earth is due in large part to the
+adaptation of organisms to their varying environments. We now know that
+adaptation has a large genetic basis. Thus, understanding how and why such
+genetic variation occurs is a major goal of evolutionary
 biology. Quantifying genetic adaptation is an important aim of population
 geneticists, and to this end finding methods to detect signals of
 selection within the genome is of particular interest. Change in the
 mean phenotype of a population over time can be attributed to many causes including genetic
 drift or population migration, so detecting signals of selection in
-particular is no trivial task \jb{cite}. 
+particular is no trivial task.
 
-Until recently, the study of detecting selection has been limited to
+Until recently, the population genetic methods to detect recent adaptation have been limited to
 large-effect alleles, when in fact numerous phenotypic traits of interest
 are affected by many different loci across the genome. Understanding
-how to find signals of selection for such polygenic traits has been
+how to find signals of natural selection for such polygenic traits has been
 the subject of much study in recent years. Increased computational
 capabilities have given us the tools to be able to evaluate the effects
 of many thousands of loci on a trait, allowing us to evaluate
@@ -133,7 +132,7 @@ population \cite{Qst}. Essentially, $Q_{st}$ is analogous to $F_{st}$,
 except that instead of looking at the variation of one allele at a
 locus, it measures the ratio of the variation of all loci contributing to a
 phenotype within a subpopulation to that of the entire population. These early tests for selection utilized the ratio
-$\frac{Q_{st}}{F_{st}}}$ as a test statistic for detecting signals of
+$\frac{Q_{st}}{F_{st}}$ as a test statistic for detecting signals of
 selection, where $F_{st} = Q_{st}$ is the null model, where no
 selection occurs.
 
@@ -226,19 +225,20 @@ deviation value of 0. The distribution of $Q_x$ was simulated under
 these conditions for 1000 replicates. The distribution was roughly
 chi-squared, as expected, with mean of 0.99 and variance of 2.2.  
 
-\subsection*{Supplement}
-\begin{table}[ht]
-\centering
-\begin{tabular}{ p{8cm}p{8cm} }
-\includegraphics[width=90mm]{alpha} \caption*{Fig. 1: Effect sizes for various
-  dominance deviation values under directional dominance}
-  &\includegraphics[width=90mm]{Qxexpdist} \caption*{Fig. 2: $Q_x$
-    Expansion Distribution} \\
-\newline
-\includegraphics[width=90mm]{alpha}
-  &\includegraphics[width=90mm]{alpha}\\
-\end{tabular}
-\end{table}
+
+% \subsection*{Supplement}
+% \begin{table}[ht]
+% \centering
+% \begin{tabular}{ p{8cm}p{8cm} }
+% \includegraphics[width=90mm]{alpha} \caption*{Fig. 1: Effect sizes for various
+%   dominance deviation values under directional dominance}
+%   &\includegraphics[width=90mm]{Qxexpdist} \caption*{Fig. 2: $Q_x$
+%     Expansion Distribution} \\
+% \newline
+% \includegraphics[width=90mm]{alpha}
+%   &\includegraphics[width=90mm]{alpha}\\
+% \end{tabular}
+% \end{table}
 
 \pagebreak
 
