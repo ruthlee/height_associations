@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,12pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage[u  tf8]{inputenc}
 \usepackage{mathtools}
@@ -24,7 +24,9 @@
 \usepackage{graphicx}
 \graphicspath{ {final_images/} }
 \usepackage{subfig}
-%\usepackage{subcaption}
+% \usepackage{subcaption}
+\usepackage{geometry}
+\usepackage{dirtytalk}
 
 \newcommand{\jb}[1]{{\color{blue} (#1)} }
 \begin{document}
@@ -69,8 +71,7 @@ We can express the polygenic phenotype of individuals in a population
 as the weighted sum of genotypes with additive effect sizes
 $\alpha$. This generalizes to population means, where the mean
 population phenotype is the weighted sum of effect sizes and frequency
-of the allele ($p$) at each significant locus ($l$). \jb{cite--
-  Gillepsie? for additive model} 
+of the allele ($p$) at each significant locus ($l$). \cite{gillespie}
 
 \begin{equation}
   \sum_l{\alpha_lp_l}
@@ -89,7 +90,7 @@ allele depends on the presence of another allele at the locus. We can account fo
 the effect of dominance in the effect size by parametrizing $\alpha$
 in terms of the homozygous effect size (A), or effect size of the most frequent homozygote, and the
 dominance deviation (D), which is the difference in effect size for the heterozygote
-deviating from $\frac{1}{2}$ of the homozygous effect size \jb{cite Gillepsie?}:
+deviating from $\frac{1}{2}$ of the homozygous effect size \cite{gillespie}:
 
 \begin{equation}  
   \alpha_\ell = \frac{1}{2} A_\ell + D_\ell\left(1-2p_{1\ell}\right).
@@ -206,14 +207,17 @@ Using this expansion, we have created simulations to characterize our
 hypothesized dominance bias. We used simulated populations
 under a couple of assumptions: first, that the values of the dominance
 deviations and homozygous effects are constant throughout the
-population. While this is not true in general, \jb{why is this
-  justified? cite??} Second, that $F_{st}$ for these simulated approximations
+population. While this is not true in general, we suspect that the
+distributions of these parameters may be roughly normal
+\cite{normaldist}, and noise around the expected value of the
+parameter should not affect the distribution of the test statistic too
+much. Second, that $F_{st}$ for these simulated approximations
 can be roughly estimated by the number of generations elapsed over the
-population size. Third, that the distribution of allele frequencies after
+population size \jb{CITE}. Third, that the distribution of allele frequencies after
 one generation can be approximated by a normal distribution centered
 at the ancestral frequency with variance
 $F_{st}*\epsilon*(1-\epsilon)$ where $\epsilon$ is the ancestral
-frequency. \jb{CITE THESE ASSUMPTIONS???}
+frequency \cite{gillespie}.
 
 All simulations were performed in R. 
 
@@ -223,27 +227,145 @@ population size $10000$ over 100 generations, starting at an ancestral
 frequency of 0.5, an homozygous effect size of 0.5, and a dominance
 deviation value of 0. The distribution of $Q_x$ was simulated under
 these conditions for 1000 replicates. The distribution was roughly
-chi-squared, as expected, with mean of 0.99 and variance of 2.2.  
+chi-squared, as expected, with mean of 0.99 and variance of
+2.2. Adding directional dominance effects to simulation led to a shift of the
+distribution, as shown in Figure 3.
 
+To further explore this shift, we plotted the expected cumulative
+distribution function of the distribution of the test statistic over
+several different dominance deviation values. Figure 4 shows that with
+no dominance, the cdf of the statistic is very close to the expected
+cdf of a chi-squared distributed function (in red), with mean 1 and variance 2
+(as expected for a statistic taken over one population). For dominance
+deviations greater than 0 (Figure 5 shows the expected cdf of a
+statistic with dominance deviation of 0.5), the distribution is
+strongly shifted to the right. This observation is taken further in
+Figure 6, where we plot the proportion of the test statistic over the
+threshold of the statistic such that p = 0.05. For domiance deviation
+values of 0, this proportion is very close to zero. However, as
+dominance effects increase, there is a corresponding increase in the
+proportion of the statistic over this threshold. Notice that as the
+dominance deviation approaches 1 (complete dominance), almost all of
+the values of $Q_x$ are  over the expected threshold.
 
-% \subsection*{Supplement}
-% \begin{table}[ht]
-% \centering
-% \begin{tabular}{ p{8cm}p{8cm} }
-% \includegraphics[width=90mm]{alpha} \caption*{Fig. 1: Effect sizes for various
-%   dominance deviation values under directional dominance}
-%   &\includegraphics[width=90mm]{Qxexpdist} \caption*{Fig. 2: $Q_x$
-%     Expansion Distribution} \\
-% \newline
-% \includegraphics[width=90mm]{alpha}
-%   &\includegraphics[width=90mm]{alpha}\\
-% \end{tabular}
-% \end{table}
+Next, we were interested in seeing how the effect of dominance affects
+the average effect size over time. We simulated the frequency of an
+allele over 1000 generations under the Normal approximation to drift
+both without dominance (Figure 7) and with a dominance value of 0.2
+(Figure 8), replicating this simulation 10000 times, representing 10000
+simulated populations. The red line shows the average allele frequency
+over time. As expected for no dominance the average allele frequency
+stays at 0.5, or the ancestral allele frequency, because alleles
+are equally likely to be fixed or lost among many populations in this
+case. Interestingly, for a dominance deviation of 0.2, the average allele
+frequency also appears to stay very close to the ancestral frequency,
+indicating that for this low of a dominance deviation it is difficult
+to qualitatively distinguish between the proportion of populations
+that fix the allele and the proportion of populations for which the
+allele is lost.
+
+However, by plotting the genetic value (allele frequency multiplied by
+average effect size) of a simulated allele over time, we expect to see
+that dominance will have a nontrivial effect on the trajectory of the
+average genetic value. This is because while there is still on average
+an even split between populations that fix the allele and populations
+that lose it, the multiplication of the average effect will have the
+effect of \say{stretching} the genetic value of alleles that have
+recently increased in frequency in the case of negative dominance
+deviations (Figure 10) or decreased in frequency in the case of
+positive dominance deviations (Figure 11), with a corresponding
+shrinkage in the opposite direction. Indeed, we see that the
+average genetic value (red line). Figure 9 shows the genetic value
+over time of populations with no dominance, which as expected, with no
+stretching or shrinking of the genetic value in either direction.
+
+This last plot is particularly interesting because it shows that in
+the presence of directional dominance, the stretching and shrinking
+effect of $\alpha$ has the potential to skew the genetic value of the
+allele in question, meaning not only that GWAS is more likely to
+choose these alleles as significant for selection, but also that when
+these alleles are used in the test statistic $Q_x$, their contribution
+will be inflated or deflated, because the average effect is what
+weighs alleles in the statistic.
+
+Finally, in order to look for the effects of directional dominance on
+the average effect size in alpha, we wanted to show that height is one
+polygenic trait that shows signals of directional dominance. To this
+end, taking GWAS data from the UK Biobank, we created a qq plot of the
+dominance deviation p-values, choosing SNPs that were 
+most significant ($p <= 10^{-8}$) p-values for the average effect size
+over all chromosomes. Figure 12 shows that the p-values are skewed--
+in otherwords, we see that for a large number of significant sites,
+the dominance deviation p-values are not distributed as we would
+expect, indicated that height shows signals of directional dominance.
+
+\subsection*{Conclusion}
+These simulated results and the preliminary UKBiobank verification of
+directional dominance in height suggest that, as hypothesized, the
+effect of directional dominance on the average effect size is
+nontrivial and in fact could result in false positives or negatives in
+the statistical tests for polygenic adaptation. Although we have no
+reason to suspect this effect is very large, as dominance
+itself does not an particularly large effect on polygenic traits in
+general, quantifying this effect in height could open many potential
+avenues of research in understanding how tests for polygenic
+adaptation could be biased.
+
+Next steps for this project in particular are delving into the
+UKBiobank data in earnest, performing an in-house GWAS and
+substracting dominance deviation and homozygous effect size data from
+alleles that show signs of directional dominance. 
+
 
 \pagebreak
-
 \bibliography{works_cited}
 \bibliographystyle{plain}
+
+
+\newgeometry{left=0.5in, right=0.5in, bottom=0.2in, top=0.5in}
+\begin{table}[ht]
+\caption*{Supplement}
+\centering
+\begin{tabular}{ p{9cm}p{9cm} }
+\includegraphics[width=80mm]{alpha} \caption*{Fig. 1: Effect sizes for various
+   dominance deviation values under directional dominance}
+   &\includegraphics[width=80mm]{Qxexpdist} \caption*{Fig. 2: $Q_x$
+     Expansion Distribution} \\
+ \newline
+ \includegraphics[width=80mm]{Qxdomdev}\caption*{Fig. 3: $Q_x$
+  Distribution with dominance}
+   &\includegraphics[width=80mm]{cdf0}\caption*{Fig. 4: Expected CDF
+     of $Q_x$ with dominance = 0}\\
+ \newline
+ \includegraphics[width=80mm]{cdf05}\caption*{Fig. 5: $Q_x$
+  Distribution with dominance = 0.5}
+   &\includegraphics[width=80mm]{propover}\caption*{Fig. 6: Proportion
+     of $Q_x$ over expected value for p = 0.5}\\
+ \end{tabular}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{ p{9cm}p{9cm} }
+ \includegraphics[width=80mm]{allelefreq0}\caption*{Fig. 7: Allele frequency over
+  time for dominance = 0}
+   &\includegraphics[width=80mm]{allelefreq02}\caption*{Fig. 8: Allele frequency over
+  time for dominance = 0.2}\\
+   \newline
+ \includegraphics[width=80mm]{genval0}\caption*{Fig. 9: Genetic value
+  over time for dominance = 0}
+   &\includegraphics[width=80mm]{genval-02}\caption*{Fig. 10: Genetic value
+     over time for dominance = -0.2}\\
+   \newline
+ \includegraphics[width=80mm]{genval02}\caption*{Fig. 11: Genetic value
+  over time for dominance = 0.2}
+   &\includegraphics[width=80mm]{qqplot}\caption*{Fig. 12: Height
+     Domiance Deviation p-value qqplot}
+ \end{tabular}
+ \end{table}
+
+
+
 
 
 
