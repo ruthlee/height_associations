@@ -32,13 +32,31 @@
 \begin{document}
 
 \title{\vspace{-2cm}
-  Title here
+  The Effect of Directional Dominance on Additive Effect Sizes
 }
 \author{Kyelee Ruth Fitts}
 \maketitle
 
 
 \subsection*{Abstract}
+The averge effect size $\alpha$ is the estimated effect size for an
+allele for a polygenic trait. These effect sizes are estimated using
+Genome-Wide Association Studies, and we can estimate signals of natural
+selection for polygenic traits by weighting by $\alpha$ in statistical
+tests for polygenic adaptation. However, in the presence of
+directional dominance, we hypothesized that such statistical tests
+could be biased. For example, alleles which are systematically
+dominant and have increased in frequency in the recent past will have
+deflated average effect sizes, and vice versa. Simulations of the test
+statistic $Q_x$ used to detect polygenic adaptation, expanded to
+account for dominance effects, show that the effect that directional
+dominance has on the statistic is to shift the distribution to the
+right. Furthermore, directional dominance causes $\alpha$ to
+systematically stretch or shrink genetic value over generations,
+further pointing to inflations of deflations of $\alpha$ in accordance
+with directional dominance. Preliminary investigations of the UK
+Biobank data for height show that dominance effects is present.
+
 
 \subsection*{Introduction}
 
@@ -213,7 +231,7 @@ distributions of these parameters may be roughly normal
 parameter should not affect the distribution of the test statistic too
 much. Second, that $F_{st}$ for these simulated approximations
 can be roughly estimated by the number of generations elapsed over the
-population size \jb{CITE}. Third, that the distribution of allele frequencies after
+population size \cite{Fstest}. Third, that the distribution of allele frequencies after
 one generation can be approximated by a normal distribution centered
 at the ancestral frequency with variance
 $F_{st}*\epsilon*(1-\epsilon)$ where $\epsilon$ is the ancestral
@@ -297,7 +315,7 @@ most significant ($p <= 10^{-8}$) p-values for the average effect size
 over all chromosomes. Figure 12 shows that the p-values are skewed--
 in otherwords, we see that for a large number of significant sites,
 the dominance deviation p-values are not distributed as we would
-expect, indicated that height shows signals of directional dominance.
+expect, indicating that there are signs of dominance in height. 
 
 \subsection*{Conclusion}
 These simulated results and the preliminary UKBiobank verification of
@@ -314,7 +332,13 @@ adaptation could be biased.
 Next steps for this project in particular are delving into the
 UKBiobank data in earnest, performing an in-house GWAS and
 substracting dominance deviation and homozygous effect size data from
-alleles that show signs of directional dominance. 
+alleles that show signs of directional dominance.
+
+\subsection*{Acknowledgements}
+Thank you to Jeremy Berg, my mentor in the Sella Lab, as well as to
+Guy Amster, who initially proposed this project, and Guy Sella, my
+PI. Thank you also to Hakhamanesh Mostafavi for providing GWAS data
+for the preliminary analysis of the UK Biobank data. 
 
 
 \pagebreak
@@ -359,7 +383,7 @@ alleles that show signs of directional dominance.
    \newline
  \includegraphics[width=80mm]{genval02}\caption*{Fig. 11: Genetic value
   over time for dominance = 0.2}
-   &\includegraphics[width=80mm]{qqplot}\caption*{Fig. 12: Height
+   &\includegraphics[width=70mm]{qqplot}\caption*{Fig. 12: Height
      Domiance Deviation p-value qqplot}
  \end{tabular}
  \end{table}
