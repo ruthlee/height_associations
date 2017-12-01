@@ -117,17 +117,23 @@ deviating from $\frac{1}{2}$ of the homozygous effect size \cite{gillespie}:
 
 In particular, directional dominance is when alleles with a postive effect
 size on the trait are systematically dominant and alleles with a
-negative effect size on the trait are systematically negative. In
-terms of \eqref{alpha}, this means that the signs of A and D are the
-correlated for a large number of loci. We hypothesized that
-directional dominance is problematic in tests of polygenic adaptation
+negative effect size on the trait are systematically recessive or vice
+versa (e.g., dominant alleles have a negative effect or recessive have
+a positive effect). In terms of \eqref{alpha}, this means that the
+average D over all loci is different from zero. Specifically, while
+many alleles contributing to a trait will have nonzero dominance
+deviations, on expectation these will be zero. However, directional
+dominance occurs when the dominance deviations over many alleles is on
+expectation nonzero.
+
+We hypothesized that directional dominance is problematic in tests of polygenic adaptation
 because the effect size we estimate in the presence of directional
 dominance depends on how the allele frequency $p$ has changed in the
 recent past. In particular, recessive alleles which have decreased in frequency
 in the recent past will tend to have larger effect sizes, as shown in
 Figure 1 in the supplement. Notice that when there is no dominance,
 $\alpha$ is constant, but in the presence of directional dominance
-(positive A and D) for alleles with lower frequency will have a higher
+(average $D!=0$) for alleles with lower frequency will have a higher
 effect size. 
 
 Given the hypothesized effect that directional dominance has on
@@ -172,10 +178,10 @@ The distribution of this statistic is expected to be chi-squared. Notice that th
 expression for $Q_x$. 
 
 In the presence of directional dominance, we hypothesized a bias in
-tests for polygenic adaptation that depends on $\alpha$. Alleles which are systematically dominant and which have recently increased in
-frequency (large p, positive D) will tend to have smaller effect sizes, while
-alleles which are recessive which have recently decreased in frequency
-(small p, negative D) will tend to have larger effect sizes. In the
+tests for polygenic adaptation that depends on $\alpha$. Alleles which are dominant and which have recently increased in
+frequency (large p, positive D, for positive A) will tend to have smaller effect sizes, while
+alleles which are dominant which have recently decreased in frequency
+(small p, negative D, for positive A) will tend to have larger effect sizes. In the
 latter case, the test for polygenic selection advanced by Berg and Coop
 \eqref{Qxraw} will tend to make false positive judgements for
 selection, because the statistic will be calculated over alleles which
@@ -315,7 +321,7 @@ most significant ($p <= 10^{-8}$) p-values for the average effect size
 over all chromosomes. Figure 12 shows that the p-values are skewed--
 in otherwords, we see that for a large number of significant sites,
 the dominance deviation p-values are not distributed as we would
-expect, indicating that there are signs of dominance in height. 
+expect, indicating that there are signs of dominance in height.
 
 \subsection*{Conclusion}
 These simulated results and the preliminary UKBiobank verification of
@@ -336,7 +342,7 @@ alleles that show signs of directional dominance.
 
 \subsection*{Acknowledgements}
 Thank you to Jeremy Berg, my mentor in the Sella Lab, as well as to
-Guy Amster, who initially proposed this project, and Guy Sella, my
+Yuval Simons, who initially proposed this project, and Guy Sella, my
 PI. Thank you also to Hakhamanesh Mostafavi for providing GWAS data
 for the preliminary analysis of the UK Biobank data. 
 
