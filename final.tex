@@ -36,7 +36,7 @@
 }
 \author{\normalsize{Kyelee Fitts, Jeremy Berg, Yuval Simons, Guy
     Sella \\
-  \small{Systems Biology Department}}}
+  \small{Systems Biology Department, Columbia University}}}
 \date{\normalsize{\today}}
 \maketitle
 
@@ -92,12 +92,35 @@ particular is no trivial task.
 Until recently, the population genetic methods to detect recent adaptation have been limited to
 large-effect alleles by finding individual loci with significant
 allele frequency changes in the recent past-- this is an indication of
-strong, recent national selection. However, many phenotypes of interest
-are affected by many different loci across the genome. These are known
-as polygenic traits. When natural selection occurs with polygenic
+strong, recent national selection. Tests for this kind of selection
+began with the creation of the parameter $F_{st}$ by Wright, who
+defined it as a measure comparing
+the genetic variation of an allele at a specific site in a subpopulation to that of the entire population
+\cite{Fst}. Lewontin and Krakauer, using this parameter developed a
+novel statistical test based on the fact
+that under no selection, the expected $F_{st}$ at a given site will be the same
+as the population $F_{st}$. Further, they concluded that the
+distribution of $F_{st}$ across all sites will be chi-squared
+$F_{st}$ \cite{firstseltest}. The natural conclusion is that sites
+with statistically different $F_{st}$ values are candidates for loci
+that have been acted upon by selection. These conclusions were extended by Spitze, who coined the
+parameter $Q_{st}$ as a measure of how the variation of all loci
+contributing to a phenotype of a subpopulation compares to that of the entire
+population \cite{Qst}. Essentially, $Q_{st}$ is analogous to $F_{st}$,
+except that instead of looking at the variation of one allele at a
+locus, it measures the ratio of the variation of all loci contributing to a
+phenotype within a subpopulation to that of the entire population. These early tests for selection utilized the ratio
+$\frac{Q_{st}}{F_{st}}$ as a test statistic for detecting signals of
+selection, where $F_{st} = Q_{st}$ is the null model, where no
+selection occurs.
+
+
+However, there are many phenotypes of interest are affected by a
+plethora of loci across the genome-- these are known as polygenic traits-- that are not subject to analysis by the methods
+above. When natural selection occurs with polygenic
 traits, the signal of selection get spread out over many loci, such
 that no individual loci displays large frequency changes against the
-background of genetic drift.  Understanding
+background of genetic drift. Understanding
 how to find signals of natural selection for such polygenic traits has been
 the subject of much study in recent years.
 
@@ -219,43 +242,8 @@ $\alpha$ is constant, but in the presence of directional dominance
 (average $D\neq0$) for alleles with lower frequency will have a higher
 effect size. 
 
-Given the hypothesized effect that directional dominance has on
-$\alpha$, we suspect that directional dominance will bias statistical
-tests of polygenic adaptation. We give a short overview of some
-central ideas in tests for selection below before introducing the test
-statistic for detecting polygenic adaptation.
-
-
-\begin{comment}so I think you're using the following to sort of
-  outline the basic idea of the tests. I'm not sure if this extended
-  history/background about $F_{ST}$ and $Q_{ST}$ is totally
-  necessary. It's all accurate, but it not clear that it really helps
-  inform the reader about what's coming below.
-\end{comment}
-
-Wright first introduced the parameter $F_{st}$ as a measure comparing
-the genetic variation of an allele at a specific site in a subpopulation to that of the entire population
-\cite{Fst}. Lewontin and Krakauer, using this parameter developed a
-novel statistical test based on the fact
-that under no selection, the expected $F_{st}$ at a given site will be the same
-as the population $F_{st}$. Further, they concluded that the
-distribution of $F_{st}$ across all sites will be chi-squared
-$F_{st}$ \cite{firstseltest}. The natural conclusion is that sites
-with statistically different $F_{st}$ values are candidates for loci
-that have been acted upon by selection. These conclusions were extended by Spitze, who coined the
-parameter $Q_{st}$ as a measure of how the variation of all loci
-contributing to a phenotype of a subpopulation compares to that of the entire
-population \cite{Qst}. Essentially, $Q_{st}$ is analogous to $F_{st}$,
-except that instead of looking at the variation of one allele at a
-locus, it measures the ratio of the variation of all loci contributing to a
-phenotype within a subpopulation to that of the entire population. These early tests for selection utilized the ratio
-$\frac{Q_{st}}{F_{st}}$ as a test statistic for detecting signals of
-selection, where $F_{st} = Q_{st}$ is the null model, where no
-selection occurs.
-
-Much later, based on these central ideas as well as Turchin's test \cite{heightselection} to test
-for selection in polygenic traits, Berg and Coop introduced a comprehensive test statistic,
-called $Q_x$, to test for selection in polygenic traits \cite{berg}. This statistic depends on $F_{st}$ and
+The particular test statistic $Q_x$ analyzed here to evaluate this
+hypothesis was introduced by Berg and Coop \cite{berg}. This statistic depends on $F_{st}$ and
 a generalized analogy to $Q_{st}$, expressed in terms of $\alpha$ and
 the allele frequencies $p$ over loci $l$ and $l'$, summed over
 populations $m$. $V_a$ is the additive genetic variance of the entire
