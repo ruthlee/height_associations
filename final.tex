@@ -55,7 +55,8 @@ right. Furthermore, directional dominance causes $\alpha$ to
 systematically stretch or shrink genetic value over generations,
 further pointing to inflations of deflations of $\alpha$ in accordance
 with directional dominance. Preliminary investigations of the UK
-Biobank data for height show that dominance effects is present.
+Biobank data for height show that height displays both polygenic
+adaptation and directional dominance.
 
 
 \subsection*{Introduction}
@@ -71,7 +72,7 @@ mean phenotype of a population over time can be attributed to many causes includ
 drift or gene flow, so detecting signals of selection in
 particular is no trivial task.
 
-\jb{
+\begin{comment}
   So I might frame this next paragraph differently. I might suggest a bit more expanded intro,
   and then a slightly different tack after that. Something like:
 
@@ -82,25 +83,55 @@ particular is no trivial task.
   to selection gets spread out among many loci, such that no individual allele will look unusual
   against the background of genetic drift. Our understanding of the genetic basis of adaptation
   may therefore be substantially biased toward large effect alleles....
-  
-  
-}
+\end{comment}
 
 Until recently, the population genetic methods to detect recent adaptation have been limited to
-large-effect alleles, when in fact many phenotypes of interest
-are affected by many different loci across the genome. Understanding
+large-effect alleles by finding individual loci with significant
+allele frequency changes in the recent past-- this is an indication of
+strong, recent national selection. However, many phenotypes of interest
+are affected by many different loci across the genome. These are known
+as polygenic traits. When natural selection occurs with polygenic
+traits, the signals of selection get spread out over many loci, such
+that no individual loci displays large frequency changes against the
+background of genetic drift.  Understanding
 how to find signals of natural selection for such polygenic traits has been
-the subject of much study in recent years. Increased computational
-capabilities have given us the tools to be able to evaluate the effects
+the subject of much study in recent years.
+
+Increased computational capabilities have given us the tools to be able to evaluate the effects
 of many thousands of loci on a trait, allowing us to evaluate
 selection in highly polygenic traits, such as height. One of the most
 important tools developed are Genome-Wide Association Studies (GWAS)
 which determine which loci across the genome have significant effects
-on a certain polygenic trait \cite{gwasoverview}. The effect sizes
-measured by GWAS for loci on a certain polygenic trait are often
-denoted $\alpha$.
+on a certain polygenic trait \cite{gwasoverview} and what the average
+effect sizes of those loci are. GWAS works by
+estimating a linear regression based on the following model \cite{gwas}:
 
-\jb{
+  \begin{align}
+    \vec{Y} = \mu + \alpha \vec{g} + \vec{\epsilon}
+  \end{align}
+
+Where $\vec{Y}$ is a vector of the measurements of the phenotype of
+interest over a population of genetically unrelated individuals,
+$\vec{g}$ is a vector of the genotypes of each individual, $\mu$ is
+the mean phenotype in the sample, and $\alpha$ is the average
+effect in the sample of switching the allele with the
+other allele at the given locus. $\vec{\epsilon}$ is the vector of
+error terms for each individual. GWAS performs a linear regression
+using this model, where under the null model (that the
+allele does not contribute to polygenic selection and is only subject
+to drift) $\alpha = 0$. 
+
+Turchin et al. \cite{heightselection} were the first to show how this
+GWAS data could be used to detect signals of selection in polygenic
+traits. The idea is to look for coordinated shifts in frequency over
+many different loci associated with a polygenic trait to find
+statistically significant changes in allele frequency that are
+unlikely to have been caused by drift alone. These tests depend on the
+fact that under drift (the null hypothesis), the effect sizes $\alpha$
+and the allele frequencies of the alleles are independent. However, we hypothesize that this assumption is violated
+under certain conditions, namely directional dominance. 
+
+\begin{comment}
   Recent work has relied on genome-wide association studies (GWAS) as a way past this obstacle.
   The aim of GWAS is to identify individual sites that are responsible for contributing to genetic
   variation in a polygenic phenotype. This is done by performing the linear regression
@@ -130,8 +161,9 @@ denoted $\alpha$.
   independence of $\alpha$ and the recent direction of allele frequency change no longer hold. At that point
   the project is pretty well motivated, and you can move on to theory/methods.)
   
-}
+\end{comment}
 
+\begin{comment}
 We can express the polygenic phenotype of individuals in a population
 as the weighted sum of genotypes with additive effect sizes
 $\alpha$. This generalizes to population means, where the mean
@@ -147,10 +179,10 @@ the many loci contributing to the phenotype of interest with the
 phenotype itself-- as shown below, it also plays a key role in statistical tests for
 polygenic adaptaion. Understanding how $\alpha$ can be
 affected by other factors is essential for ensuring that these
-statistical tests remain as unbiased as possible. 
+statistical tests remain as unbiased as possible.
+\end{comment}
 
-Dominance is one such phenomenon that we hypothesize has a non-trivial
-effect on $\alpha$. Dominance in population genetics refers to when the effect of one
+Dominance in population genetics refers to when the effect of one
 allele depends on the presence of another allele at the locus. We can account for
 the effect of dominance in the effect size by parametrizing $\alpha$
 in terms of the homozygous effect size (A), or effect size of the most frequent homozygote, and the
@@ -180,16 +212,23 @@ recent past. In particular, recessive alleles which have decreased in frequency
 in the recent past will tend to have larger effect sizes, as shown in
 Figure 1 in the supplement. Notice that when there is no dominance,
 $\alpha$ is constant, but in the presence of directional dominance
-(average $D!=0$) for alleles with lower frequency will have a higher
+(average $D\neq0$) for alleles with lower frequency will have a higher
 effect size. 
 
 Given the hypothesized effect that directional dominance has on
 $\alpha$, we suspect that directional dominance will bias statistical
-tests of polygenic adaptation. We give a short overview of such tests
-below.  
+tests of polygenic adaptation. We give a short overview of some
+central ideas in tests for selection below before introducing the test
+statistic for detecting polygenic adaptation.
 
 
-\jb{so I think you're using the following to sort of outline the basic idea of the tests. I'm not sure if this extended history/background about $F_{ST}$ and $Q_{ST}$ is totally necessary. It's all accurate, but it not clear that it really helps inform the reader about what's coming below.}
+\begin{comment}so I think you're using the following to sort of
+  outline the basic idea of the tests. I'm not sure if this extended
+  history/background about $F_{ST}$ and $Q_{ST}$ is totally
+  necessary. It's all accurate, but it not clear that it really helps
+  inform the reader about what's coming below.
+\end{comment}
+
 Wright first introduced the parameter $F_{st}$ as a measure comparing
 the genetic variation of an allele at a specific site in a subpopulation to that of the entire population
 \cite{Fst}. Lewontin and Krakauer, using this parameter developed a
@@ -210,9 +249,9 @@ $\frac{Q_{st}}{F_{st}}$ as a test statistic for detecting signals of
 selection, where $F_{st} = Q_{st}$ is the null model, where no
 selection occurs.
 
-Much later, Berg and Coop introduced a comprehensive test statistic,
-called $Q_x$, based on these central ideas to test
-for selection \cite{berg}. This statistic depends on $F_{st}$ and
+Much later, based on these central ideas as well as Turchin's test \cite{heightselection} to test
+for selection in polygenic traits, Berg and Coop introduced a comprehensive test statistic,
+called $Q_x$, to test for selection in polygenic traits \cite{berg}. This statistic depends on $F_{st}$ and
 a generalized analogy to $Q_{st}$, expressed in terms of $\alpha$ and
 the allele frequencies $p$ over loci $l$ and $l'$, summed over
 populations $m$. $V_a$ is the additive genetic variance of the entire
@@ -227,7 +266,7 @@ The distribution of this statistic is expected to be chi-squared. Notice that th
 expression for $Q_x$. 
 
 In the presence of directional dominance, we hypothesized a bias in
-tests for polygenic adaptation that depends on $\alpha$. Alleles which are dominant and which have recently increased in
+tests for polygenic adaptation that depends on $\alpha$. For example, alleles which are dominant and which have recently increased in
 frequency (large p, positive D, for positive A) will tend to have smaller effect sizes, while
 alleles which are dominant which have recently decreased in frequency
 (small p, negative D, for positive A) will tend to have larger effect sizes. In the
@@ -237,16 +276,19 @@ selection, because the statistic will be calculated over alleles which
 do not actually increase the effect size.
 
 
-\jb{
+\begin{comment}
   it's not just that height has many significantly associated alleles, but that it
   shows evidence of polygenic adaptation. The fact that it exhibits evidence for both polygenic adaptation
   and directional dominance is what's potentially worrying. Making sure you drive that home right at the end of
   the intro is key I think, because then you will have given your reader all the theory/conceptual tools to
   understand the scenario in which a problem may exist, and then cited data to convince them that a problem indeed DOES exist.
-}
+\end{comment}
 Height is one polygenic trait with many well-defined signficant
-alleles via GWAS \cite{heightselection}. It has also been shown to exhibit
-directional dominance \cite{heightdirectdom}. We aim to quantify the
+alleles via GWAS \cite{heightselection} that also shows evidence of polygenic selection. It has also been shown to exhibit
+directional dominance \cite{heightdirectdom}. In otherwords, we
+suspect that the non-independence between allele frequency and effect
+size caused by directional dominance will cause tests of polygenic
+adaptation to over or underestimate signals of polygenic selection. We aim to quantify the
 hypothesized bias, first with simulated populations, then with height genotype data from the UK Biobank.
 
 
@@ -290,10 +332,10 @@ Using this expansion, we have created simulations to characterize our
 hypothesized dominance bias. We used simulated populations
 under a couple of assumptions: first, that the values of the dominance
 deviations and homozygous effects are constant throughout the
-population. \jb{I'm not sure I understand what you're trying to say in this next sentence here:} While this is not true in general, we suspect that the
-distributions of these parameters may be roughly normal
-\cite{normaldist}, and noise around the expected value of the
-parameter should not affect the distribution of the test statistic too
+population. While this is not true in general, we expect that the
+distributions of these parameters are roughly normal
+\cite{normaldist}, and noise around the expected values of the
+dominance deviations or homozygous effects should not affect the distribution of the test statistic too
 much. Second, that $F_{st}$ for these simulated approximations
 can be roughly estimated by the number of generations elapsed over the
 population size \cite{Fstest}. Third, that the distribution of allele frequencies after
@@ -308,15 +350,12 @@ All simulations were performed in R.
 Simulations of the expansion \eqref{expansion} were performed with
 population size $10000$ over 100 generations, starting at an ancestral
 frequency of 0.5, an homozygous effect size of 0.5, and a dominance
-deviation value of 0. The distribution of $Q_x$ was simulated under
+deviation value of 0 (Figure 2). The distribution of $Q_x$ was simulated under
 these conditions for 1000 replicates. The distribution was roughly
 chi-squared, as expected, with mean of 0.99 and variance of
 2.2. Adding directional dominance effects to simulation led to a shift of the
 distribution, as shown in Figure 3.
 
-
-\jb{when you talk here about the ``proportion of the test statistic over the
-threshold such that p = 0.05'' what you are describing is the ``false positive rate''}
 To further explore this shift, we plotted the expected cumulative
 distribution function of the distribution of the test statistic over
 several different dominance deviation values. Figure 4 shows that with
@@ -327,8 +366,10 @@ deviations greater than 0 (Figure 5 shows the expected cdf of a
 statistic with dominance deviation of 0.5), the distribution is
 strongly shifted to the right. This observation is taken further in
 Figure 6, where we plot the proportion of the test statistic over the
-threshold of the statistic such that p = 0.05. For domiance deviation
-values of 0, this proportion is very close to zero. \jb{<- Presumably it should be about 0.05, right?} However, as
+threshold of the statistic such that p = 0.05. In otherwords, we plot the
+proportion of false positives for the test statistic in the presence
+of directional dominance. For dominance deviation
+values of 0, this proportion is very close to 0.05. However, as
 dominance effects increase, there is a corresponding increase in the
 proportion of the statistic over this threshold. Notice that as the
 dominance deviation approaches 1 (complete dominance), almost all of
@@ -385,6 +426,16 @@ in otherwords, we see that for a large number of significant sites,
 the dominance deviation p-values are not distributed as we would
 expect, indicating that there are signs of dominance in height.
 
+Furthermore, we verified that height shows signals of directional
+dominance in particular by bootstrapping the dominance deviation
+values to see if on average they are nonzero across all
+significant loci (Figure 13). We chose alleles with average effect size p-value
+$<= 10^{-8}$ and used sampled the most significant alleles within
+blocks of approximately independent alleles in the genome (to account
+for linkage effects). With 10000 replicates, we found a mean of
+$7.9*10^{-4}$, which suggests that dominance deviations are at least
+slightly nonzero and the height displays directional dominance.  
+
 \subsection*{Conclusion}
 These simulated results and the preliminary UKBiobank verification of
 directional dominance in height suggest that, as hypothesized, the
@@ -414,47 +465,55 @@ for the preliminary analysis of the UK Biobank data.
 \bibliographystyle{plain}
 
 
-% \newgeometry{left=0.5in, right=0.5in, bottom=0.2in, top=0.5in}
-% \begin{table}[ht]
-% \caption*{Supplement}
-% \centering
-% \begin{tabular}{ p{9cm}p{9cm} }
-% \includegraphics[width=80mm]{alpha} \caption*{Fig. 1: Effect sizes for various
-%    dominance deviation values under directional dominance}
-%    &\includegraphics[width=80mm]{Qxexpdist} \caption*{Fig. 2: $Q_x$
-%      Expansion Distribution} \\
-%  \newline
-%  \includegraphics[width=80mm]{Qxdomdev}\caption*{Fig. 3: $Q_x$
-%   Distribution with dominance}
-%    &\includegraphics[width=80mm]{cdf0}\caption*{Fig. 4: Expected CDF
-%      of $Q_x$ with dominance = 0}\\
-%  \newline
-%  \includegraphics[width=80mm]{cdf05}\caption*{Fig. 5: $Q_x$
-%   Distribution with dominance = 0.5}
-%    &\includegraphics[width=80mm]{propover}\caption*{Fig. 6: Proportion
-%      of $Q_x$ over expected value for p = 0.5}\\
-%  \end{tabular}
-% \end{table}
+ \newgeometry{left=0.5in, right=0.5in, bottom=0.2in, top=0.5in}
+ \begin{table}[ht]
+ \caption*{Supplement}
+ \centering
+ \begin{tabular}{ p{9cm}p{9cm} }
+ \includegraphics[width=80mm]{alpha} \caption*{Fig. 1: Effect sizes for various
+    dominance deviation values under directional dominance}
+    &\includegraphics[width=80mm]{Qxexpdist} \caption*{Fig. 2: $Q_x$
+      Expansion Distribution} \\
+  \newline
+  \includegraphics[width=80mm]{Qxdomdev}\caption*{Fig. 3: $Q_x$
+   Distribution with dominance}
+    &\includegraphics[width=80mm]{cdf0}\caption*{Fig. 4: Expected CDF
+      of $Q_x$ with dominance = 0}\\
+  \newline
+  \includegraphics[width=80mm]{cdf05}\caption*{Fig. 5: $Q_x$
+   Distribution with dominance = 0.5}
+    &\includegraphics[width=80mm]{propover}\caption*{Fig. 6: Proportion
+      of $Q_x$ over expected value for p = 0.5}\\
+  \end{tabular}
+ \end{table}
 
-% \begin{table}[ht]
-% \centering
-% \begin{tabular}{ p{9cm}p{9cm} }
-%  \includegraphics[width=80mm]{allelefreq0}\caption*{Fig. 7: Allele frequency over
-%   time for dominance = 0}
-%    &\includegraphics[width=80mm]{allelefreq02}\caption*{Fig. 8: Allele frequency over
-%   time for dominance = 0.2}\\
-%    \newline
-%  \includegraphics[width=80mm]{genval0}\caption*{Fig. 9: Genetic value
-%   over time for dominance = 0}
-%    &\includegraphics[width=80mm]{genval-02}\caption*{Fig. 10: Genetic value
-%      over time for dominance = -0.2}\\
-%    \newline
-%  \includegraphics[width=80mm]{genval02}\caption*{Fig. 11: Genetic value
-%   over time for dominance = 0.2}
-%    &\includegraphics[width=70mm]{qqplot}\caption*{Fig. 12: Height
-%      Domiance Deviation p-value qqplot}
-%  \end{tabular}
-%  \end{table}
+ \begin{table}[ht]
+ \centering
+ \begin{tabular}{ p{9cm}p{9cm} }
+  \includegraphics[width=80mm]{allelefreq0}\caption*{Fig. 7: Allele frequency over
+   time for dominance = 0}
+    &\includegraphics[width=80mm]{allelefreq02}\caption*{Fig. 8: Allele frequency over
+   time for dominance = 0.2}\\
+    \newline
+  \includegraphics[width=80mm]{genval0}\caption*{Fig. 9: Genetic value
+   over time for dominance = 0}
+    &\includegraphics[width=80mm]{genval-02}\caption*{Fig. 10: Genetic value
+      over time for dominance = -0.2}\\
+    \newline
+  \includegraphics[width=80mm]{genval02}\caption*{Fig. 11: Genetic value
+   over time for dominance = 0.2}
+    &\includegraphics[width=70mm]{qqplot}\caption*{Fig. 12: Height
+      Domiance Deviation p-value qqplot}
+ \end{tabular}
+ \end{table}
+
+  \begin{table}[ht]
+ \begin{tabular}{ p{9cm}p{9cm} }
+  \includegraphics[width=80mm]{bootstrap}\caption*{Fig. 13:
+   Bootstrapped Dominance Deviations for height for significant
+   alleles}
+ \end{tabular}
+ \end{table}
 
 
 
