@@ -89,6 +89,13 @@ particular is no trivial task.
   may therefore be substantially biased toward large effect alleles....
 \end{comment}
 
+
+\begin{comment}
+  I don't think it's quite right to say that tests for adaptation began with Wright defining $F_{ST}$. For example, Wright first wrote down the expression for $F_{ST}$ before the Hershey and Chase experiment, i.e. before it was even known that DNA was the heriditary material (and certainly long before anyone dreamed of being able to actually identify individual loci under selection.
+
+  
+\end{comment}
+
 Until recently, the population genetic methods to detect recent adaptation have been limited to
 large-effect alleles by finding individual loci with significant
 allele frequency changes in the recent past-- this is an indication of
@@ -115,6 +122,8 @@ selection, where $F_{st} = Q_{st}$ is the null model, where no
 selection occurs.
 
 
+\jb{So I think the first sentence of this next paragraph is not quite right. The phenotypes Spitze and others were interested in were almost certainly polygenic. The distinction here is that we have access to (some of) the underlying loci, whereas traditional $Q_{ST}$ approaches are based only on the measurement of phenotypes in common gardens. I think you could more or less just remove the first sentence of this paragraph, and then two sentences that follow probably need to get moved up into the paragraph above somewhere. Can make suggestions Tuesday...} 
+
 However, there are many phenotypes of interest are affected by a
 plethora of loci across the genome-- these are known as polygenic traits-- that are not subject to analysis by the methods
 above. When natural selection occurs with polygenic
@@ -124,13 +133,15 @@ background of genetic drift. Understanding
 how to find signals of natural selection for such polygenic traits has been
 the subject of much study in recent years.
 
+\jb{I'm not really sure it's the increased computational abilities that are driving this. Perhaps more just the maturation of the GWAS approach.}
+
 Increased computational capabilities have given us the tools to be able to evaluate the effects
 of many thousands of loci on a trait, allowing us to evaluate
 selection in highly polygenic traits, such as height. One of the most
 important tools developed are Genome-Wide Association Studies (GWAS)
 which determine which loci across the genome have significant effects
 on a certain polygenic trait \cite{gwasoverview} and what the average
-effect sizes of those loci are. GWAS works by
+effect sizes of those loci are. \jb{In its simplest form,} GWAS works by
 estimating a linear regression based on the following model \cite{gwas}:
 
   \begin{align}
@@ -148,6 +159,11 @@ using this model, where under the null model (that the
 allele does not contribute to polygenic selection and is only subject
 to drift) $\alpha = 0$. 
 
+\jb{So the last sentence of the above paragraph is not right. $alpha \neq 0$ means that the allele contributes to genetic variation for the phenotype. The value of $\alpha$ alone doesn't necessarily say anything about polygenic adaptation.}
+
+
+\jb{In the paragraph below here, you skip very quickly from outlining what the null is (i.e. alpha and recent allele frequency change) to saying that directional dominance violates it. I think you could include a little bit before that to more carefully outline why it is that an association between alpha and the direction of recent allele frequency change is meaningful}
+
 Turchin et al. \cite{heightselection} were the first to show how this
 GWAS data could be used to detect signals of selection in polygenic
 traits. The idea is to look for coordinated shifts in frequency over
@@ -157,6 +173,8 @@ unlikely to have been caused by drift alone. These tests depend on the
 fact that under drift (the null hypothesis), the effect sizes $\alpha$
 and the allele frequencies of the alleles are independent. However, we hypothesize that this assumption is violated
 under certain conditions, namely directional dominance. 
+
+
 
 \begin{comment}
   Recent work has relied on genome-wide association studies (GWAS) as a way past this obstacle.
@@ -220,6 +238,8 @@ deviating from $\frac{1}{2}$ of the homozygous effect size \cite{gillespie}:
   \alpha_\ell = \frac{1}{2} A_\ell + D_\ell\left(1-2p_{1\ell}\right).
   \label{alpha}
 \end{equation}
+
+\jb{end of below paragraph is slightly repetitive}
 
 In particular, directional dominance is when alleles with a postive effect
 size on the trait are systematically dominant and alleles with a
