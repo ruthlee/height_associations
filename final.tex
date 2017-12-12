@@ -76,35 +76,23 @@ mean phenotype of a population over time can be attributed to many causes includ
 drift or gene flow, so detecting signals of selection in
 particular is no trivial task.
 
-\begin{comment}
-  So I might frame this next paragraph differently. I might suggest a bit more expanded intro,
-  and then a slightly different tack after that. Something like:
-
-  Until recently, population genetic methods to detect adaptation have been limited to
-  identifying individual loci which have experienced implausibly large allele frequency changes
-  in the recent past, a signal of recent and strong natural selection. However, when phenotypes
-  are highly polygenic (i.e. many genes are responsible for phentoypic variations, the response
-  to selection gets spread out among many loci, such that no individual allele will look unusual
-  against the background of genetic drift. Our understanding of the genetic basis of adaptation
-  may therefore be substantially biased toward large effect alleles....
-\end{comment}
-
-
-\begin{comment}
-  I don't think it's quite right to say that tests for adaptation began with Wright defining $F_{ST}$. For example, Wright first wrote down the expression for $F_{ST}$ before the Hershey and Chase experiment, i.e. before it was even known that DNA was the heriditary material (and certainly long before anyone dreamed of being able to actually identify individual loci under selection.
-
-  
-\end{comment}
-
-Until recently, the population genetic methods to detect recent adaptation have been limited to
-large-effect alleles by finding individual loci with significant
+When natural selection occurs with polygenic
+traits, the signal of selection get spread out over many loci, such
+that no individual loci displays large frequency changes against the
+background of genetic drift. Understanding
+how to find signals of natural selection for such polygenic traits has been
+the subject of much study in recent years. Until recently, the
+population genetic methods to detect polygenic adaptation have been
+limited to large-effect alleles by finding individual loci with significant
 allele frequency changes in the recent past-- this is an indication of
-strong, recent national selection. Tests for this kind of selection
-began with the creation of the parameter $F_{st}$ by Wright, who
+strong, recent national selection.
+
+Lewontin and Krakauer developed a
+novel statistical test for this kind of selection based on the
+parameter $F_{st}$, which was first introduced by Wright, who
 defined it as a measure comparing
 the genetic variation of an allele at a specific site in a subpopulation to that of the entire population
-\cite{Fst}. Lewontin and Krakauer, using this parameter developed a
-novel statistical test based on the fact
+\cite{Fst}. Lewontin and Krakauer used the fact
 that under no selection, the expected $F_{st}$ at a given site will be the same
 as the population $F_{st}$. Further, they concluded that the
 distribution of $F_{st}$ across all sites will be chi-squared
@@ -119,29 +107,29 @@ locus, it measures the ratio of the variation of all loci contributing to a
 phenotype within a subpopulation to that of the entire population. These early tests for selection utilized the ratio
 $\frac{Q_{st}}{F_{st}}$ as a test statistic for detecting signals of
 selection, where $F_{st} = Q_{st}$ is the null model, where no
-selection occurs.
+selection occurs. 
 
 
-\jb{So I think the first sentence of this next paragraph is not quite right. The phenotypes Spitze and others were interested in were almost certainly polygenic. The distinction here is that we have access to (some of) the underlying loci, whereas traditional $Q_{ST}$ approaches are based only on the measurement of phenotypes in common gardens. I think you could more or less just remove the first sentence of this paragraph, and then two sentences that follow probably need to get moved up into the paragraph above somewhere. Can make suggestions Tuesday...} 
+\begin{comment}So I think the first sentence of this next paragraph is
+  not quite right. The phenotypes Spitze and others were interested in
+  were almost certainly polygenic. The distinction here is that we
+  have access to (some of) the underlying loci, whereas traditional
+  $Q_{ST}$ approaches are based only on the measurement of phenotypes
+  in common gardens. I think you could more or less just remove the
+  first sentence of this paragraph, and then two sentences that follow
+  probably need to get moved up into the paragraph above
+  somewhere. Can make suggestions Tuesday...
+  \end{comment}
 
-However, there are many phenotypes of interest are affected by a
-plethora of loci across the genome-- these are known as polygenic traits-- that are not subject to analysis by the methods
-above. When natural selection occurs with polygenic
-traits, the signal of selection get spread out over many loci, such
-that no individual loci displays large frequency changes against the
-background of genetic drift. Understanding
-how to find signals of natural selection for such polygenic traits has been
-the subject of much study in recent years.
-
-\jb{I'm not really sure it's the increased computational abilities that are driving this. Perhaps more just the maturation of the GWAS approach.}
-
-Increased computational capabilities have given us the tools to be able to evaluate the effects
-of many thousands of loci on a trait, allowing us to evaluate
-selection in highly polygenic traits, such as height. One of the most
+However, these early tests were limited by the inability to access the
+many thousands of loci that affect polygenic traits. The advent of
+modern computational tools have given us the ability to do just that,
+allowing us to better evaluate
+selection in highly polygenic traits such as height. One of the most
 important tools developed are Genome-Wide Association Studies (GWAS)
 which determine which loci across the genome have significant effects
 on a certain polygenic trait \cite{gwasoverview} and what the average
-effect sizes of those loci are. \jb{In its simplest form,} GWAS works by
+effect sizes of those loci are. In its simplest form, GWAS works by
 estimating a linear regression based on the following model \cite{gwas}:
 
   \begin{align}
@@ -155,14 +143,25 @@ the mean phenotype in the sample, and $\alpha$ is the average
 effect in the sample of switching the allele with the
 other allele at the given locus. $\vec{\epsilon}$ is the vector of
 error terms for each individual. GWAS performs a linear regression
-using this model, where under the null model (that the
+using this model, where under the null model, the
 allele does not contribute to polygenic selection and is only subject
-to drift) $\alpha = 0$. 
+to drift. If the allele is statistically significant, GWAS will
+estimate its nonzero effect size. 
 
-\jb{So the last sentence of the above paragraph is not right. $alpha \neq 0$ means that the allele contributes to genetic variation for the phenotype. The value of $\alpha$ alone doesn't necessarily say anything about polygenic adaptation.}
+\begin{comment}So the last sentence of the above paragraph is not
+  right. $alpha \neq 0$ means that the allele contributes to genetic
+  variation for the phenotype. The value of $\alpha$ alone doesn't
+  necessarily say anything about polygenic adaptation.
+  \end{comment}
 
 
-\jb{In the paragraph below here, you skip very quickly from outlining what the null is (i.e. alpha and recent allele frequency change) to saying that directional dominance violates it. I think you could include a little bit before that to more carefully outline why it is that an association between alpha and the direction of recent allele frequency change is meaningful}
+\begin{comment}In the paragraph below here, you skip very quickly from
+  outlining what the null is (i.e. alpha and recent allele frequency
+  change) to saying that directional dominance violates it. I think
+  you could include a little bit before that to more carefully outline
+  why it is that an association between alpha and the direction of
+  recent allele frequency change is meaningful}
+\end{comment}
 
 Turchin et al. \cite{heightselection} were the first to show how this
 GWAS data could be used to detect signals of selection in polygenic
@@ -171,8 +170,14 @@ many different loci associated with a polygenic trait to find
 statistically significant changes in allele frequency that are
 unlikely to have been caused by drift alone. These tests depend on the
 fact that under drift (the null hypothesis), the effect sizes $\alpha$
-and the allele frequencies of the alleles are independent. However, we hypothesize that this assumption is violated
-under certain conditions, namely directional dominance. 
+and the allele frequencies of the alleles are independent. In
+otherwords, the test detects signals of selection by looking for
+significant, coordinated changes in allele frequencies that correlates
+with a change in the effect sizes of the alleles in question. If
+allele frequencies and effect sizes are not independent in the null
+model, however, then the test will start to over or underestimate
+signals of selection. We hypothesize that one effect that would
+confound the test for polygenic adaptation in this way is directional dominance.
 
 
 
@@ -239,18 +244,12 @@ deviating from $\frac{1}{2}$ of the homozygous effect size \cite{gillespie}:
   \label{alpha}
 \end{equation}
 
-\jb{end of below paragraph is slightly repetitive}
-
 In particular, directional dominance is when alleles with a postive effect
 size on the trait are systematically dominant and alleles with a
 negative effect size on the trait are systematically recessive or vice
 versa (i.e., dominant alleles have a negative effect or recessive have
 a positive effect). In terms of \eqref{alpha}, this means that the
-average D over all loci is different from zero. Specifically, while
-many alleles contributing to a trait will have nonzero dominance
-deviations, on expectation these will be zero. However, directional
-dominance occurs when the dominance deviations over many alleles is on
-expectation nonzero.
+average D over all loci is different from zero. 
 
 We hypothesized that directional dominance is problematic in tests of polygenic adaptation
 because the effect size we estimate in the presence of directional
