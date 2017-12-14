@@ -43,7 +43,7 @@
 
 
 \subsection*{Abstract}
-The averge effect size $\alpha$ is the estimated effect size for an
+The average effect size $\alpha$ is the estimated effect size for an
 allele for a polygenic trait. These effect sizes are estimated using
 Genome-Wide Association Studies, and we can estimate signals of natural
 selection for polygenic traits by weighting by $\alpha$ in statistical
@@ -76,20 +76,9 @@ mean phenotype of a population over time can be attributed to many causes includ
 drift or gene flow, so detecting signals of selection in
 particular is no trivial task.
 
-When natural selection occurs with polygenic
-traits, the signal of selection get spread out over many loci, such
-that no individual loci displays large frequency changes against the
-background of genetic drift. Understanding
-how to find signals of natural selection for such polygenic traits has been
-the subject of much study in recent years. Until recently, the
-population genetic methods to detect polygenic adaptation have been
-limited to large-effect alleles by finding individual loci with significant
-allele frequency changes in the recent past-- this is an indication of
-strong, recent national selection.
-
-Lewontin and Krakauer developed a
-novel statistical test for this kind of selection based on the
-parameter $F_{st}$, which was first introduced by Wright, who
+With respect to single-allele traits, Lewontin and Krakauer were the
+first to develop a statistical test for selection based on the
+parameter $F_{st}$, introduced by Wright, who
 defined it as a measure comparing
 the genetic variation of an allele at a specific site in a subpopulation to that of the entire population
 \cite{Fst}. Lewontin and Krakauer used the fact
@@ -98,13 +87,25 @@ as the population $F_{st}$. Further, they concluded that the
 distribution of $F_{st}$ across all sites will be chi-squared
 $F_{st}$ \cite{firstseltest}. The natural conclusion is that sites
 with statistically different $F_{st}$ values are candidates for loci
-that have been acted upon by selection. These conclusions were extended by Spitze, who coined the
+that have been acted upon by selection.
+
+However, when natural selection occurs with polygenic
+traits, the signal of selection gets spread out over many loci, such
+that no individual locus displays large frequency changes against the
+background of genetic drift. Understanding
+how to find signals of natural selection for such polygenic traits has been
+the subject of much study in recent years. Until recently, the
+population genetic methods to detect polygenic adaptation have been
+limited to large-effect alleles by finding individual loci with significant
+allele frequency changes in the recent past-- this is an indication of
+strong, recent national selection. To this end, Spitze created the
 parameter $Q_{st}$ as a measure of how the variation of all loci
 contributing to a phenotype of a subpopulation compares to that of the entire
 population \cite{Qst}. Essentially, $Q_{st}$ is analogous to $F_{st}$,
 except that instead of looking at the variation of one allele at a
 locus, it measures the ratio of the variation of all loci contributing to a
-phenotype within a subpopulation to that of the entire population. These early tests for selection utilized the ratio
+phenotype within a subpopulation to that of the entire
+population. Early tests for polygenic adaptation utilized the ratio
 $\frac{Q_{st}}{F_{st}}$ as a test statistic for detecting signals of
 selection, where $F_{st} = Q_{st}$ is the null model, where no
 selection occurs. 
@@ -171,7 +172,7 @@ statistically significant changes in allele frequency that are
 unlikely to have been caused by drift alone. These tests depend on the
 fact that under drift (the null hypothesis), the effect sizes $\alpha$
 and the allele frequencies of the alleles are independent. In
-otherwords, the test detects signals of selection by looking for
+other words, the test detects signals of selection by looking for
 significant, coordinated changes in allele frequencies that correlates
 with a change in the effect sizes of the alleles in question. If
 allele frequencies and effect sizes are not independent in the null
@@ -227,14 +228,14 @@ of the allele ($p$) at each significant locus ($l$). \cite{gillespie}
 The additive effect size, then, is key to relating the genotypes of
 the many loci contributing to the phenotype of interest with the
 phenotype itself-- as shown below, it also plays a key role in statistical tests for
-polygenic adaptaion. Understanding how $\alpha$ can be
+polygenic adaptation. Understanding how $\alpha$ can be
 affected by other factors is essential for ensuring that these
 statistical tests remain as unbiased as possible.
 \end{comment}
 
 Dominance in population genetics refers to when the effect of one
 allele depends on the presence of another allele at the locus. We can account for
-the effect of dominance in the effect size by parametrizing $\alpha$
+the effect of dominance in the effect size by parameterizing $\alpha$
 in terms of the homozygous effect size (A), or effect size of the most frequent homozygote, and the
 dominance deviation (D), which is the difference in effect size for the heterozygote
 deviating from $\frac{1}{2}$ of the homozygous effect size \cite{gillespie}:
@@ -244,7 +245,7 @@ deviating from $\frac{1}{2}$ of the homozygous effect size \cite{gillespie}:
   \label{alpha}
 \end{equation}
 
-In particular, directional dominance is when alleles with a postive effect
+In particular, directional dominance is when alleles with a positive effect
 size on the trait are systematically dominant and alleles with a
 negative effect size on the trait are systematically recessive or vice
 versa (i.e., dominant alleles have a negative effect or recessive have
@@ -282,7 +283,7 @@ frequency (large p, positive D, for positive A) will tend to have smaller effect
 alleles which are dominant which have recently decreased in frequency
 (small p, negative D, for positive A) will tend to have larger effect sizes. In the
 latter case, the test for polygenic selection advanced by Berg and Coop
-\eqref{Qxraw} will tend to make false positive judgements for
+\eqref{Qxraw} will tend to make false positive judgments for
 selection, because the statistic will be calculated over alleles which
 do not actually increase the effect size.
 
@@ -311,7 +312,7 @@ hypothesized bias, first with simulated populations, then with height genotype d
 Using the expression for the test statistic $Q_x$ \eqref{Qxraw}, we
 can substitute the expression for $\alpha$ \eqref{alpha} and manipulate
 the expression algebraically to derive the following expansion for the
-test statistic, in terms of the homozygous effect (A)  and the dominance
+test statistic, in terms of the homozygous effect (A) and the dominance
 deviation (D):
 
 \begin{equation}
@@ -329,7 +330,7 @@ deviation (D):
   \end{split}
 \end{equation}
 
-We can loosly consider the single summation terms to be variances
+We can loosely consider the single summation terms to be variances
 corresponding to the expansion of additive effects multiplied by
 additive effects, additive times dominance, and dominance times
 dominance, and the double summation terms as covariances of these
@@ -377,14 +378,14 @@ deviations greater than 0 (Figure 5 shows the expected cdf of a
 statistic with dominance deviation of 0.5), the distribution is
 strongly shifted to the right. This observation is taken further in
 Figure 6, where we plot the proportion of the test statistic over the
-threshold of the statistic such that p = 0.05. In otherwords, we plot the
+threshold of the statistic such that p = 0.05. In other words, we plot the
 proportion of false positives for the test statistic in the presence
 of directional dominance. For dominance deviation
 values of 0, this proportion is very close to 0.05. However, as
 dominance effects increase, there is a corresponding increase in the
 proportion of the statistic over this threshold. Notice that as the
 dominance deviation approaches 1 (complete dominance), almost all of
-the values of $Q_x$ are  over the expected threshold.
+the values of $Q_x$ are over the expected threshold.
 
 Next, we were interested in seeing how the effect of dominance affects
 the average effect size over time. We simulated the frequency of an
@@ -413,11 +414,12 @@ recently increased in frequency in the case of negative dominance
 deviations (Figure 10) or decreased in frequency in the case of
 positive dominance deviations (Figure 11), with a corresponding
 shrinkage in the opposite direction. Indeed, we see that the
-average genetic value (red line). Figure 9 shows the genetic value
+average genetic value (red line) shifts above or below 0 based on this
+stretching/shrinking. Figure 9 shows the genetic value
 over time of populations with no dominance, which as expected, with no
 stretching or shrinking of the genetic value in either direction.
 
-This last plot is particularly interesting because it shows that in
+Figures 10 and 11 are particularly interesting because they show that in
 the presence of directional dominance, the stretching and shrinking
 effect of $\alpha$ has the potential to skew the genetic value of the
 allele in question, meaning not only that GWAS is more likely to
@@ -427,13 +429,13 @@ will be inflated or deflated, because the average effect is what
 weighs alleles in the statistic.
 
 Finally, in order to look for the effects of directional dominance on
-the average effect size in alpha, we wanted to show that height is one
+the average effect size in height, we wanted to show that height is one
 polygenic trait that shows signals of directional dominance. To this
 end, taking GWAS data from the UK Biobank, we created a qq plot of the
-dominance deviation p-values, choosing SNPs that were 
-most significant ($p <= 10^{-8}$) p-values for the average effect size
+dominance deviation p-values, choosing SNPs that had the 
+most significant ($p \leq 10^{-8}$) p-values for the average effect size
 over all chromosomes. Figure 12 shows that the p-values are skewed--
-in otherwords, we see that for a large number of significant sites,
+in other words, we see that for a large number of significant sites,
 the dominance deviation p-values are not distributed as we would
 expect, indicating that there are signs of dominance in height.
 
@@ -441,9 +443,9 @@ Furthermore, we verified that height shows signals of directional
 dominance in particular by bootstrapping the dominance deviation
 values to see if on average they are nonzero across all
 significant loci (Figure 13). We chose alleles with average effect size p-value
-$<= 10^{-8}$ and used sampled the most significant alleles within
+$\ 10^{-8}$ and sampled the most significant alleles within
 blocks of approximately independent alleles in the genome (to account
-for linkage effects). With 10000 replicates, we found a mean of
+for linkage effects) \cite{joesblocks}. With 10000 replicates, we found a mean of
 $7.9*10^{-4}$, which suggests that dominance deviations are at least
 slightly nonzero and the height displays directional dominance.  
 
@@ -454,20 +456,20 @@ effect of directional dominance on the average effect size is
 nontrivial and in fact could result in false positives or negatives in
 the statistical tests for polygenic adaptation. Although we have no
 reason to suspect this effect is very large, as dominance
-itself does not an particularly large effect on polygenic traits in
-general, quantifying this effect in height could open many potential
+itself does not in general have a particularly large effect on polygenic traits, quantifying this effect in height could open many potential
 avenues of research in understanding how tests for polygenic
 adaptation could be biased.
 
 Next steps for this project in particular are delving into the
 UKBiobank data in earnest, performing an in-house GWAS and
-substracting dominance deviation and homozygous effect size data from
+isolating dominance deviation and homozygous effect size data from
 alleles that show signs of directional dominance.
 
 \subsection*{Acknowledgements}
-Thank you to Jeremy Berg, my mentor in the Sella Lab, as well as to
-Yuval Simons, who initially proposed this project, and Guy Sella, my
-PI. Thank you also to Hakhamanesh Mostafavi for providing GWAS data
+Thank you to Jeremy Berg, my mentor in the Sella Lab, who provided
+guidance for understanding theory and performing simulations. Thank
+you also to Yuval Simons, who initially proposed this project, and Guy Sella, my
+PI, as well as Hakhamanesh Mostafavi for providing GWAS data
 for the preliminary analysis of the UK Biobank data. 
 
 
