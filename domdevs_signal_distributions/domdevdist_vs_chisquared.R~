@@ -1,0 +1,38 @@
+cutoff <- qchisq(0.95, 1)
+sum ( x > cutoff ) / length(x)
+
+plot(ecdf(x))
+plot(ecdf(rchisq(1000, df=1)), add= TRUE, col= "red")
+
+# From the list of Qx statistic functions we got from the domdevdist function, we can see what proportion of those values are greater than a certain chi-squared statistic with a user-specified p-value. This is to see how changing domdev values for the Qx statistic changes the chi-squared distribution-- we expect a greater proportion of Qx statistic values to be greater than the expected proportion as domdev increases.
+
+prop_over_exp.p <- function ( Qx = numeric(), pvalue, exp.df ) {
+    cutoff <- qchisq( 1-pvalue, exp.df )
+    sum ( Qx > cutoff ) / length ( x )
+}
+
+# Now we can make the plot of domdev values vs proportion over expected pvalue cutoff.
+
+domdev_vs_exp.p <- function ( domdev = numeric(), pvalue, exp.df ) {
+
+    prop <- numeric()
+
+    for ( i in 1:length(domdev) ) {
+        Qx <- domdev_distributions ( size,
+                              population,
+                              reps,
+                              generations,
+                              epsilonrange1,
+                              epsilonrange2,
+                              avgeff,
+                              domdev = domdev [ i ] )
+
+        prop [ i ] <- prop_over_exp.p ( Qx, pvalue, exp.df )
+    }
+
+    plot ( domdev, prop [ i ], main = paste( "Domdev of distribution vs proportion of distributions over p = ", pvalue, " threshold"), xlab = "domdev", ylab = "proportion" )
+
+}
+
+
+

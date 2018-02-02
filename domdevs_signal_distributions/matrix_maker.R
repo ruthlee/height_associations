@@ -22,7 +22,7 @@ matrix_maker <- function ( term1 = TRUE, term2 = TRUE, term3 = TRUE, term4 = TRU
             }
     }
 
-    for ( j in 1:size) {
+    "for ( j in 1:size) {
         for ( k in 1:size ) {
             if ( j != k ) {
                 t2 <- ( ( 1 / 4 ) * A [ j ] * A [ k ] * ( p [ j ] - epsilon[ j ] ) *  ( p [ k ] - epsilon [ k ] ) )
@@ -42,7 +42,7 @@ matrix_maker <- function ( term1 = TRUE, term2 = TRUE, term3 = TRUE, term4 = TRU
                 }
             }
         }
-    }
+    }"
 
     return ( sum_matrix )
 

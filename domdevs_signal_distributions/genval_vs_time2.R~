@@ -1,0 +1,40 @@
+genval_vs_time <- function ( replicates, generations, epsilonrange1, epsilonrange2, avgeff, domdev , genval = TRUE ) {
+    plot( 0, main = "Genetic value vs time",  xlab = "Generations", ylab = "Genetic value", xlim = c( 0, generations), ylim = c(-1, 1), type = "l")
+
+    Fst <- generations
+
+    if ( genval == FALSE ) {
+                                        # just the allele frequencies over generations
+
+        plot( 0, main = "Allele frequency vs time",  xlab = "Generations", ylab = "Allele frequency", xlim = c( 0, generations), ylim = c(-5,5), type = "l")
+
+        for ( i in 1:replicates ) {
+            afterdrift <- numeric()
+            epsilon <- runif ( 1, epsilonrange1, epsilonrange2 )
+            afterdrift [ 1 ]  <- epsilon
+
+            for ( j in 1:(generations) ) {
+                var <- Fst * afterdrift [ j ] * ( 1 - afterdrift [ j ] )
+                afterdrift [ j + 1 ] <-  rnorm( 1, afterdrift [ j ], sqrt ( var ) )
+
+                afterdrift  <- replace ( afterdrift, is.nan(afterdrift) | afterdrift <= 0, 0 )
+                afterdrift <- replace ( afterdrift, afterdrift >= 1, 1 )
+
+            }
+
+            lines ( seq_len ( generations+1 ), afterdrift, col = "grey" )
+
+            return(afterdrift)
+        }
+    }
+}
+
+
+genval_vs_time ( replicates = 10,
+                generations = 10,
+                epsilonrange1 = 0.4,
+                epsilonrange2 = 0.5,
+                avgeff = 0.5,
+                domdev = 0,
+                genval = FALSE )
+

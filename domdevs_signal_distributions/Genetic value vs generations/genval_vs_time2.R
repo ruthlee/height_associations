@@ -90,12 +90,12 @@ genval_vs_time <- function ( size, replicates, generations, epsilonrange1, epsil
 
 
 genval_vs_time (size = 100,
-                replicates = 100,
+                replicates = 10000,
                 generations = 1000,
                 epsilonrange1 = 0.5,
                 epsilonrange2 = 0.5,
                 avgeff = 0.5,
-                domdev = -0.2,
+                domdev = 0,
                 genval = TRUE )
 
 

@@ -90,16 +90,17 @@ domdev_distributions <- function ( size, population, reps, generations, epsilonr
 
 x <- domdev_distributions ( size = 100,
                        population = 1,
-                       reps = 100,
+                       reps = 1000,
                        generations = 10,
                        epsilonrange1 = 0.5,
                        epsilonrange2 = 0.5,
                        avgeff = 0.5,
-                       domdev = 0 )
+                       domdev = 0.2 )
 
 mean (x)
 var (x)
 
 
-hist( x, main = "domdev = 0, avgeff = 0.5, population = 1, size = 100, reps = 1000", xlab = "Qx", breaks = 25 )
+hist( x, main = "Qx Distribution, Dominance deviation = 0.2", xlab = "Qx", ylab = "Frequency", breaks = 50 )
+legend ( 12, 65, c( "Size = 100", "Replicates = 1000", "Generations = 10", "Ancestral Frequency = 0.5", "Homoeff = 0.5") )
 

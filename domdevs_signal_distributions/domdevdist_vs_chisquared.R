@@ -21,7 +21,7 @@ domdev_vs_exp.p <- function ( domdev = numeric(), pvalue, exp.df, size = 100, po
 
         setTxtProgressBar ( pb, i )
 
-        Qx <- domdev_dist_chooseterms ( size,
+        Qx <- domdev_distributions ( size,
                               population,
                               reps,
                               generations,
@@ -46,6 +46,8 @@ domdev <- seq ( 0, 1, 0.1 )
 
 prop <- domdev_vs_exp.p ( domdev, 0.05, 1 )
 
+plot ( domdev, prop, main = paste( "Domdev of distribution vs proportion of distributions over p = 0.05 threshold"), xlab = "Dominance Deviations", ylab = "False Positive Rate", pch = 16 )
+abline ( h = 0.05, col = "red" )
 
 
 # Plotting ecdf for simulated distribution vs expected distribution (chi squared)
@@ -54,7 +56,7 @@ pb <- txtProgressBar( min = 0 , max = length(domdev))
 
 for ( i in 1:length(domdev) ) {
     setTxtProgressBar(pb, i )
-    x <- domdev_dist_chooseterms ( size = 100,
+    x <- domdev_distributions ( size = 100,
                        population = 1,
                        reps = 1000,
                        generations = 10,

@@ -72,12 +72,12 @@ domdev_dist_chooseterms <- function ( size, population, reps, generations, epsil
 
 y <- domdev_dist_chooseterms ( size = 100,
                        population = 1,
-                       reps = 100,
+                       reps = 10000,
                        generations = 10,
                        epsilonrange1 = 0.5,
                        epsilonrange2 = 0.5,
                        avgeff = 0.5,
-                       domdev = 0 )
+                       domdev = 0.2 )
 
 
 
