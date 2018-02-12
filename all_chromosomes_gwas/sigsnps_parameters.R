@@ -14,7 +14,7 @@ joes.blocks <- read.table ( "fourier_ls-all.bed", stringsAsFactors = FALSE , hea
 joes.blocks$chr <- gsub ( 'chr' , '' , joes.blocks$chr )
 
 # row ID creation
-joes.blocks <- cbind (joes.blocks, "ID" = 1:nrow (joes.blocks) )
+joes.blocks <- cbind (joes.blocks, "I" = 1:nrow (joes.blocks) )
 
   # progress bar for assigning joe's blocks numbers to each row in significant snps frame (longest part of program)
 pb <- txtProgressBar( min = 0, max = nrow ( sigsnps ) , style= 3 )
@@ -34,6 +34,8 @@ for ( i in 1:nrow ( sigsnps ) ) {
 write.table(sigsnps, "sigsnps_blocks.csv", sep=",")
 
 sigsnps <- read.table("sigsnps_blocks.csv", sep=",", stringsAsFactors = FALSE )
+
+colnames(sigsnps) <- c("#Chr", "Position", "ID", "Ref", "Alt", "Test", "Obs_ct", "Beta", "Se", "T-stat", "P", "Block")
 
 # Pulling the most significant snps out of each block according to the dominance deviation or average effect pvalue. The function returns warnings for some blocks but will still output a dataframe of significant snps.
 most_sig_snps <- function(dataframe, avgeff = FALSE, domdev = FALSE) {
@@ -67,7 +69,7 @@ most_sig_snps <- function(dataframe, avgeff = FALSE, domdev = FALSE) {
 }
 
 # pulling the most significant snps for dominance deviation p-value
-most_sigsnps <- most_sig_snps(sigsnps, domdev = TRUE )
+most_sigsnps <- most_sig_snps(sigsnps, avgeff = TRUE )
 
 # extracting the list of significant snps
 snp_list <- most_sigsnps$ID
@@ -90,4 +92,37 @@ print(paste("Mean A: ", mean_avgeff))
 
 # Mean D: 1.03387707369682
 # Mean A: 1.16120469982025
+
+
+# Checking whether the additive effect sizes are significantly different from zero.
+
+# Getting rid of NA rows
+x <- raw.snps[!is.na(raw.snps$Beta), ]
+add.df <- x[x$Test == "ADD", ]
+
+write.table(add.df, "add_ttest_df.csv", sep = ",")
+
+add.df <- read.table("add_ttest_df.csv", sep=",", stringsAsFactors = FALSE )
+
+mean(add.df$Beta) # mean = 0.09516468
+
+t.test(add.df$Beta, mu=0)
+
+# RESULTS OF T-TEST
+#	One Sample t-test
+#
+# data:  add.df$Beta
+# t = 143.79, df = 638060, p-value < 2.2e-16
+# alternative hypothesis: true mean is not equal to 0
+# 95 percent confidence interval:
+#  0.09386749 0.09646187
+# sample estimates:
+#  mean of x
+# 0.09516468
+#
+                                        #
+
+
+
+
 
