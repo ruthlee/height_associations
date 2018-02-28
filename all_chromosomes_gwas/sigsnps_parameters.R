@@ -31,18 +31,18 @@ for ( i in 1:nrow ( sigsnps ) ) {
 
 # this took forever, but the csv sigsnps_blocks is the result
 
-write.table(sigsnps, "sigsnps_blocks.csv", sep=",")
+# write.table(sigsnps, "sigsnps_blocks.csv", sep=",")
 
 sigsnps <- read.table("sigsnps_blocks.csv", sep=",", stringsAsFactors = FALSE )
 
-colnames(sigsnps) <- c("#Chr", "Position", "ID", "Ref", "Alt", "Test", "Obs_ct", "Beta", "Se", "T-stat", "P", "Block")
+colnames(sigsnps) <- c("Chr", "Position", "ID", "Ref", "Alt", "Test", "Obs_ct", "Beta", "Se", "T-stat", "P", "Block")
 
 # Pulling the most significant snps out of each block according to the dominance deviation or average effect pvalue. The function returns warnings for some blocks but will still output a dataframe of significant snps.
 most_sig_snps <- function(dataframe, avgeff = FALSE, domdev = FALSE) {
     if (avgeff) {
         blocks <- unique(dataframe$Block)
         sigsnps_df <- data.frame(matrix(ncol = ncol(dataframe)))
-        colnames(sigsnps_df) <- c("#Chr", "Position", "ID", "Ref", "Alt", "Test", "Obs_ct", "Beta", "Se", "T-stat", "P", "Block")
+        colnames(sigsnps_df) <- c("Chr", "Position", "ID", "Ref", "Alt", "Test", "Obs_ct", "Beta", "Se", "T-stat", "P", "Block")
         for(i in 1:length(blocks)) {
             new.df <- dataframe[dataframe$Block == blocks[i] & dataframe$Test == "ADD",]
             if(nrow(new.df) != 0){
@@ -55,7 +55,7 @@ most_sig_snps <- function(dataframe, avgeff = FALSE, domdev = FALSE) {
     if (domdev) {
         blocks <- unique(dataframe$Block)
         sigsnps_df <- data.frame(matrix(ncol = ncol(dataframe)))
-        colnames(sigsnps_df) <- c("#Chr", "Position", "ID", "Ref", "Alt", "Test", "Obs_ct", "Beta", "Se", "T-stat", "P", "Block")
+        colnames(sigsnps_df) <- c("Chr", "Position", "ID", "Ref", "Alt", "Test", "Obs_ct", "Beta", "Se", "T-stat", "P", "Block")
         for(i in 1:length(blocks)) {
             new.df <- dataframe[dataframe$Block == blocks[i] & dataframe$Test == "DOMDEV",]
             if(nrow(new.df) != 0){
@@ -69,7 +69,9 @@ most_sig_snps <- function(dataframe, avgeff = FALSE, domdev = FALSE) {
 }
 
 # pulling the most significant snps for dominance deviation p-value
-most_sigsnps <- most_sig_snps(sigsnps, avgeff = TRUE )
+most_sigsnps <- most_sig_snps(sigsnps, domdev = TRUE )
+
+# write.table(most_sigsnps, "domdev_sigsnps.csv")
 
 # extracting the list of significant snps
 snp_list <- most_sigsnps$ID
